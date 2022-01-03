@@ -1,0 +1,6 @@
+.phpdoc
+.vscode
+vendor
+composer.lock
+gendoc.sh
+phpDocumentor.phar
