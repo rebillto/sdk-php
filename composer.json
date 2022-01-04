@@ -2,7 +2,7 @@
     "name": "rebill/sdk-php",
     "description": "Rebill's Official PHP SDK",
     "keywords": ["php", "sdk", "rebill"],
-    "license": "GPLv3",
+    "license": "GPL-3.0-only",
     "authors": [{
         "name": "Kijam Lopez",
         "email": "kijam@rebill.to"
