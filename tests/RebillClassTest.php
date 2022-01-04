@@ -13,7 +13,7 @@ class RebillClassTest extends TestCase
 {
     /**
      * Just check if the Rebill has no syntax error
-    *
+    * @test
     */
     public function isObject()
     {
