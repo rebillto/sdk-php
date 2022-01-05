@@ -69,7 +69,7 @@ class Rebill extends RebillModel
      *
      * @return Rebill
      */
-    public function getInstance()
+    public static function getInstance()
     {
         static $instance = null;
         if ($instance) {
