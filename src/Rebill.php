@@ -134,7 +134,7 @@ class Rebill extends RebillModel
             \curl_setopt($ch, CURLOPT_POST, 1);
             if ($to_json) {
                 $post_data = \json_encode($post_data);
-                $headers   = array_merge(
+                $headers   = \array_merge(
                     $headers,
                     [
                         'Content-Type: application/json; charset=utf-8',
@@ -142,7 +142,7 @@ class Rebill extends RebillModel
                     ]
                 );
             } else {
-                $headers = array_merge(
+                $headers = \array_merge(
                     $headers,
                     [
                         'Content-Type: application/json; charset=utf-8',
@@ -202,11 +202,11 @@ class Rebill extends RebillModel
             }
             $is_retry = false;
         }
-        if (\count(\func_get_args()) >= 8 && !empty($rsp)) {
+        if (\count(\func_get_args()) >= 8 && !empty($response)) {
             if ($return_decode) {
-                $error_data = \json_decode($rsp, true);
+                $error_data = \json_decode($response, true);
             } else {
-                $error_data = $rsp;
+                $error_data = $response;
             }
         }
         return false;
@@ -222,7 +222,7 @@ class Rebill extends RebillModel
     public function getToken($forece_reload = false)
     {
         $key = \base64_encode($this->user.':'.$this->pass);
-        $cache_file = \dirname(__FILE__).'/cache/token_'.\md5($key.($this->sandbox ? '1' : '0').'.php');
+        $cache_file = \dirname(__FILE__).'/cache/token_'.\md5($key.($this->sandbox ? '1' : '0')).'.php';
         if (!$forece_reload && \file_exists($cache_file)) {
             $result = \file_get_contents($cache_file);
             if ($result) {
