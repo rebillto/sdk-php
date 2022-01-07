@@ -125,9 +125,7 @@ class Rebill extends RebillModel
         $ch = \curl_init();
         \curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         \curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-        $wp_data         = [
-            'method'  => $http_method,
-        ];
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $http_method);
         $url             = $base_url.$method;
         self::log('call '.$http_method.' ['.$url.'] -> '.\var_export($headers, true).' - '.\var_export($args, true).'
                     - '.\var_export($post_data, true));
