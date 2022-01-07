@@ -13,6 +13,20 @@ class Customer extends \Rebill\SDK\RebillModel
      * @var int
      */
     protected $id;
+
+    /**
+     * Endpoint of Model
+     *
+     * @var int
+     */
+    protected $endpoint = '/customers';
+
+    /**
+     * Class of Model
+     *
+     * @var string
+     */
+    protected $class = self::class;
     /**
      * Attribute List
      *
@@ -68,8 +82,6 @@ class Customer extends \Rebill\SDK\RebillModel
         'region_id' => ['is_numeric'],
         'vendor_id' => ['is_numeric'],
         'user_id' => ['is_numeric'],
-        'updatedAt' => ['is_string'],
-        'createdAt' => ['is_string'],
     ];
     /**
      * List attributes ignored in PUT or POST request

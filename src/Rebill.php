@@ -22,11 +22,18 @@ class Rebill extends RebillModel
     const API_PROD = 'https://api.rebill.to/v1';
     
     /**
+     * Callback debug
+     *
+     * @var mixed
+     */
+    private static $callback_debug = null;
+    
+    /**
      * Is debug mode
      *
      * @var bool
      */
-    protected $isDebug = false;
+    public $isDebug = false;
     
     /**
      * Is sandbox mode
@@ -260,13 +267,12 @@ class Rebill extends RebillModel
      *
      * @param   string            $method Method.
      * @param   bool|array        $args URL Params.
-     * @param   int               $ttl TTL.
      * @param   array             $headers Headers request.
      * @param   bool|string|array $error_data Return error details.
      *
      * @return  bool|array
      */
-    public function callApiGet($method, $args = false, $ttl = 3600, $headers = [], &$error_data = null)
+    public function callApiGet($method, $args = false, $headers = [], &$error_data = null)
     {
         $token    = $this->getToken();
         $headers_request = \array_merge($headers, []);
@@ -353,10 +359,20 @@ class Rebill extends RebillModel
         }
         return false;
     }
+    public static function setCallBackDebugLog($callback) {
+        if (\is_callable($callback)) {
+            self::$callback_debug = $callback;
+        }
+    }
     private static function log($msg)
     {
         if (self::getInstance()->isDebug) {
-            \error_log($msg);
+            if (\is_callable(self::$callback_debug)) {
+                $callback = self::$callback_debug;
+                $callback($msg);
+            } else {
+                \error_log($msg);
+            }
         }
     }
 }
