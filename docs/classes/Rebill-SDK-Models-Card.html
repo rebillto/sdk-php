@@ -96,7 +96,7 @@
 
     <article class="phpdocumentor-element -class">
         <h2 class="phpdocumentor-content__title">
-    Customer
+    Card
 
         <span class="phpdocumentor-element__extends">
         extends <a href="classes/Rebill-SDK-RebillModel.html"><abbr title="\Rebill\SDK\RebillModel">RebillModel</abbr></a>
@@ -113,13 +113,13 @@
     </h2>
 
         <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Customer.php"><a href="files/src-models-customer.html"><abbr title="src/Models/Customer.php">Customer.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Card.php"><a href="files/src-models-card.html"><abbr title="src/Models/Card.php">Card.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">8</span>
 
     </aside>
 
-            <p class="phpdocumentor-summary">Customer class</p>
+            <p class="phpdocumentor-summary">Card class</p>
 
     <section class="phpdocumentor-description"><p>@author Kijam</p>
 </section>
@@ -137,50 +137,43 @@
 </h3>
 
 <dl class="phpdocumentor-table-of-contents">
-                    <dt class="phpdocumentor-table-of-contents__entry -property -protected">
-    <a href="classes/Rebill-SDK-Models-Customer.html#property_attributes">$attributes</a>
-    <span>
-                        &nbsp;: array&lt;string, mixed&gt;            </span>
-</dt>
-<dd>Attribute List</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
-    <a href="classes/Rebill-SDK-Models-Customer.html#property_class">$class</a>
-    <span>
-                        &nbsp;: string            </span>
-</dt>
-<dd>Class of Model</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
-    <a href="classes/Rebill-SDK-Models-Customer.html#property_endpoint">$endpoint</a>
-    <span>
-                        &nbsp;: int            </span>
-</dt>
-<dd>Endpoint of Model</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
-    <a href="classes/Rebill-SDK-Models-Customer.html#property_format">$format</a>
-    <span>
-                        &nbsp;: array&lt;string, array&lt;int, string&gt;&gt;            </span>
-</dt>
-<dd>Format List</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
-    <a href="classes/Rebill-SDK-Models-Customer.html#property_id">$id</a>
+                    <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/Rebill-SDK-Models-Card.html#property_id">$id</a>
     <span>
                         &nbsp;: int            </span>
 </dt>
 <dd>ID of Model</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
-    <a href="classes/Rebill-SDK-Models-Customer.html#property_ignore">$ignore</a>
+    <a href="classes/Rebill-SDK-Models-Card.html#property_attributes">$attributes</a>
+    <span>
+                        &nbsp;: array&lt;string, mixed&gt;            </span>
+</dt>
+<dd>Attribute List</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/Rebill-SDK-Models-Card.html#property_endpoint">$endpoint</a>
+    <span>
+                        &nbsp;: int            </span>
+</dt>
+<dd>Endpoint of Model</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/Rebill-SDK-Models-Card.html#property_format">$format</a>
+    <span>
+                        &nbsp;: array&lt;string, array&lt;int, string&gt;&gt;            </span>
+</dt>
+<dd>Format List</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/Rebill-SDK-Models-Card.html#property_ignore">$ignore</a>
     <span>
                         &nbsp;: array&lt;int, string&gt;            </span>
 </dt>
 <dd>List attributes ignored in PUT or POST request</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
-    <a href="classes/Rebill-SDK-Models-Customer.html#property_required">$required</a>
+    <a href="classes/Rebill-SDK-Models-Card.html#property_required">$required</a>
     <span>
                         &nbsp;: array&lt;int, string&gt;            </span>
 </dt>
@@ -243,11 +236,18 @@
 <dd>Get all elements of this Model</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Rebill-SDK-RebillModel.html#method_getById">getById()</a>
+    <a href="classes/Rebill-SDK-Models-Card.html#method_getById">getById()</a>
     <span>
                                 &nbsp;: mixed|bool    </span>
 </dt>
 <dd>Get element of this Model by ID</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Rebill-SDK-Models-Card.html#method_requestRenew">requestRenew()</a>
+    <span>
+                                &nbsp;: bool|object    </span>
+</dt>
+<dd>Refund Payment</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Rebill-SDK-RebillModel.html#method_setAttributes">setAttributes()</a>
@@ -317,155 +317,23 @@
     <section class="phpdocumentor-properties">
         <h3 class="phpdocumentor-elements__header" id="properties">
             Properties
-            <a href="classes/Rebill-SDK-Models-Customer.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/Rebill-SDK-Models-Card.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
         </h3>
                     <article
         class="
             phpdocumentor-element
             -property
-            -protected
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="property_attributes">
-        $attributes
-        <a href="classes/Rebill-SDK-Models-Customer.html#property_attributes" class="headerlink"><i class="fas fa-link"></i></a>
-        <span class="phpdocumentor-element__modifiers">
-                                </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Customer.php"><a href="files/src-models-customer.html"><abbr title="src/Models/Customer.php">Customer.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">35</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Attribute List</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__type">array&lt;string, mixed&gt;</span>
-    <span class="phpdocumentor-signature__name">$attributes</span>
-     = <span class="phpdocumentor-signature__default-value">[&#039;email&#039; =&gt; null, &#039;firstName&#039; =&gt; null, &#039;lastName&#039; =&gt; null, &#039;phone_areacode&#039; =&gt; null, &#039;phone_number&#039; =&gt; null, &#039;birthday&#039; =&gt; null, &#039;vat_type&#039; =&gt; null, &#039;vatID_number&#039; =&gt; null, &#039;personalID_type&#039; =&gt; null, &#039;personalID_number&#039; =&gt; null, &#039;address_street&#039; =&gt; null, &#039;address_number&#039; =&gt; null, &#039;address_floor&#039; =&gt; null, &#039;address_apt&#039; =&gt; null, &#039;address_city&#039; =&gt; null, &#039;address_province&#039; =&gt; null, &#039;address_zipcode&#039; =&gt; null, &#039;description&#039; =&gt; null, &#039;region_id&#039; =&gt; null, &#039;vendor_id&#039; =&gt; null, &#039;user_id&#039; =&gt; null]</span></code>
-
-    
-    
-    
-
-</article>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -protected
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="property_class">
-        $class
-        <a href="classes/Rebill-SDK-Models-Customer.html#property_class" class="headerlink"><i class="fas fa-link"></i></a>
-        <span class="phpdocumentor-element__modifiers">
-                                </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Customer.php"><a href="files/src-models-customer.html"><abbr title="src/Models/Customer.php">Customer.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">29</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Class of Model</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__type">string</span>
-    <span class="phpdocumentor-signature__name">$class</span>
-     = <span class="phpdocumentor-signature__default-value">self::class</span></code>
-
-    
-    
-    
-
-</article>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -protected
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="property_endpoint">
-        $endpoint
-        <a href="classes/Rebill-SDK-Models-Customer.html#property_endpoint" class="headerlink"><i class="fas fa-link"></i></a>
-        <span class="phpdocumentor-element__modifiers">
-                                </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Customer.php"><a href="files/src-models-customer.html"><abbr title="src/Models/Customer.php">Customer.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">22</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Endpoint of Model</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__type">int</span>
-    <span class="phpdocumentor-signature__name">$endpoint</span>
-     = <span class="phpdocumentor-signature__default-value">&#039;/customers&#039;</span></code>
-
-    
-    
-    
-
-</article>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -protected
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="property_format">
-        $format
-        <a href="classes/Rebill-SDK-Models-Customer.html#property_format" class="headerlink"><i class="fas fa-link"></i></a>
-        <span class="phpdocumentor-element__modifiers">
-                                </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Customer.php"><a href="files/src-models-customer.html"><abbr title="src/Models/Customer.php">Customer.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">63</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Format List</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__type">array&lt;string, array&lt;int, string&gt;&gt;</span>
-    <span class="phpdocumentor-signature__name">$format</span>
-     = <span class="phpdocumentor-signature__default-value">[&#039;email&#039; =&gt; [&#039;validateEmail&#039;], &#039;firstName&#039; =&gt; [&#039;is_string&#039;], &#039;lastName&#039; =&gt; [&#039;is_string&#039;], &#039;phone_areacode&#039; =&gt; [&#039;is_numeric&#039;], &#039;phone_number&#039; =&gt; [&#039;is_numeric&#039;], &#039;vat_type&#039; =&gt; [&#039;is_string&#039;], &#039;vatID_number&#039; =&gt; [&#039;is_numeric&#039;], &#039;personalID_type&#039; =&gt; [&#039;is_string&#039;], &#039;personalID_number&#039; =&gt; [&#039;is_numeric&#039;], &#039;address_street&#039; =&gt; [&#039;is_string&#039;], &#039;address_number&#039; =&gt; [&#039;is_numeric&#039;], &#039;address_floor&#039; =&gt; [&#039;is_string&#039;], &#039;address_city&#039; =&gt; [&#039;is_string&#039;], &#039;address_floor&#039; =&gt; [&#039;is_string&#039;], &#039;address_apt&#039; =&gt; [&#039;is_string&#039;], &#039;address_province&#039; =&gt; [&#039;is_string&#039;], &#039;address_zipcode&#039; =&gt; [&#039;is_string&#039;], &#039;description&#039; =&gt; [&#039;is_string&#039;], &#039;region_id&#039; =&gt; [&#039;is_numeric&#039;], &#039;vendor_id&#039; =&gt; [&#039;is_numeric&#039;], &#039;user_id&#039; =&gt; [&#039;is_numeric&#039;]]</span></code>
-
-    
-    
-    
-
-</article>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -protected
+            -public
                                                         "
 >
     <h4 class="phpdocumentor-element__name" id="property_id">
         $id
-        <a href="classes/Rebill-SDK-Models-Customer.html#property_id" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/Rebill-SDK-Models-Card.html#property_id" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Customer.php"><a href="files/src-models-customer.html"><abbr title="src/Models/Customer.php">Customer.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Card.php"><a href="files/src-models-card.html"><abbr title="src/Models/Card.php">Card.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">15</span>
 
@@ -474,7 +342,7 @@
         <p class="phpdocumentor-summary">ID of Model</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">protected</span>
+    <span class="phpdocumentor-signature__visibility">public</span>
         <span class="phpdocumentor-signature__type">int</span>
     <span class="phpdocumentor-signature__name">$id</span>
     </code>
@@ -491,16 +359,115 @@
             -protected
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="property_ignore">
-        $ignore
-        <a href="classes/Rebill-SDK-Models-Customer.html#property_ignore" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_attributes">
+        $attributes
+        <a href="classes/Rebill-SDK-Models-Card.html#property_attributes" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Customer.php"><a href="files/src-models-customer.html"><abbr title="src/Models/Customer.php">Customer.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Card.php"><a href="files/src-models-card.html"><abbr title="src/Models/Card.php">Card.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">91</span>
+    <span class="phpdocumentor-element-found-in__line">29</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Attribute List</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">array&lt;string, mixed&gt;</span>
+    <span class="phpdocumentor-signature__name">$attributes</span>
+     = <span class="phpdocumentor-signature__default-value">[&#039;customer_id&#039; =&gt; null, &#039;gateway_id&#039; =&gt; null, &#039;gateway_card_id&#039; =&gt; null, &#039;gateway_card_token&#039; =&gt; null, &#039;expiration_month&#039; =&gt; null, &#039;expiration_year&#039; =&gt; null, &#039;first_six_digits&#039; =&gt; null, &#039;last_four_digits&#039; =&gt; null, &#039;payment_method_id&#039; =&gt; null, &#039;payment_method_name&#039; =&gt; null, &#039;payment_method_type_id&#039; =&gt; null, &#039;thumbnail&#039; =&gt; null, &#039;secure_thumbnail&#039; =&gt; null, &#039;security_code_length&#039; =&gt; null, &#039;security_code_location&#039; =&gt; null, &#039;issuer_id&#039; =&gt; null, &#039;issuer_name&#039; =&gt; null, &#039;cardholder_name&#039; =&gt; null, &#039;cardholder_identification_number&#039; =&gt; null, &#039;cardholder_identification_type&#039; =&gt; null, &#039;live_mode&#039; =&gt; null, &#039;gateway_user_id&#039; =&gt; null, &#039;organization_id&#039; =&gt; null, &#039;updatedAt&#039; =&gt; null, &#039;createdAt&#039; =&gt; null, &#039;deletedAt&#039; =&gt; null, &#039;status&#039; =&gt; null]</span></code>
+
+    
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_endpoint">
+        $endpoint
+        <a href="classes/Rebill-SDK-Models-Card.html#property_endpoint" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Card.php"><a href="files/src-models-card.html"><abbr title="src/Models/Card.php">Card.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">22</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Endpoint of Model</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">int</span>
+    <span class="phpdocumentor-signature__name">$endpoint</span>
+     = <span class="phpdocumentor-signature__default-value">&#039;/cards&#039;</span></code>
+
+    
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_format">
+        $format
+        <a href="classes/Rebill-SDK-Models-Card.html#property_format" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Card.php"><a href="files/src-models-card.html"><abbr title="src/Models/Card.php">Card.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">63</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Format List</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">array&lt;string, array&lt;int, string&gt;&gt;</span>
+    <span class="phpdocumentor-signature__name">$format</span>
+     = <span class="phpdocumentor-signature__default-value">[]</span></code>
+
+    
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_ignore">
+        $ignore
+        <a href="classes/Rebill-SDK-Models-Card.html#property_ignore" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Card.php"><a href="files/src-models-card.html"><abbr title="src/Models/Card.php">Card.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">71</span>
 
     </aside>
 
@@ -510,7 +477,7 @@
     <span class="phpdocumentor-signature__visibility">protected</span>
         <span class="phpdocumentor-signature__type">array&lt;int, string&gt;</span>
     <span class="phpdocumentor-signature__name">$ignore</span>
-     = <span class="phpdocumentor-signature__default-value">[&#039;region_id&#039;, &#039;vendor_id&#039;, &#039;user_id&#039;, &#039;updatedAt&#039;, &#039;createdAt&#039;]</span></code>
+     = <span class="phpdocumentor-signature__default-value">[]</span></code>
 
     
     
@@ -526,14 +493,14 @@
 >
     <h4 class="phpdocumentor-element__name" id="property_required">
         $required
-        <a href="classes/Rebill-SDK-Models-Customer.html#property_required" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/Rebill-SDK-Models-Card.html#property_required" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Customer.php"><a href="files/src-models-customer.html"><abbr title="src/Models/Customer.php">Customer.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Card.php"><a href="files/src-models-card.html"><abbr title="src/Models/Card.php">Card.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">103</span>
+    <span class="phpdocumentor-element-found-in__line">77</span>
 
     </aside>
 
@@ -543,7 +510,7 @@
     <span class="phpdocumentor-signature__visibility">protected</span>
         <span class="phpdocumentor-signature__type">array&lt;int, string&gt;</span>
     <span class="phpdocumentor-signature__name">$required</span>
-     = <span class="phpdocumentor-signature__default-value">[&#039;email&#039;, &#039;firstName&#039;, &#039;lastName&#039;, &#039;vat_type&#039;, &#039;vatID_number&#039;, &#039;personalID_type&#039;, &#039;personalID_number&#039;, &#039;address_street&#039;, &#039;address_number&#039;, &#039;address_city&#039;, &#039;address_province&#039;, &#039;address_zipcode&#039;]</span></code>
+     = <span class="phpdocumentor-signature__default-value">[]</span></code>
 
     
     
@@ -555,7 +522,7 @@
             <section class="phpdocumentor-methods">
         <h3 class="phpdocumentor-elements__header" id="methods">
             Methods
-            <a href="classes/Rebill-SDK-Models-Customer.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/Rebill-SDK-Models-Card.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
         </h3>
                     <article
         class="phpdocumentor-element
@@ -909,12 +876,12 @@
 >
     <h4 class="phpdocumentor-element__name" id="method_getById">
         getById()
-        <a href="classes/Rebill-SDK-RebillModel.html#method_getById" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/Rebill-SDK-Models-Card.html#method_getById" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/RebillModel.php"><a href="files/src-rebillmodel.html"><abbr title="src/RebillModel.php">RebillModel.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Card.php"><a href="files/src-models-card.html"><abbr title="src/Models/Card.php">Card.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">212</span>
+    <span class="phpdocumentor-element-found-in__line">103</span>
 
     </aside>
 
@@ -943,6 +910,41 @@
     <span class="phpdocumentor-signature__response_type">mixed|bool</span>
             &mdash;
         
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_requestRenew">
+        requestRenew()
+        <a href="classes/Rebill-SDK-Models-Card.html#method_requestRenew" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Card.php"><a href="files/src-models-card.html"><abbr title="src/Models/Card.php">Card.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">85</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Refund Payment</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">requestRenew</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool|object</span></code>
+
+    
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">bool|object</span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>Recursive Model</p>
+</section>
+
     
 </article>
                     <article
@@ -1354,7 +1356,7 @@
 </section>
             </div>
         </div>
-        <a href="classes/Rebill-SDK-Models-Customer.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="classes/Rebill-SDK-Models-Card.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

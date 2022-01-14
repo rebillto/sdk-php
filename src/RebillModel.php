@@ -84,7 +84,7 @@ abstract class RebillModel
             if (\property_exists($this, $key)) {
                 return $this->{$key};
             } else {
-                return isset($this->attributes[$key])?$this->attributes[$key]:null;
+                return isset($this->attributes[$key]) ? $this->attributes[$key] : null;
             }
         }
         return $this;
@@ -130,7 +130,7 @@ abstract class RebillModel
      */
     public function __isset($name)
     {
-        return $name === 'id' || isset($this->attributes[$name]);
+        return $name === 'id' || isset($this->attributes[$name]) && !empty($this->attributes[$name]);
     }
 
 
@@ -202,6 +202,34 @@ abstract class RebillModel
             }
         }
         return $result;
+    }
+
+    /**
+     * Get element of this Model by ID
+     *
+     * @return mixed|bool
+     */
+    public function getById($id)
+    {
+        $data = Rebill::getInstance()->callApiGet($this->endpoint.'/'.(int)$id);
+        if ($data && isset($data['response']) && isset($data['response']['id']) && $data['response']['id'] == $id) {
+            $class_name = get_class($this);
+            $obj = new $class_name;
+            $obj->setAttributes($data['response']);
+            return $obj;
+        }
+        return false;
+    }
+
+
+    /**
+     * Get Model in Array format
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        return array_merge($this->attributes, ['id' => $this->id]);
     }
 
     /**

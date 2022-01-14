@@ -1,7 +1,7 @@
 <?php namespace Rebill\SDK\Models;
 
 /**
-*  Customer class
+*  Webhook class
 *
 *  @author Kijam
 */

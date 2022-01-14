@@ -51,6 +51,11 @@ Search.appendIndex(
             "summary": "Call\u0020POST\u0020method\u0020of\u0020API",
             "url": "classes/Rebill-SDK-Rebill.html#method_callApiPut"
         },                {
+            "fqsen": "\\Rebill\\SDK\\Rebill\u003A\u003AsetCallBackDebugLog\u0028\u0029",
+            "name": "setCallBackDebugLog",
+            "summary": "",
+            "url": "classes/Rebill-SDK-Rebill.html#method_setCallBackDebugLog"
+        },                {
             "fqsen": "\\Rebill\\SDK\\Rebill\u003A\u003Alog\u0028\u0029",
             "name": "log",
             "summary": "",
@@ -65,6 +70,11 @@ Search.appendIndex(
             "name": "API_PROD",
             "summary": "API\u0020endpoint\u0020Production",
             "url": "classes/Rebill-SDK-Rebill.html#constant_API_PROD"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Rebill\u003A\u003A\u0024callback_debug",
+            "name": "callback_debug",
+            "summary": "Callback\u0020debug",
+            "url": "classes/Rebill-SDK-Rebill.html#property_callback_debug"
         },                {
             "fqsen": "\\Rebill\\SDK\\Rebill\u003A\u003A\u0024isDebug",
             "name": "isDebug",
@@ -111,15 +121,75 @@ Search.appendIndex(
             "summary": "Magic\u0020method\u0020of\u0020Model\u0020to\u0020set\/get\u0020Property\u0020or\u0020Attribute.",
             "url": "classes/Rebill-SDK-RebillModel.html#method___call"
         },                {
+            "fqsen": "\\Rebill\\SDK\\RebillModel\u003A\u003A__set\u0028\u0029",
+            "name": "__set",
+            "summary": "Magic\u0020method\u0020of\u0020Model\u0020to\u0020set\u0020Attribute.",
+            "url": "classes/Rebill-SDK-RebillModel.html#method___set"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\RebillModel\u003A\u003A__get\u0028\u0029",
+            "name": "__get",
+            "summary": "Magic\u0020method\u0020of\u0020Model\u0020to\u0020get\u0020Attribute.",
+            "url": "classes/Rebill-SDK-RebillModel.html#method___get"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\RebillModel\u003A\u003A__isset\u0028\u0029",
+            "name": "__isset",
+            "summary": "Magic\u0020method\u0020of\u0020Model\u0020to\u0020isset\u0020Attribute.",
+            "url": "classes/Rebill-SDK-RebillModel.html#method___isset"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\RebillModel\u003A\u003A__unset\u0028\u0029",
+            "name": "__unset",
+            "summary": "Magic\u0020method\u0020of\u0020Model\u0020to\u0020unset\u0020Attribute.",
+            "url": "classes/Rebill-SDK-RebillModel.html#method___unset"
+        },                {
             "fqsen": "\\Rebill\\SDK\\RebillModel\u003A\u003Avalidate\u0028\u0029",
             "name": "validate",
             "summary": "Validate\u0020Model\u0020attributes.",
             "url": "classes/Rebill-SDK-RebillModel.html#method_validate"
         },                {
+            "fqsen": "\\Rebill\\SDK\\RebillModel\u003A\u003AgetAll\u0028\u0029",
+            "name": "getAll",
+            "summary": "Get\u0020all\u0020elements\u0020of\u0020this\u0020Model",
+            "url": "classes/Rebill-SDK-RebillModel.html#method_getAll"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\RebillModel\u003A\u003AgetById\u0028\u0029",
+            "name": "getById",
+            "summary": "Get\u0020element\u0020of\u0020this\u0020Model\u0020by\u0020ID",
+            "url": "classes/Rebill-SDK-RebillModel.html#method_getById"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\RebillModel\u003A\u003AtoArray\u0028\u0029",
+            "name": "toArray",
+            "summary": "Get\u0020Model\u0020in\u0020Array\u0020format",
+            "url": "classes/Rebill-SDK-RebillModel.html#method_toArray"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\RebillModel\u003A\u003Acreate\u0028\u0029",
+            "name": "create",
+            "summary": "Create\u0020Model",
+            "url": "classes/Rebill-SDK-RebillModel.html#method_create"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\RebillModel\u003A\u003Aupdate\u0028\u0029",
+            "name": "update",
+            "summary": "Update\u0020Model",
+            "url": "classes/Rebill-SDK-RebillModel.html#method_update"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\RebillModel\u003A\u003Adelete\u0028\u0029",
+            "name": "delete",
+            "summary": "Delete\u0020Model",
+            "url": "classes/Rebill-SDK-RebillModel.html#method_delete"
+        },                {
             "fqsen": "\\Rebill\\SDK\\RebillModel\u003A\u003AvalidateEmail\u0028\u0029",
             "name": "validateEmail",
             "summary": "Validate\u0020email\u0020format.",
             "url": "classes/Rebill-SDK-RebillModel.html#method_validateEmail"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\RebillModel\u003A\u003AvalidateUrl\u0028\u0029",
+            "name": "validateUrl",
+            "summary": "Validate\u0020url\u0020format.",
+            "url": "classes/Rebill-SDK-RebillModel.html#method_validateUrl"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\RebillModel\u003A\u003AvalidateFrequencyType\u0028\u0029",
+            "name": "validateFrequencyType",
+            "summary": "Validate\u0020Frequency\u0020Type\u0020format.",
+            "url": "classes/Rebill-SDK-RebillModel.html#method_validateFrequencyType"
         },                {
             "fqsen": "\\Rebill\\SDK\\Models\\Customer",
             "name": "Customer",
@@ -130,6 +200,16 @@ Search.appendIndex(
             "name": "id",
             "summary": "ID\u0020of\u0020Model",
             "url": "classes/Rebill-SDK-Models-Customer.html#property_id"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Customer\u003A\u003A\u0024endpoint",
+            "name": "endpoint",
+            "summary": "Endpoint\u0020of\u0020Model",
+            "url": "classes/Rebill-SDK-Models-Customer.html#property_endpoint"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Customer\u003A\u003A\u0024class",
+            "name": "class",
+            "summary": "Class\u0020of\u0020Model",
+            "url": "classes/Rebill-SDK-Models-Customer.html#property_class"
         },                {
             "fqsen": "\\Rebill\\SDK\\Models\\Customer\u003A\u003A\u0024attributes",
             "name": "attributes",
@@ -150,6 +230,126 @@ Search.appendIndex(
             "name": "required",
             "summary": "List\u0020attributes\u0020required\u0020in\u0020PUT\u0020or\u0020POST\u0020request",
             "url": "classes/Rebill-SDK-Models-Customer.html#property_required"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Card",
+            "name": "Card",
+            "summary": "Card\u0020class",
+            "url": "classes/Rebill-SDK-Models-Card.html"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Card\u003A\u003ArequestRenew\u0028\u0029",
+            "name": "requestRenew",
+            "summary": "Refund\u0020Payment",
+            "url": "classes/Rebill-SDK-Models-Card.html#method_requestRenew"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Card\u003A\u003AgetById\u0028\u0029",
+            "name": "getById",
+            "summary": "Get\u0020element\u0020of\u0020this\u0020Model\u0020by\u0020ID",
+            "url": "classes/Rebill-SDK-Models-Card.html#method_getById"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Card\u003A\u003A\u0024id",
+            "name": "id",
+            "summary": "ID\u0020of\u0020Model",
+            "url": "classes/Rebill-SDK-Models-Card.html#property_id"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Card\u003A\u003A\u0024endpoint",
+            "name": "endpoint",
+            "summary": "Endpoint\u0020of\u0020Model",
+            "url": "classes/Rebill-SDK-Models-Card.html#property_endpoint"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Card\u003A\u003A\u0024attributes",
+            "name": "attributes",
+            "summary": "Attribute\u0020List",
+            "url": "classes/Rebill-SDK-Models-Card.html#property_attributes"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Card\u003A\u003A\u0024format",
+            "name": "format",
+            "summary": "Format\u0020List",
+            "url": "classes/Rebill-SDK-Models-Card.html#property_format"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Card\u003A\u003A\u0024ignore",
+            "name": "ignore",
+            "summary": "List\u0020attributes\u0020ignored\u0020in\u0020PUT\u0020or\u0020POST\u0020request",
+            "url": "classes/Rebill-SDK-Models-Card.html#property_ignore"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Card\u003A\u003A\u0024required",
+            "name": "required",
+            "summary": "List\u0020attributes\u0020required\u0020in\u0020PUT\u0020or\u0020POST\u0020request",
+            "url": "classes/Rebill-SDK-Models-Card.html#property_required"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Payment",
+            "name": "Payment",
+            "summary": "Payment\u0020class",
+            "url": "classes/Rebill-SDK-Models-Payment.html"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Payment\u003A\u003Arefund\u0028\u0029",
+            "name": "refund",
+            "summary": "Refund\u0020Payment",
+            "url": "classes/Rebill-SDK-Models-Payment.html#method_refund"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Payment\u003A\u003A\u0024id",
+            "name": "id",
+            "summary": "ID\u0020of\u0020Model",
+            "url": "classes/Rebill-SDK-Models-Payment.html#property_id"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Payment\u003A\u003A\u0024endpoint",
+            "name": "endpoint",
+            "summary": "Endpoint\u0020of\u0020Model",
+            "url": "classes/Rebill-SDK-Models-Payment.html#property_endpoint"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Payment\u003A\u003A\u0024attributes",
+            "name": "attributes",
+            "summary": "Attribute\u0020List",
+            "url": "classes/Rebill-SDK-Models-Payment.html#property_attributes"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Payment\u003A\u003A\u0024format",
+            "name": "format",
+            "summary": "Format\u0020List",
+            "url": "classes/Rebill-SDK-Models-Payment.html#property_format"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Payment\u003A\u003A\u0024ignore",
+            "name": "ignore",
+            "summary": "List\u0020attributes\u0020ignored\u0020in\u0020PUT\u0020or\u0020POST\u0020request",
+            "url": "classes/Rebill-SDK-Models-Payment.html#property_ignore"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Payment\u003A\u003A\u0024required",
+            "name": "required",
+            "summary": "List\u0020attributes\u0020required\u0020in\u0020PUT\u0020or\u0020POST\u0020request",
+            "url": "classes/Rebill-SDK-Models-Payment.html#property_required"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Webhook",
+            "name": "Webhook",
+            "summary": "Webhook\u0020class",
+            "url": "classes/Rebill-SDK-Models-Webhook.html"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Webhook\u003A\u003A\u0024id",
+            "name": "id",
+            "summary": "ID\u0020of\u0020Model",
+            "url": "classes/Rebill-SDK-Models-Webhook.html#property_id"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Webhook\u003A\u003A\u0024endpoint",
+            "name": "endpoint",
+            "summary": "Endpoint\u0020of\u0020Model",
+            "url": "classes/Rebill-SDK-Models-Webhook.html#property_endpoint"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Webhook\u003A\u003A\u0024attributes",
+            "name": "attributes",
+            "summary": "Attribute\u0020List",
+            "url": "classes/Rebill-SDK-Models-Webhook.html#property_attributes"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Webhook\u003A\u003A\u0024format",
+            "name": "format",
+            "summary": "Format\u0020List",
+            "url": "classes/Rebill-SDK-Models-Webhook.html#property_format"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Webhook\u003A\u003A\u0024ignore",
+            "name": "ignore",
+            "summary": "List\u0020attributes\u0020ignored\u0020in\u0020PUT\u0020or\u0020POST\u0020request",
+            "url": "classes/Rebill-SDK-Models-Webhook.html#property_ignore"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Webhook\u003A\u003A\u0024required",
+            "name": "required",
+            "summary": "List\u0020attributes\u0020required\u0020in\u0020PUT\u0020or\u0020POST\u0020request",
+            "url": "classes/Rebill-SDK-Models-Webhook.html#property_required"
         },                {
             "fqsen": "\\",
             "name": "\\",
