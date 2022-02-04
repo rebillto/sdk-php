@@ -362,7 +362,7 @@ class Rebill extends RebillModel
             self::$callback_debug = $callback;
         }
     }
-    private static function log($msg)
+    public static function log($msg)
     {
         if (self::getInstance()->isDebug) {
             if (\is_callable(self::$callback_debug)) {

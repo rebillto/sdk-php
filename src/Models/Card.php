@@ -19,7 +19,7 @@ class Card extends \Rebill\SDK\RebillModel
      *
      * @var int
      */
-    protected $endpoint = '/cards';
+    protected static $endpoint = '/cards';
 
     /**
      * Attribute List
@@ -100,15 +100,8 @@ class Card extends \Rebill\SDK\RebillModel
      *
      * @return mixed|bool
      */
-    public function getById($id)
+    public static function getById($id, $endpoint = false)
     {
-        $data = \Rebill\SDK\Rebill::getInstance()->callApiGet($this->endpoint.'/id/'.(int)$id);
-        if ($data && isset($data['response']) && isset($data['response']['id']) && $data['response']['id'] == $id) {
-            $class_name = get_class($this);
-            $obj = new $class_name;
-            $obj->setAttributes($data['response']);
-            return $obj;
-        }
-        return false;
+        return parent::getById($id, $endpoint?$endpoint:static::$endpoint.'/id/'.(int)$id);
     }
 }

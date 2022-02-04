@@ -19,7 +19,7 @@ class Webhook extends \Rebill\SDK\RebillModel
      *
      * @var int
      */
-    protected $endpoint = '/webhooks';
+    protected static $endpoint = '/webhooks';
 
     /**
      * Attribute List

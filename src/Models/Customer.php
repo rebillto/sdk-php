@@ -19,7 +19,7 @@ class Customer extends \Rebill\SDK\RebillModel
      *
      * @var int
      */
-    protected $endpoint = '/customers';
+    protected static $endpoint = '/customers';
 
     /**
      * Class of Model

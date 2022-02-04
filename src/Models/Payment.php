@@ -19,7 +19,7 @@ class Payment extends \Rebill\SDK\RebillModel
      *
      * @var int
      */
-    protected $endpoint = '/payments';
+    protected static $endpoint = '/payments';
 
     /**
      * Attribute List
@@ -146,7 +146,7 @@ class Payment extends \Rebill\SDK\RebillModel
         if (!$this->id || !isset($this->gateway_payment_id)) {
             return false;
         }
-        $result = \Rebill\SDK\Rebill::getInstance()->callApiPost($this->endpoint.'/refund', [
+        $result = \Rebill\SDK\Rebill::getInstance()->callApiPost(static::$endpoint.'/refund', [
             'payment_id' => $this->gateway_payment_id
         ]);
         return $result && $result['success'];
