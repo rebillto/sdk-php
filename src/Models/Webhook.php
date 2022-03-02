@@ -76,4 +76,7 @@ class Webhook extends \Rebill\SDK\RebillModel
         'frequency',
         'frequency_type'
     ];
+    public static function getAll($endpoint = false) {
+        return parent::getAll($endpoint);
+    }
 }
