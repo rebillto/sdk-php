@@ -91,12 +91,16 @@
                     <ul class="phpdocumentor-breadcrumbs">
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/rebill.html">Rebill</a></li>
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/rebill-sdk.html">SDK</a></li>
+            <li class="phpdocumentor-breadcrumb"><a href="namespaces/rebill-sdk-models.html">Models</a></li>
     </ul>
 
     <article class="phpdocumentor-element -class">
         <h2 class="phpdocumentor-content__title">
-    RebillModel
+    Subscription
 
+        <span class="phpdocumentor-element__extends">
+        extends <a href="classes/Rebill-SDK-RebillModel.html"><abbr title="\Rebill\SDK\RebillModel">RebillModel</abbr></a>
+    </span>
     
             <div class="phpdocumentor-element__package">
             in package
@@ -109,31 +113,18 @@
     </h2>
 
         <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/RebillModel.php"><a href="files/src-rebillmodel.html"><abbr title="src/RebillModel.php">RebillModel.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Subscription.php"><a href="files/src-models-subscription.html"><abbr title="src/Models/Subscription.php">Subscription.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">8</span>
 
     </aside>
 
-            <p class="phpdocumentor-summary">Model class</p>
+            <p class="phpdocumentor-summary">Payment class</p>
 
-
-
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">author</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>Kijam</p>
+    <section class="phpdocumentor-description"><p>@author Kijam</p>
 </section>
 
-                                    </dd>
-                        </dl>
+
 
 
 
@@ -146,7 +137,49 @@
 </h3>
 
 <dl class="phpdocumentor-table-of-contents">
-                    <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+                    <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/Rebill-SDK-Models-Subscription.html#property_id">$id</a>
+    <span>
+                        &nbsp;: int            </span>
+</dt>
+<dd>ID of Model</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/Rebill-SDK-Models-Subscription.html#property_attributes">$attributes</a>
+    <span>
+                        &nbsp;: array&lt;string, mixed&gt;            </span>
+</dt>
+<dd>Attribute List</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/Rebill-SDK-Models-Subscription.html#property_endpoint">$endpoint</a>
+    <span>
+                        &nbsp;: int            </span>
+</dt>
+<dd>Endpoint of Model</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/Rebill-SDK-Models-Subscription.html#property_format">$format</a>
+    <span>
+                        &nbsp;: array&lt;string, array&lt;int, string&gt;&gt;            </span>
+</dt>
+<dd>Format List</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/Rebill-SDK-Models-Subscription.html#property_ignore">$ignore</a>
+    <span>
+                        &nbsp;: array&lt;int, string&gt;            </span>
+</dt>
+<dd>List attributes ignored in PUT or POST request</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/Rebill-SDK-Models-Subscription.html#property_required">$required</a>
+    <span>
+                        &nbsp;: array&lt;int, string&gt;            </span>
+</dt>
+<dd>List attributes required in PUT or POST request</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/Rebill-SDK-RebillModel.html#property_to_put_attributes">$to_put_attributes</a>
     <span>
                         &nbsp;: array&lt;string, mixed&gt;            </span>
@@ -189,6 +222,13 @@
 <dd>Magic method of Model to unset Attribute.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Rebill-SDK-Models-Subscription.html#method_cancel">cancel()</a>
+    <span>
+                                &nbsp;: bool|object    </span>
+</dt>
+<dd>Refund Payment</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Rebill-SDK-RebillModel.html#method_create">create()</a>
     <span>
                                 &nbsp;: bool|object    </span>
@@ -210,7 +250,7 @@
 <dd>Get all elements of this Model</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Rebill-SDK-RebillModel.html#method_getById">getById()</a>
+    <a href="classes/Rebill-SDK-Models-Subscription.html#method_getById">getById()</a>
     <span>
                                 &nbsp;: mixed|bool    </span>
 </dt>
@@ -284,8 +324,229 @@
     <section class="phpdocumentor-properties">
         <h3 class="phpdocumentor-elements__header" id="properties">
             Properties
-            <a href="classes/Rebill-SDK-RebillModel.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/Rebill-SDK-Models-Subscription.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
         </h3>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_id">
+        $id
+        <a href="classes/Rebill-SDK-Models-Subscription.html#property_id" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Subscription.php"><a href="files/src-models-subscription.html"><abbr title="src/Models/Subscription.php">Subscription.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">15</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">ID of Model</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">int</span>
+    <span class="phpdocumentor-signature__name">$id</span>
+    </code>
+
+    
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_attributes">
+        $attributes
+        <a href="classes/Rebill-SDK-Models-Subscription.html#property_attributes" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Subscription.php"><a href="files/src-models-subscription.html"><abbr title="src/Models/Subscription.php">Subscription.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">29</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Attribute List</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">array&lt;string, mixed&gt;</span>
+    <span class="phpdocumentor-signature__name">$attributes</span>
+     = <span class="phpdocumentor-signature__default-value">[&#039;plan_id&#039; =&gt; null, &#039;gateway_id&#039; =&gt; null, &#039;customer_id&#039; =&gt; null, &#039;card_id&#039; =&gt; null, &#039;last_payment_id&#039; =&gt; null, &#039;currency_id&#039; =&gt; null, &#039;user_id&#039; =&gt; null, &#039;vendor_id&#039; =&gt; null, &#039;company_id&#039; =&gt; null, &#039;organization_id&#039; =&gt; null, &#039;region_id&#039; =&gt; null, &#039;subscription_state_id&#039; =&gt; null, &#039;frequency&#039; =&gt; null, &#039;frequency_type&#039; =&gt; null, &#039;repetitions&#039; =&gt; null, &#039;debit_date&#039; =&gt; null, &#039;current_retries&#039; =&gt; null, &#039;status&#039; =&gt; null, &#039;status_detail&#039; =&gt; null, &#039;description&#039; =&gt; null, &#039;start_date&#039; =&gt; null, &#039;end_date&#039; =&gt; null, &#039;debit_date_forced&#039; =&gt; null, &#039;next_process_date&#039; =&gt; null, &#039;current_period_end&#039; =&gt; null, &#039;current_period_start&#039; =&gt; null, &#039;retry_limit_date&#039; =&gt; null, &#039;retry_next_date&#039; =&gt; null, &#039;terms_to_charge&#039; =&gt; null, &#039;pause_date&#039; =&gt; null, &#039;resume_date&#039; =&gt; null, &#039;title&#039; =&gt; null, &#039;callback_url&#039; =&gt; null, &#039;external_reference&#039; =&gt; null, &#039;currentRepetition&#039; =&gt; null, &#039;free_trial_frequency&#039; =&gt; null, &#039;free_trial_frequency_type&#039; =&gt; null, &#039;transaction_amount&#039; =&gt; null, &#039;webhook_sync&#039; =&gt; null, &#039;items&#039; =&gt; null, &#039;updatedAt&#039; =&gt; null, &#039;createdAt&#039; =&gt; null, &#039;deletedAt&#039; =&gt; null, &#039;next_payments&#039; =&gt; null]</span></code>
+
+    
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+            -static                                            "
+>
+    <h4 class="phpdocumentor-element__name" id="property_endpoint">
+        $endpoint
+        <a href="classes/Rebill-SDK-Models-Subscription.html#property_endpoint" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Subscription.php"><a href="files/src-models-subscription.html"><abbr title="src/Models/Subscription.php">Subscription.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">22</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Endpoint of Model</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">int</span>
+    <span class="phpdocumentor-signature__name">$endpoint</span>
+     = <span class="phpdocumentor-signature__default-value">&#039;/subscriptions&#039;</span></code>
+
+    
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_format">
+        $format
+        <a href="classes/Rebill-SDK-Models-Subscription.html#property_format" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Subscription.php"><a href="files/src-models-subscription.html"><abbr title="src/Models/Subscription.php">Subscription.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">80</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Format List</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">array&lt;string, array&lt;int, string&gt;&gt;</span>
+    <span class="phpdocumentor-signature__name">$format</span>
+     = <span class="phpdocumentor-signature__default-value">[&#039;plan_id&#039; =&gt; [&#039;is_numeric&#039;], &#039;organization_id&#039; =&gt; [&#039;is_numeric&#039;], &#039;vendor_id&#039; =&gt; [&#039;is_numeric&#039;], &#039;company_id&#039; =&gt; [&#039;is_numeric&#039;], &#039;user_id&#039; =&gt; [&#039;is_numeric&#039;], &#039;customer_id&#039; =&gt; [&#039;is_numeric&#039;], &#039;card_id&#039; =&gt; [&#039;is_numeric&#039;], &#039;gateway_id&#039; =&gt; [&#039;is_numeric&#039;], &#039;frequency&#039; =&gt; [&#039;is_numeric&#039;], &#039;repetitions&#039; =&gt; [&#039;is_numeric&#039;], &#039;debit_date&#039; =&gt; [&#039;is_numeric&#039;], &#039;frequency&#039; =&gt; [&#039;is_numeric&#039;], &#039;frequency_type&#039; =&gt; [&#039;validateFrequencyType&#039;]]</span></code>
+
+    
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_ignore">
+        $ignore
+        <a href="classes/Rebill-SDK-Models-Subscription.html#property_ignore" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Subscription.php"><a href="files/src-models-subscription.html"><abbr title="src/Models/Subscription.php">Subscription.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">101</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">List attributes ignored in PUT or POST request</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">array&lt;int, string&gt;</span>
+    <span class="phpdocumentor-signature__name">$ignore</span>
+     = <span class="phpdocumentor-signature__default-value">[
+    &#039;last_payment_id&#039; =&gt; null,
+    &#039;subscription_state_id&#039; =&gt; null,
+    &#039;current_retries&#039; =&gt; null,
+    //&#039;start_date&#039; =&gt; null,
+    //&#039;end_date&#039; =&gt; null,
+    &#039;debit_date_forced&#039; =&gt; null,
+    &#039;next_process_date&#039; =&gt; null,
+    &#039;current_period_end&#039; =&gt; null,
+    &#039;current_period_start&#039; =&gt; null,
+    &#039;retry_limit_date&#039; =&gt; null,
+    &#039;retry_next_date&#039; =&gt; null,
+    &#039;terms_to_charge&#039; =&gt; null,
+    &#039;pause_date&#039; =&gt; null,
+    &#039;resume_date&#039; =&gt; null,
+    &#039;callback_url&#039; =&gt; null,
+    &#039;currentRepetition&#039; =&gt; null,
+    &#039;webhook_sync&#039; =&gt; null,
+    &#039;items&#039; =&gt; null,
+    &#039;updatedAt&#039; =&gt; null,
+    &#039;createdAt&#039; =&gt; null,
+    &#039;deletedAt&#039; =&gt; null,
+    &#039;next_payments&#039; =&gt; null,
+]</span></code>
+
+    
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_required">
+        $required
+        <a href="classes/Rebill-SDK-Models-Subscription.html#property_required" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Subscription.php"><a href="files/src-models-subscription.html"><abbr title="src/Models/Subscription.php">Subscription.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">130</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">List attributes required in PUT or POST request</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">array&lt;int, string&gt;</span>
+    <span class="phpdocumentor-signature__name">$required</span>
+     = <span class="phpdocumentor-signature__default-value">[]</span></code>
+
+    
+    
+    
+
+</article>
                     <article
         class="
             phpdocumentor-element
@@ -324,7 +585,7 @@
             <section class="phpdocumentor-methods">
         <h3 class="phpdocumentor-elements__header" id="methods">
             Methods
-            <a href="classes/Rebill-SDK-RebillModel.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/Rebill-SDK-Models-Subscription.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
         </h3>
                     <article
         class="phpdocumentor-element
@@ -575,6 +836,41 @@
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_cancel">
+        cancel()
+        <a href="classes/Rebill-SDK-Models-Subscription.html#method_cancel" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Subscription.php"><a href="files/src-models-subscription.html"><abbr title="src/Models/Subscription.php">Subscription.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">147</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Refund Payment</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">cancel</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool|object</span></code>
+
+    
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">bool|object</span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>Recursive Model</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_create">
         create()
         <a href="classes/Rebill-SDK-RebillModel.html#method_create" class="headerlink"><i class="fas fa-link"></i></a>
@@ -711,12 +1007,12 @@
 >
     <h4 class="phpdocumentor-element__name" id="method_getById">
         getById()
-        <a href="classes/Rebill-SDK-RebillModel.html#method_getById" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/Rebill-SDK-Models-Subscription.html#method_getById" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/RebillModel.php"><a href="files/src-rebillmodel.html"><abbr title="src/RebillModel.php">RebillModel.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Subscription.php"><a href="files/src-models-subscription.html"><abbr title="src/Models/Subscription.php">Subscription.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">230</span>
+    <span class="phpdocumentor-element-found-in__line">137</span>
 
     </aside>
 
@@ -1175,7 +1471,7 @@
 </section>
             </div>
         </div>
-        <a href="classes/Rebill-SDK-RebillModel.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="classes/Rebill-SDK-Models-Subscription.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 
