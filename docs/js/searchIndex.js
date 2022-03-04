@@ -191,6 +191,11 @@ Search.appendIndex(
             "summary": "Validate\u0020Frequency\u0020Type\u0020format.",
             "url": "classes/Rebill-SDK-RebillModel.html#method_validateFrequencyType"
         },                {
+            "fqsen": "\\Rebill\\SDK\\RebillModel\u003A\u003A\u0024to_put_attributes",
+            "name": "to_put_attributes",
+            "summary": "Attribute\u0020List\u0020edited",
+            "url": "classes/Rebill-SDK-RebillModel.html#property_to_put_attributes"
+        },                {
             "fqsen": "\\Rebill\\SDK\\Models\\Customer",
             "name": "Customer",
             "summary": "Customer\u0020class",
@@ -321,6 +326,11 @@ Search.appendIndex(
             "summary": "Webhook\u0020class",
             "url": "classes/Rebill-SDK-Models-Webhook.html"
         },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Webhook\u003A\u003AgetAll\u0028\u0029",
+            "name": "getAll",
+            "summary": "Get\u0020all\u0020elements\u0020of\u0020this\u0020Model",
+            "url": "classes/Rebill-SDK-Models-Webhook.html#method_getAll"
+        },                {
             "fqsen": "\\Rebill\\SDK\\Models\\Webhook\u003A\u003A\u0024id",
             "name": "id",
             "summary": "ID\u0020of\u0020Model",
@@ -350,6 +360,91 @@ Search.appendIndex(
             "name": "required",
             "summary": "List\u0020attributes\u0020required\u0020in\u0020PUT\u0020or\u0020POST\u0020request",
             "url": "classes/Rebill-SDK-Models-Webhook.html#property_required"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Setting",
+            "name": "Setting",
+            "summary": "Setting\u0020class",
+            "url": "classes/Rebill-SDK-Models-Setting.html"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Setting\u003A\u003AgetAll\u0028\u0029",
+            "name": "getAll",
+            "summary": "Get\u0020all\u0020elements\u0020of\u0020this\u0020Model",
+            "url": "classes/Rebill-SDK-Models-Setting.html#method_getAll"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Setting\u003A\u003A\u0024id",
+            "name": "id",
+            "summary": "ID\u0020of\u0020Model",
+            "url": "classes/Rebill-SDK-Models-Setting.html#property_id"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Setting\u003A\u003A\u0024endpoint",
+            "name": "endpoint",
+            "summary": "Endpoint\u0020of\u0020Model",
+            "url": "classes/Rebill-SDK-Models-Setting.html#property_endpoint"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Setting\u003A\u003A\u0024attributes",
+            "name": "attributes",
+            "summary": "Attribute\u0020List",
+            "url": "classes/Rebill-SDK-Models-Setting.html#property_attributes"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Setting\u003A\u003A\u0024format",
+            "name": "format",
+            "summary": "Format\u0020List",
+            "url": "classes/Rebill-SDK-Models-Setting.html#property_format"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Setting\u003A\u003A\u0024ignore",
+            "name": "ignore",
+            "summary": "List\u0020attributes\u0020ignored\u0020in\u0020PUT\u0020or\u0020POST\u0020request",
+            "url": "classes/Rebill-SDK-Models-Setting.html#property_ignore"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Setting\u003A\u003A\u0024required",
+            "name": "required",
+            "summary": "List\u0020attributes\u0020required\u0020in\u0020PUT\u0020or\u0020POST\u0020request",
+            "url": "classes/Rebill-SDK-Models-Setting.html#property_required"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Subscription",
+            "name": "Subscription",
+            "summary": "Payment\u0020class",
+            "url": "classes/Rebill-SDK-Models-Subscription.html"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Subscription\u003A\u003AgetById\u0028\u0029",
+            "name": "getById",
+            "summary": "Get\u0020element\u0020of\u0020this\u0020Model\u0020by\u0020ID",
+            "url": "classes/Rebill-SDK-Models-Subscription.html#method_getById"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Subscription\u003A\u003Acancel\u0028\u0029",
+            "name": "cancel",
+            "summary": "Refund\u0020Payment",
+            "url": "classes/Rebill-SDK-Models-Subscription.html#method_cancel"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Subscription\u003A\u003A\u0024id",
+            "name": "id",
+            "summary": "ID\u0020of\u0020Model",
+            "url": "classes/Rebill-SDK-Models-Subscription.html#property_id"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Subscription\u003A\u003A\u0024endpoint",
+            "name": "endpoint",
+            "summary": "Endpoint\u0020of\u0020Model",
+            "url": "classes/Rebill-SDK-Models-Subscription.html#property_endpoint"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Subscription\u003A\u003A\u0024attributes",
+            "name": "attributes",
+            "summary": "Attribute\u0020List",
+            "url": "classes/Rebill-SDK-Models-Subscription.html#property_attributes"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Subscription\u003A\u003A\u0024format",
+            "name": "format",
+            "summary": "Format\u0020List",
+            "url": "classes/Rebill-SDK-Models-Subscription.html#property_format"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Subscription\u003A\u003A\u0024ignore",
+            "name": "ignore",
+            "summary": "List\u0020attributes\u0020ignored\u0020in\u0020PUT\u0020or\u0020POST\u0020request",
+            "url": "classes/Rebill-SDK-Models-Subscription.html#property_ignore"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Subscription\u003A\u003A\u0024required",
+            "name": "required",
+            "summary": "List\u0020attributes\u0020required\u0020in\u0020PUT\u0020or\u0020POST\u0020request",
+            "url": "classes/Rebill-SDK-Models-Subscription.html#property_required"
         },                {
             "fqsen": "\\",
             "name": "\\",
