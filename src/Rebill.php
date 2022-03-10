@@ -12,14 +12,14 @@ class Rebill extends RebillModel
      *
      * @var string
      */
-    const API_SANDBOX = 'https://api-staging.rebill.to/v1';
+    const API_SANDBOX = 'https://api.rebill.dev/v2';
 
     /**
      * API endpoint Production
      *
      * @var string
      */
-    const API_PROD = 'https://api.rebill.to/v1';
+    const API_PROD = 'https://api.rebill.dev/v2';
     
     /**
      * Callback debug
@@ -43,11 +43,11 @@ class Rebill extends RebillModel
     protected $sandbox;
 
     /**
-     * Organization UUID
+     * Organization Alias
      *
      * @var string
      */
-    protected $organization;
+    protected $orgAlias;
 
     /**
      * Username
@@ -226,7 +226,7 @@ class Rebill extends RebillModel
      */
     public function getToken($forece_reload = false)
     {
-        $key = \base64_encode($this->user.':'.$this->pass);
+        $key = $this->orgAlias.':'.$this->user.':'.$this->pass;
         $cache_file = \dirname(__FILE__).'/cache/token_'.\md5($key.($this->sandbox ? '1' : '0')).'.php';
         if (!$forece_reload && \file_exists($cache_file)) {
             $result = \file_get_contents($cache_file);
@@ -240,22 +240,23 @@ class Rebill extends RebillModel
         if (\file_exists($cache_file)) {
             \unlink($cache_file);
         }
-        $result = $this->call('/getToken', [ 'Authorization: Basic '.$key ]);
+        $result = $this->call('/auth/login/'.$this->orgAlias, [], (new \Rebill\SDK\Models\Shared\User)->setAttributes([
+            'email' => $this->user,
+            'password' => $this->pass
+        ])->validate()->toArray(), 'POST');
         if ($result &&
-                isset($result['data']['response']) &&
-                isset($result['data']['response']['token']) &&
-                !empty($result['data']['response']['token'])) {
-            $current = \strtotime($result['data']['response']['currentTime']);
-            $expire  = \strtotime($result['data']['response']['expires']);
+                isset($result['data']['authToken']) &&
+                !empty($result['data']['authToken'])) {
+            $current = $result['data']['authToken'];
             \file_put_contents($cache_file, '<?php exit; ?>'.\json_encode([
-                'result' => $result['data']['response']['token'],
-                'expire' => \time() + ($expire - $current)
+                'result' => $current,
+                'expire' => \time() + (24 * 3600 - 120)
             ]));
-            return $result['data']['response']['token'];
+            return $current;
         }
         \file_put_contents($cache_file, '<?php exit; ?>'.\json_encode([
             'result' => 'error',
-            'expire' => \time() + 600
+            'expire' => \time() + 60
         ]));
         return false;
     }
@@ -270,12 +271,14 @@ class Rebill extends RebillModel
      *
      * @return  bool|array
      */
-    public function callApiGet($method, $args = false, $headers = [], &$error_data = null)
+    public function callApiGet($method, $args = false, $headers = [], &$error_data = null, $is_guest = false)
     {
-        $token    = $this->getToken();
         $headers_request = \array_merge($headers, []);
-        if ($token) {
-            $headers_request[] = 'Authorization: Bearer '.$token;
+        if (!$is_guest) {
+            $token    = $this->getToken();
+            if ($token) {
+                $headers_request[] = 'Authorization: Bearer '.$token;
+            }
         }
         $result = $this->call($method, $headers_request, false, 'GET', $args, true, true, $error_data);
         if ($result) {
@@ -294,12 +297,14 @@ class Rebill extends RebillModel
      *
      * @return  bool|array
      */
-    public function callApiDelete($method, $args = false, $headers = [], &$error_data = null)
+    public function callApiDelete($method, $args = false, $headers = [], &$error_data = null, $is_guest = false)
     {
-        $token           = $this->getToken();
         $headers_request = \array_merge($headers, []);
-        if ($token) {
-            $headers_request[] = 'Authorization: Bearer '.$token;
+        if (!$is_guest) {
+            $token    = $this->getToken();
+            if ($token) {
+                $headers_request[] = 'Authorization: Bearer '.$token;
+            }
         }
         $result = $this->call($method, $headers_request, false, 'DELETE', $args, true, true, $error_data);
         if ($result) {
@@ -319,12 +324,14 @@ class Rebill extends RebillModel
      *
      * @return  bool|array
      */
-    public function callApiPost($method, $post_data, $args = false, $headers = [], &$error_data = null)
+    public function callApiPost($method, $post_data, $args = false, $headers = [], &$error_data = null, $is_guest = false)
     {
-        $token = $this->getToken();
         $headers_request = \array_merge($headers, []);
-        if ($token) {
-            $headers_request[] = 'Authorization: Bearer '.$token;
+        if (!$is_guest) {
+            $token    = $this->getToken();
+            if ($token) {
+                $headers_request[] = 'Authorization: Bearer '.$token;
+            }
         }
         $result = $this->call($method, $headers_request, $post_data, 'POST', $args, true, true, $error_data);
         if ($result) {
@@ -344,12 +351,14 @@ class Rebill extends RebillModel
      *
      * @return  bool|array
      */
-    public function callApiPut($method, $post_data, $args = false, $headers = [], &$error_data = null)
+    public function callApiPut($method, $post_data, $args = false, $headers = [], &$error_data = null, $is_guest = false)
     {
-        $token           = $this->getToken();
         $headers_request = \array_merge($headers, []);
-        if ($token) {
-            $headers_request[] = 'Authorization: Bearer '.$token;
+        if (!$is_guest) {
+            $token    = $this->getToken();
+            if ($token) {
+                $headers_request[] = 'Authorization: Bearer '.$token;
+            }
         }
         $result = $this->call($method, $headers_request, $post_data, 'PUT', $args, true, true, $error_data);
         if ($result) {
@@ -360,6 +369,8 @@ class Rebill extends RebillModel
     public static function setCallBackDebugLog($callback) {
         if (\is_callable($callback)) {
             self::$callback_debug = $callback;
+        } else {
+            throw new \Exception("Callback ".var_export($callback, true)." not is callable.");
         }
     }
     public static function log($msg)

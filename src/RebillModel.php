@@ -5,8 +5,14 @@
  *
  * @author Kijam
  */
-abstract class RebillModel
+abstract class RebillModel extends \ArrayObject
 {
+    function __constructor($attributes = null)
+    {
+        if (is_array($attributes)) {
+            $this->setAttributes($attributes);
+        }
+    }
     /**
      * Attribute List edited
      *
@@ -22,7 +28,7 @@ abstract class RebillModel
      *
      * @return  object Return recursive model.
      */
-    public function setProp(array $values)
+    public function setProp($values)
     {
         foreach ($values as $key => $value) {
             if (\is_string($key)) {
@@ -42,20 +48,13 @@ abstract class RebillModel
      *
      * @return object Return recursive model.
      */
-    public function setAttributes(array $values)
+    public function setAttributes($values)
     {
         foreach ($values as $key => $value) {
             if (\is_string($key)) {
-                if ($key == 'id') {
-                    $this->id = $value;
-                    continue;
-                }
-                if (\key_exists($key, $this->attributes)) {
-                    $this->attributes[$key] = $value;
-                    if (!\in_array($key, $this->to_put_attributes)) {
-                        $this->to_put_attributes[] = $key;
-                    }
-                }
+                $this->__set($key, $value);
+            } else {
+                throw new \Exception("The attribute '".var_export($key, true)."' not is string.");
             }
         }
         return $this;
@@ -76,8 +75,8 @@ abstract class RebillModel
             $key = \lcfirst($key);
         }
         $cmd = substr($method, 0, 3);
-        if (!\property_exists($this, $key) 
-            || \property_exists($this, 'attributes') && !isset($this->attributes[$key])
+        if (!\property_exists($this, $key)
+            || \property_exists($this, 'attributes') && !$this->offsetExists($key)
         ) {
             if ($cmd == 'get') {
                 return null;
@@ -95,7 +94,7 @@ abstract class RebillModel
             if (\property_exists($this, $key)) {
                 return $this->{$key};
             } else {
-                return isset($this->attributes[$key]) ? $this->attributes[$key] : null;
+                return $this->offsetExists($key) ? $this->offsetGet($key) : null;
             }
         }
         return $this;
@@ -111,10 +110,11 @@ abstract class RebillModel
      */
     public function __set($name, $value)
     {
-        if (!\array_key_exists($name, $this->attributes)) {
-            throw new \Exception("The attribute '$name' is invalid.");
+        if (!in_array($name, $this->attributes, true)) {
+            //throw new \Exception("The attribute '$name' is invalid.");
+            return;
         }
-        $this->attributes[$name] = $value;
+        $this->offsetSet($name, $value);
         if (!\in_array($name, $this->to_put_attributes)) {
             $this->to_put_attributes[] = $name;
         }
@@ -129,10 +129,10 @@ abstract class RebillModel
      */
     public function __get($name)
     {
-        if (!\array_key_exists($name, $this->attributes)) {
+        if (!in_array($name, $this->attributes, true)) {
             throw new \Exception("The attribute '$name' is invalid.");
         }
-        return $this->attributes[$name];
+        return $this->offsetExists($name) ? $this->offsetGet($name) : null;
     }
 
     /**
@@ -144,7 +144,7 @@ abstract class RebillModel
      */
     public function __isset($name)
     {
-        return $name === 'id' || isset($this->attributes[$name]) && !empty($this->attributes[$name]);
+        return $this->offsetExists($name);
     }
 
 
@@ -157,10 +157,8 @@ abstract class RebillModel
      */
     public function __unset($name)
     {
-        if ($name === 'id') {
-            $this->id = null;
-        } elseif (isset($this->attributes[$name])) {
-            $this->attributes[$name] = null;
+        if ($this->offsetExists($name)) {
+            $this->offsetUnset($name);
             if (!\in_array($name, $this->to_put_attributes)) {
                 $this->to_put_attributes[] = $name;
             }
@@ -176,23 +174,29 @@ abstract class RebillModel
     {
         if (\property_exists($this, 'required') && \count($this->required)) {
             foreach ($this->required as $key) {
-                if (!isset($this->attributes[$key]) || empty($this->attributes[$key])) {
+                if (!$this->offsetExists($key) || !$this->offsetGet($key)) {
+                    \Rebill\SDK\Rebill::log("The attribute '$key' is required ".var_export($this, true));
                     throw new \Exception("The attribute '$key' is required.");
                 }
             }
         }
         if (\property_exists($this, 'format') && \count($this->format)) {
             foreach ($this->format as $key => $validators) {
-                foreach ($validators as $validator) {
-                    if (isset($this->attributes[$key]) && !empty($this->attributes[$key])) {
+                if ($this->offsetExists($key) && ($data = $this->offsetGet($key))) {
+                    foreach ($validators as $validator) {
                         if (\method_exists($this, $validator)) {
-                            if (!self::$validator($this->attributes[$key])) {
-                                throw new \Exception("Validation of $validator for '$key' return false");
+                            if (!static::$validator($data)) {
+                                \Rebill\SDK\Rebill::log("Validation method $validator for '$key' return false");
+                                throw new \Exception("Validation method $validator for '$key' return false");
                             }
                         } elseif (\function_exists($validator)) {
-                            if (!$validator($this->attributes[$key])) {
-                                throw new \Exception("Validation of $validator for '$key' return false");
+                            if (!$validator($data)) {
+                                \Rebill\SDK\Rebill::log("Validation funtion $validator for '$key' return false");
+                                throw new \Exception("Validation funtion $validator for '$key' return false");
                             }
+                        } else {
+                            \Rebill\SDK\Rebill::log("Validation funtion $validator for '$key' not founds");
+                            throw new \Exception("Validation funtion $validator for '$key' not found");
                         }
                     }
                 }
@@ -202,48 +206,31 @@ abstract class RebillModel
     }
 
     /**
-     * Get all elements of this Model
-     *
-     * @return array<mixed>
-     */
-    public static function getAll($endpoint = false)
-    {
-        $class_name = get_called_class();
-        $list = Rebill::getInstance()->callApiGet($endpoint ? $endpoint : static::$endpoint);
-        $result = [];
-        if ($list && isset($list['response']) && is_array($list['response'])) {
-            foreach ($list['response'] as $element) {
-                $obj = new $class_name;
-                $obj->setAttributes($element);
-                $obj->to_put_attributes = [];
-                $result[] = $obj;
-            }
-        }
-        return $result;
-    }
-
-    /**
      * Get element of this Model by ID
      *
      * @return mixed|bool
      */
-    public static function getById($id, $endpoint = false)
+    public static function get($id = false, $endpoint = false)
     {
-        Rebill::log('getById: '.$id.' - '.$endpoint);
-        $data = Rebill::getInstance()->callApiGet($endpoint ? $endpoint : (static::$endpoint.'/'.(int)$id));
-        Rebill::log('getById data: '.$id.' - '.\var_export($data, true));
+        Rebill::log('get: '.$endpoint);
+        if (\property_exists($this, 'is_guest') && $this->is_guest) {
+            $error_dummy = null;
+            $data = Rebill::getInstance()->callApiGet(
+                ($endpoint ? $endpoint : static::$endpoint).($id?'/'.$id:''),
+                false,
+                [],
+                $error_dummy,
+                true
+            );
+        } else {
+            $data = Rebill::getInstance()->callApiGet(($endpoint ? $endpoint : static::$endpoint).($id?'/'.$id:''));
+        }
+        Rebill::log('get data: - '.\var_export($data, true));
         if ($data && isset($data['response'])) {
-            if (isset($data['response']['id']) && $data['response']['id'] == $id) {
+            if (isset($data['response']) && !isset($data['response'][0])) {
                 $class_name = get_called_class();
                 $obj = new $class_name;
                 $obj->setAttributes($data['response']);
-                $obj->to_put_attributes = [];
-                return $obj;
-            }
-            if (isset($data['response'][0]) && isset($data['response'][0]['id']) && $data['response'][0]['id'] == $id) {
-                $class_name = get_called_class();
-                $obj = new $class_name;
-                $obj->setAttributes($data['response'][0]);
                 $obj->to_put_attributes = [];
                 return $obj;
             }
@@ -259,17 +246,35 @@ abstract class RebillModel
      */
     public function toArray()
     {
-        return array_merge($this->attributes, ['id' => $this->id]);
+        $values = [];
+        foreach ($this as $name => $var) {
+            if (in_array($name, $this->attributes, true)) {
+                $values[$name] = is_object($var) ? $var->toArray() : $var;
+            }
+        }
+        return $values;
+    }
+
+    /**
+     * Get Model in Array format
+     *
+     * @return array
+     */
+    public function __toString()
+    {
+        return json_encode($this->toArray());
     }
 
     /**
      * Create Model
      *
+     * @param string $endpoint Endpoint.
+     * 
      * @return bool|object Recursive Model
      */
     public function create($endpoint = false)
     {
-        $data = $this->validate()->attributes;
+        $data = $this->validate()->toArray();
         Rebill::log('Create '.$endpoint.': '.\var_export($this->to_put_attributes, true).\var_export($data, true));
         foreach (\array_keys($data) as $key) {
             if (!\in_array($key, $this->to_put_attributes) || \in_array($key, $this->ignore, true)) {
@@ -280,12 +285,30 @@ abstract class RebillModel
         if (count($data) == 0) {
             return false;
         }
-        $result = Rebill::getInstance()->callApiPost($endpoint ? $endpoint : static::$endpoint, $data);
-        if ($result && $result['success']) {
-            if (isset($result['response'])) {
-                $this->setAttributes($result['response']);
-            }
+        
+        if (\property_exists($this, 'is_guest') && $this->is_guest) {
+            $error_dummy = null;
+            $result = Rebill::getInstance()->callApiPost(
+                $endpoint ? $endpoint : static::$endpoint,
+                $data,
+                false,
+                [],
+                $error_dummy,
+                true
+            );
+        } else {
+            $result = Rebill::getInstance()->callApiPost($endpoint ? $endpoint : static::$endpoint, $data);
+        }
+        if ($result) {
             $this->to_put_attributes = [];
+            if (\property_exists($this, 'responseClass')) {
+                $class_name = $this->responseClass;
+                $response = new $class_name;
+                $response->setAttributes($result);
+                return $response;
+            } else {
+                $this->setAttributes($result);
+            }
             return $this;
         }
         return false;
@@ -298,27 +321,40 @@ abstract class RebillModel
      */
     public function update($endpoint = false)
     {
-        $data = $this->validate()->attributes;
-        Rebill::log('Update '.$endpoint.': '.\var_export($this->id, true).\var_export($this->to_put_attributes, true).\var_export($data, true));
-        if (!$this->id) {
-            throw new \Exception("The attribute 'id' is required.");
-        }
+        $data = $this->validate()->toArray();
+        Rebill::log('Update '.$endpoint.': '.\var_export($this->to_put_attributes, true).\var_export($data, true));
         foreach (\array_keys($data) as $key) {
             if (!\in_array($key, $this->to_put_attributes) || \in_array($key, $this->ignore, true)) {
                 unset($data[$key]);
             }
         }
-        Rebill::log('Update '.$endpoint.' filtered: '.\var_export($this->id, true).\var_export($this->to_put_attributes, true).\var_export($data, true));
+        Rebill::log('Update '.$endpoint.' filtered: '.\var_export($this->to_put_attributes, true).\var_export($data, true));
         if (count($data) == 0) {
             return $this;
         }
-        $data['id'] = $this->id;
-        $result = Rebill::getInstance()->callApiPut($endpoint ? $endpoint : static::$endpoint, $data);
-        if ($result && $result['success']) {
-            if (isset($result['response'])) {
-                $this->setAttributes($result['response']);
-            }
+        if (\property_exists($this, 'is_guest') && $this->is_guest) {
+            $error_dummy = null;
+            $result = Rebill::getInstance()->callApiPut(
+                $endpoint ? $endpoint : static::$endpoint,
+                $data,
+                false,
+                [],
+                $error_dummy,
+                true
+            );
+        } else {
+            $result = Rebill::getInstance()->callApiPut($endpoint ? $endpoint : static::$endpoint, $data);
+        }
+        if ($result) {
             $this->to_put_attributes = [];
+            if (\property_exists($this, 'responseClass')) {
+                $class_name = $this->responseClass;
+                $response = new $class_name;
+                $response->setAttributes($result);
+                return $response;
+            } else {
+                $this->setAttributes($result);
+            }
             return $this;
         }
         return false;
@@ -331,11 +367,13 @@ abstract class RebillModel
      */
     public function delete($endpoint = false)
     {
-        if (!$this->id) {
-            throw new \Exception("The attribute 'id' is required.");
+        if (\property_exists($this, 'is_guest') && $this->is_guest) {
+            $error_dummy = null;
+            $result = Rebill::getInstance()->callApiDelete($endpoint ? $endpoint : static::$endpoint, false, [], $error_dummy, true);
+        } else {
+            $result = Rebill::getInstance()->callApiDelete($endpoint ? $endpoint : static::$endpoint);
         }
-        $result = Rebill::getInstance()->callApiDelete($endpoint ? $endpoint : (static::$endpoint.'/'.$this->id));
-        return $result && $result['success'];
+        return $result;
     }
     
     /**

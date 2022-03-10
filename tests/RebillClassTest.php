@@ -11,6 +11,8 @@ use PHPUnit\Framework\TestCase;
 */
 class RebillClassTest extends TestCase
 {
+    static $test_log_callback = false;
+
     /**
      * Just check if the Rebill has no syntax error
      * @test
@@ -20,6 +22,20 @@ class RebillClassTest extends TestCase
         $obj = \Rebill\SDK\Rebill::getInstance();
         $this->assertTrue(is_object($obj));
         unset($obj);
+    }
+    /**
+     * Just check if the Rebill has no syntax error
+     * @test
+     */
+    public function checkDebugCallback()
+    {
+        self::$test_log_callback = false;
+        \Rebill\SDK\Rebill::getInstance()->isDebug = true;
+        \Rebill\SDK\Rebill::getInstance()->setCallBackDebugLog(function ($data) {
+            self::$test_log_callback = ($data == 'testOK');
+        });
+        \Rebill\SDK\Rebill::log('testOK');
+        $this->assertTrue(self::$test_log_callback);
     }
     /**
      * Check setProp method
@@ -44,7 +60,7 @@ class RebillClassTest extends TestCase
     public function checkSandboxURL()
     {
         $this->assertTrue(
-            \Rebill\SDK\Rebill::getInstance()->setSandbox(true)->getUrl() == 'https://api-staging.rebill.to/v1'
+            \Rebill\SDK\Rebill::getInstance()->setSandbox(true)->getUrl() == \Rebill\SDK\Rebill::API_SANDBOX
         );
     }
     /**
@@ -53,6 +69,8 @@ class RebillClassTest extends TestCase
      */
     public function checkProdURL()
     {
-        $this->assertTrue(\Rebill\SDK\Rebill::getInstance()->setSandbox(false)->getUrl() == 'https://api.rebill.to/v1');
+        $this->assertTrue(
+            \Rebill\SDK\Rebill::getInstance()->setSandbox(false)->getUrl() == \Rebill\SDK\Rebill::API_PROD
+        );
     }
 }

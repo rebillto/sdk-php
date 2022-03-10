@@ -4,3 +4,8 @@ vendor
 composer.lock
 gendoc.sh
 phpDocumentor.phar
+examples/setting.inc.php
+examples/composer.lock
+examples/vendor
+examples/logfile.log
+src/cache/*
