@@ -1,15 +1,15 @@
 <?php namespace Rebill\SDK\Models\Shared;
 
 /**
-*  User
+*  Role
 *
 *  @author Kijam
 */
-class User extends SharedEntity
+class Role extends SharedEntity
 {
-    public $email;
-    public $password;
-
+    public $name;
+    public $permissions;
+    public $organization;
     public function validate()
     {
         return $this;

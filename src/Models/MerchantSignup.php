@@ -68,7 +68,7 @@ class MerchantSignup extends \Rebill\SDK\RebillModel
     ];
 
     /**
-     * Validate OrganizationAddress Field
+     * Validate Address Field
      *
      * @var array<int, string>
      */
@@ -78,7 +78,7 @@ class MerchantSignup extends \Rebill\SDK\RebillModel
     }
 
     /**
-     * Validate OrganizationAddress Field
+     * Validate Address Field
      *
      * @var array<int, string>
      */

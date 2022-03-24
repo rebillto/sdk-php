@@ -63,11 +63,17 @@ class Item extends \Rebill\SDK\RebillModel
         'metadata' => ['validateMetadata'],
         'name' => ['is_string'],
         'description' => ['is_string'],
-        'description' => ['is_string'],
-        'currency' => ['is_string'],
-        'amount' => ['is_numeric'],
-        'decimalPlaces' => ['is_numeric'],
     ];
+    public function format() {
+        if (isset($this->prices) && is_array($this->prices)) {
+            foreach($this->prices as $k => $price) {
+                if (!is_object($price)) {
+                    $this->prices[$k] = (new \Rebill\SDK\Models\Price)->setAttributes($price);
+                }
+            }
+        }
+        return $this;
+    }
     public static function validateMetadata($field) {
         if (!is_array($field)) {
             \Rebill\SDK\Rebill::log('Item: the metadata not is associative array: '.var_export($field, true));

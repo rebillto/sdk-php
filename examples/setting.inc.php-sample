@@ -1,0 +1,14 @@
+<?php
+
+require('vendor/autoload.php');
+
+\Rebill\SDK\Rebill::getInstance()->isDebug = true;
+\Rebill\SDK\Rebill::getInstance()->setCallBackDebugLog(function ($data) {
+    file_put_contents('logfile.log', '---------- '.date('c')." -------------- \n$data\n\n", FILE_APPEND | LOCK_EX);
+});
+
+\Rebill\SDK\Rebill::getInstance()->setProp([
+    'user' => 'xxxxx',
+    'pass' => 'yyyy',
+    'orgAlias' => 'zzzz'
+]);

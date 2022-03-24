@@ -35,7 +35,6 @@ class Price extends \Rebill\SDK\RebillModel
      */
     protected $attributes = [
         'amount',
-        'decimalPlaces',
         'type',
         'tiers',
         'frequency',
@@ -43,7 +42,11 @@ class Price extends \Rebill\SDK\RebillModel
         'repetitions',
         'description',
         'currency',
-        'gatewayId'
+        'gatewayId',
+		'item',
+		'state',
+		'gateway',
+		'id'
     ];
 
     /**
@@ -53,10 +56,9 @@ class Price extends \Rebill\SDK\RebillModel
      */
     protected $required = [
         //'amount',
-        //'decimalPlaces',
         'type',
         'frequency',
-        'repetitions',
+        //'repetitions',
         'description',
         'currency',
         'gatewayId'
@@ -73,7 +75,7 @@ class Price extends \Rebill\SDK\RebillModel
         'type' => ['is_string'],
         'currency' => ['is_string'],
         'amount' => ['is_numeric'],
-        'decimalPlaces' => ['is_numeric'],
+        'repetitions' => ['is_numeric'],
     ];
 
     /**
@@ -82,6 +84,7 @@ class Price extends \Rebill\SDK\RebillModel
      * @var array<int, string>
      */
     protected $ignore = [
+		'id'
     ];
 
     public function validate()
@@ -137,10 +140,21 @@ class Price extends \Rebill\SDK\RebillModel
         return $this;
     }
 
+    public function format()
+    {
+        if (isset($this->frequency) && !is_object($this->frequency)) {
+            $this->frequency = (new \Rebill\SDK\Models\Shared\Frequency)->setAttributes($this->frequency);
+        }
+        if (isset($this->freeTrial) && !is_object($this->freeTrial)) {
+            $this->freeTrial = (new \Rebill\SDK\Models\Shared\Frequency)->setAttributes($this->freeTrial);
+        }
+        return $this;
+    }
+
     /**
      * Create Model
      *
-     * @param string $iso_country ISO2 of Country.
+     * @param string $item_id Item ID.
      * 
      * @return bool|\Rebill\SDK\Models\Response\PriceResponse NewGatewayResponse Model
      */

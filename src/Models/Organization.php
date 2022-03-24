@@ -34,7 +34,8 @@ class Organization extends \Rebill\SDK\RebillModel
         'gateways',
         'address',
         'parent',
-        'customCheckoutUrl'
+        'customCheckoutUrl',
+		'id',
     ];
 
     /**
@@ -43,7 +44,7 @@ class Organization extends \Rebill\SDK\RebillModel
      * @var array<string, array<int, string>>
      */
     protected $format = [
-        'address' => ['validateOrganizationAddress'],
+        'address' => ['validateAddress'],
         'alias' => ['is_string'],
         'name' => ['is_string'],
     ];
@@ -59,6 +60,7 @@ class Organization extends \Rebill\SDK\RebillModel
         'gateways',
         'parent',
         'logoUrl',
+		'id'
     ];
 
     /**
@@ -72,12 +74,12 @@ class Organization extends \Rebill\SDK\RebillModel
         'alias'
     ];
     /**
-     * Validate OrganizationAddress Field
+     * Validate Address Field
      *
      * @var array<int, string>
      */
-    public static function validateOrganizationAddress($field)
+    public static function validateAddress($field)
     {
-        return $field instanceof \Rebill\SDK\Models\Shared\OrganizationAddress && $field->validate();
+        return $field instanceof \Rebill\SDK\Models\Shared\Address && $field->validate();
     }
 }

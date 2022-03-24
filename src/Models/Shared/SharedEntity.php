@@ -16,13 +16,13 @@ abstract class SharedEntity
         if (is_array($data) || is_object($data)) {
             $result = [];
             foreach ($data as $key => $value) {
-                $result[$key] = (is_array($data) || is_object($data) && $data !== null) ? $this->toArray($value) : $value;
+                $result[$key] = $value && (is_array($value) || is_object($value)) ? $this->toArray($value) : $value;
             }
             return $result;
         }
         return $data;
     }
-    public function setProp($values)
+    public function setAttributes($values)
     {
         foreach ($values as $key => $value) {
             if (\is_string($key)) {
@@ -31,11 +31,11 @@ abstract class SharedEntity
                 }
             }
         }
+        return $this->format();
+    }
+    public function format()
+    {
+        //...
         return $this;
     }
-    public function setAttributes($values)
-    {
-        return $this->setProp($values);
-    }
-
 }

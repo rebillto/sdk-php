@@ -8,7 +8,6 @@
 class Tiers extends SharedEntity
 {
     public $amount;
-    public $decimalPlaces;
     public $upTo;
     public $id;
     public function validate()
@@ -16,10 +15,6 @@ class Tiers extends SharedEntity
         if (!is_numeric($this->amount)) {
             \Rebill\SDK\Rebill::log('Tiers: amount is invalid '.var_export($this->amount, true));
             throw new \Exception("Tiers: The attribute amount is invalid.");
-        }
-        if (!is_numeric($this->decimalPlaces)) {
-            \Rebill\SDK\Rebill::log('Tiers: decimalPlaces is invalid '.var_export($this->decimalPlaces, true));
-            throw new \Exception("Tiers: The attribute decimalPlaces is invalid.");
         }
         if (!is_numeric($this->upTo)) {
             \Rebill\SDK\Rebill::log('Tiers: upTo is invalid '.var_export($this->decimalPlaces, true));

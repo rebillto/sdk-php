@@ -45,7 +45,7 @@ class MerchantSignupClassTest extends TestCase
             'organization' => (new \Rebill\SDK\Models\Organization)->setAttributes([
                 'name' => 'Unit Test',
                 'alias' => 'unit-test',
-                'address' => (new \Rebill\SDK\Models\Shared\OrganizationAddress)->setAttributes([
+                'address' => (new \Rebill\SDK\Models\Shared\Address)->setAttributes([
                     'street' => 'Riverside St.',
                     'number' => '102',
                     'floor' => '2',
@@ -74,7 +74,7 @@ class MerchantSignupClassTest extends TestCase
                 'organization' => (new \Rebill\SDK\Models\Organization)->setAttributes([
                     'name' => 'Unit Test',
                     'alias' => 'unit-test',
-                    'address' => (new \Rebill\SDK\Models\Shared\OrganizationAddress)->setAttributes([
+                    'address' => (new \Rebill\SDK\Models\Shared\Address)->setAttributes([
                       'street' => 'Riverside St.',
                       'number' => '102',
                       'floor' => '2',
@@ -105,7 +105,7 @@ class MerchantSignupClassTest extends TestCase
                 'organization' => (new \Rebill\SDK\Models\Organization)->setAttributes([
                     'name' => 'Unit Test',
                     'alias' => 'unit-test',
-                    'address' => (new \Rebill\SDK\Models\Shared\OrganizationAddress)->setAttributes([
+                    'address' => (new \Rebill\SDK\Models\Shared\Address)->setAttributes([
                       'street' => 'Riverside St.',
                       'number' => '102',
                       'floor' => '2',
@@ -159,7 +159,7 @@ class MerchantSignupClassTest extends TestCase
                 ]),
                 'organization' => (new \Rebill\SDK\Models\Organization)->setAttributes([
                     'name' => 'Unit Test',
-                    'address' => (new \Rebill\SDK\Models\Shared\OrganizationAddress)->setAttributes([
+                    'address' => (new \Rebill\SDK\Models\Shared\Address)->setAttributes([
                       'street' => 'Riverside St.',
                       'number' => '102',
                       'floor' => '2',
@@ -194,7 +194,7 @@ class MerchantSignupClassTest extends TestCase
                 'organization' => (new \Rebill\SDK\Models\Organization)->setAttributes([
                     'name' => 'Unit Test',
                     'alias' => 'unit-test',
-                    'address' => (new \Rebill\SDK\Models\Shared\OrganizationAddress)->setAttributes([
+                    'address' => (new \Rebill\SDK\Models\Shared\Address)->setAttributes([
                       'number' => '102',
                       'floor' => '2',
                       'apt' => 'B',
@@ -251,7 +251,7 @@ class MerchantSignupClassTest extends TestCase
                 'organization' => (new \Rebill\SDK\Models\Organization)->setAttributes([
                     'name' => 'Unit Test',
                     'alias' => 'unit-test',
-                    'address' => (new \Rebill\SDK\Models\Shared\OrganizationAddress)->setAttributes([
+                    'address' => (new \Rebill\SDK\Models\Shared\Address)->setAttributes([
                       'street' => 'Riverside St.',
                       'number' => '102',
                       'floor' => '2',
@@ -286,7 +286,7 @@ class MerchantSignupClassTest extends TestCase
                 'organization' => (new \Rebill\SDK\Models\Organization)->setAttributes([
                     'name' => new \stdClass,
                     'alias' => 'unit-test',
-                    'address' => (new \Rebill\SDK\Models\Shared\OrganizationAddress)->setAttributes([
+                    'address' => (new \Rebill\SDK\Models\Shared\Address)->setAttributes([
                         'street' => 'Riverside St.',
                         'number' => '102',
                         'floor' => '2',
@@ -321,7 +321,7 @@ class MerchantSignupClassTest extends TestCase
                     'organization' => (new \Rebill\SDK\Models\Organization)->setAttributes([
                         'name' => 'Unit Test',
                         'alias' => 'unit-test',
-                        'address' => (new \Rebill\SDK\Models\Shared\OrganizationAddress)->setAttributes([
+                        'address' => (new \Rebill\SDK\Models\Shared\Address)->setAttributes([
                           'street' => 'Riverside St.',
                           'number' => '39',
                           'floor' => '2',
@@ -356,7 +356,7 @@ class MerchantSignupClassTest extends TestCase
                     'organization' => (new \Rebill\SDK\Models\Organization)->setAttributes([
                         'name' => 'Unit Test',
                         'alias' => 'unit-test',
-                        'address' => (new \Rebill\SDK\Models\Shared\OrganizationAddress)->setAttributes([
+                        'address' => (new \Rebill\SDK\Models\Shared\Address)->setAttributes([
                           'street' => 'Riverside St.',
                           'number' => new \stdClass,
                           'floor' => '2',
@@ -391,7 +391,7 @@ class MerchantSignupClassTest extends TestCase
                 'organization' => (new \Rebill\SDK\Models\Organization)->setAttributes([
                     'name' => 'Unit Test',
                     'alias' => 'unit-test',
-                    'address' => (new \Rebill\SDK\Models\Shared\OrganizationAddress)->setAttributes([
+                    'address' => (new \Rebill\SDK\Models\Shared\Address)->setAttributes([
                         'street' => 'Riverside St.',
                         'number' => '39',
                         'floor' => '2',

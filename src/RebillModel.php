@@ -50,14 +50,18 @@ abstract class RebillModel extends \ArrayObject
      */
     public function setAttributes($values)
     {
-        foreach ($values as $key => $value) {
-            if (\is_string($key)) {
-                $this->__set($key, $value);
-            } else {
-                throw new \Exception("The attribute '".var_export($key, true)."' not is string.");
+        if (is_array($values)) {
+            foreach ($values as $key => $value) {
+                if (\is_string($key)) {
+                    $this->__set($key, $value);
+                } else {
+                    throw new \Exception(get_called_class().": The attribute '".var_export($key, true)."' not is string.");
+                }
             }
+        } else {
+            throw new \Exception(get_called_class().": The value '".var_export($values, true)."' not is array.");
         }
-        return $this;
+        return $this->format();
     }
 
     /**
@@ -127,12 +131,15 @@ abstract class RebillModel extends \ArrayObject
      *
      * @return mixed
      */
-    public function __get($name)
+    public function &__get($name)
     {
         if (!in_array($name, $this->attributes, true)) {
             throw new \Exception("The attribute '$name' is invalid.");
         }
-        return $this->offsetExists($name) ? $this->offsetGet($name) : null;
+        if ($this->offsetExists($name)) {
+            return $this[$name];
+        }
+        return null;
     }
 
     /**
@@ -213,7 +220,9 @@ abstract class RebillModel extends \ArrayObject
     public static function get($id = false, $endpoint = false)
     {
         Rebill::log('get: '.$endpoint);
-        if (\property_exists($this, 'is_guest') && $this->is_guest) {
+		$class_name = get_called_class();
+		$obj = new $class_name;
+        if (\property_exists($obj, 'is_guest') && $obj->is_guest) {
             $error_dummy = null;
             $data = Rebill::getInstance()->callApiGet(
                 ($endpoint ? $endpoint : static::$endpoint).($id?'/'.$id:''),
@@ -226,15 +235,12 @@ abstract class RebillModel extends \ArrayObject
             $data = Rebill::getInstance()->callApiGet(($endpoint ? $endpoint : static::$endpoint).($id?'/'.$id:''));
         }
         Rebill::log('get data: - '.\var_export($data, true));
-        if ($data && isset($data['response'])) {
-            if (isset($data['response']) && !isset($data['response'][0])) {
-                $class_name = get_called_class();
-                $obj = new $class_name;
-                $obj->setAttributes($data['response']);
-                $obj->to_put_attributes = [];
-                return $obj;
-            }
+        if ($data) {
+			$obj->setAttributes($data);
+			$obj->to_put_attributes = [];
+			return $obj;
         }
+		unset($obj);
         return false;
     }
 
@@ -253,6 +259,18 @@ abstract class RebillModel extends \ArrayObject
             }
         }
         return $values;
+    }
+
+
+    /**
+     * Add format to attributes
+     *
+     * @return array
+     */
+    public function format()
+    {
+        //...
+        return $this;
     }
 
     /**

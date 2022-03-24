@@ -1,11 +1,11 @@
 <?php namespace Rebill\SDK\Models\Shared;
 
 /**
-*  OrganizationAddress
+*  Address
 *
 *  @author Kijam
 */
-class OrganizationAddress extends SharedEntity
+class Address extends SharedEntity
 {
     public $street;
     public $number;
@@ -19,13 +19,16 @@ class OrganizationAddress extends SharedEntity
 
     public function validate()
     {
-        foreach(get_object_vars($this) as $k => $v) {
+        foreach (get_object_vars($this) as $k => $v) {
+            if (in_array($k, ['floor', 'apt', 'number']) && empty($v)) {
+                continue;
+            }
             if (empty($v)) {
-                \Rebill\SDK\Rebill::log('OrganizationAddress: '.$k.' is empty');
+                \Rebill\SDK\Rebill::log('Address: '.$k.' is empty');
                 throw new \Exception('The attribute '.$k.' is required.');
             }
             if (!is_string($v)) {
-                \Rebill\SDK\Rebill::log('OrganizationAddress: '.$k.' not is string: '.var_export($v, true));
+                \Rebill\SDK\Rebill::log('Address: '.$k.' not is string: '.var_export($v, true));
                 throw new \Exception('The attribute '.$k.' not is string.');
             }
         }
