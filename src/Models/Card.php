@@ -31,7 +31,7 @@ class Card extends \Rebill\SDK\RebillModel
         'securityCode',
         'expiration',
         'deviceId',
-		'id',
+        'id',
     ];
 
     /**
@@ -40,9 +40,9 @@ class Card extends \Rebill\SDK\RebillModel
      * @var array<int, string>
      */
     protected $ignore = [
-		'id',
-		'expirationMonth',
-		'expirationYear',
+        'id',
+        'expirationMonth',
+        'expirationYear',
     ];
 
     /**
@@ -56,6 +56,13 @@ class Card extends \Rebill\SDK\RebillModel
         'securityCode' => ['is_string'],
         'id' => ['is_string'],
     ];
+
+    /**
+     * Response Model
+     *
+     * @var string
+     */
+    protected $responseClass = \Rebill\SDK\Models\Response\CardResponse::class;
 
     public function format()
     {
@@ -71,7 +78,7 @@ class Card extends \Rebill\SDK\RebillModel
      * Create Model
      *
      * @param string $customer_id Customer ID
-     * 
+     *
      * @return bool|\Rebill\SDK\Models\Response\NewGatewayResponse NewGatewayResponse Model
      */
     public function add($customer_id)

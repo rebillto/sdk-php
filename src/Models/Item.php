@@ -67,7 +67,7 @@ class Item extends \Rebill\SDK\RebillModel
     public function format() {
         if (isset($this->prices) && is_array($this->prices)) {
             foreach($this->prices as $k => $price) {
-                if (!is_object($price)) {
+                if ($price && !is_object($price)) {
                     $this->prices[$k] = (new \Rebill\SDK\Models\Price)->setAttributes($price);
                 }
             }

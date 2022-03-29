@@ -43,10 +43,11 @@ class Price extends \Rebill\SDK\RebillModel
         'description',
         'currency',
         'gatewayId',
-		'item',
-		'state',
-		'gateway',
-		'id'
+        'item',
+        'state',
+        'gateway',
+        'value',
+        'id'
     ];
 
     /**
@@ -84,7 +85,11 @@ class Price extends \Rebill\SDK\RebillModel
      * @var array<int, string>
      */
     protected $ignore = [
-		'id'
+        'id',
+        'gateway',
+        'state',
+        'value',
+        'item'
     ];
 
     public function validate()
@@ -142,11 +147,20 @@ class Price extends \Rebill\SDK\RebillModel
 
     public function format()
     {
-        if (isset($this->frequency) && !is_object($this->frequency)) {
+        if (isset($this->frequency) && !is_object($this->frequency) && $this->frequency) {
             $this->frequency = (new \Rebill\SDK\Models\Shared\Frequency)->setAttributes($this->frequency);
         }
-        if (isset($this->freeTrial) && !is_object($this->freeTrial)) {
+        if (isset($this->freeTrial) && !is_object($this->freeTrial) && $this->freeTrial) {
             $this->freeTrial = (new \Rebill\SDK\Models\Shared\Frequency)->setAttributes($this->freeTrial);
+        }
+        if (isset($this->item) && !is_object($this->item) && $this->item) {
+            $this->item = (new \Rebill\SDK\Models\Item)->setAttributes($this->item);
+        }
+        if (isset($this->value) && !isset($this->amount)) {
+            $this->amount = $this->value;
+        }
+        if (isset($this->amount) && !isset($this->value)) {
+            $this->value = $this->amount;
         }
         return $this;
     }
@@ -155,11 +169,26 @@ class Price extends \Rebill\SDK\RebillModel
      * Create Model
      *
      * @param string $item_id Item ID.
-     * 
+     *
      * @return bool|\Rebill\SDK\Models\Response\PriceResponse NewGatewayResponse Model
      */
     public function add($item_id)
     {
         return parent::create(str_replace('{item_id}', $item_id, self::$endpoint));
+    }
+
+    /**
+     * Create Model
+     *
+     * @param string $item_id Item ID.
+     *
+     * @return bool|\Rebill\SDK\Models\Response\PriceResponse NewGatewayResponse Model
+     */
+    public function edit()
+    {
+        if (!isset($this->id)) {
+            throw new \Exception("Price: The attribute 'id' is required for update.");
+        }
+        return parent::update('/item/price/'.$this->id);
     }
 }

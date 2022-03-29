@@ -17,6 +17,9 @@ abstract class SharedEntity
             $result = [];
             foreach ($data as $key => $value) {
                 $result[$key] = $value && (is_array($value) || is_object($value)) ? $this->toArray($value) : $value;
+                if ($result[$key] === null) {
+                    unset($result[$key]);
+                }
             }
             return $result;
         }
@@ -34,6 +37,11 @@ abstract class SharedEntity
         return $this->format();
     }
     public function format()
+    {
+        //...
+        return $this;
+    }
+    public function validate()
     {
         //...
         return $this;

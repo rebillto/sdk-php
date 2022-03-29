@@ -1,7 +1,7 @@
-<?php namespace Rebill\SDK\Models;
+<?php namespace Rebill\SDK\Models\Response;
 
 /**
-*  Card class
+*  CardResponse class
 *
 *  @author Kijam
 */

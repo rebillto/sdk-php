@@ -1,11 +1,11 @@
-<?php namespace Rebill\SDK\Models;
+<?php namespace Rebill\SDK\Models\Response;
 
 /**
-*  Card class
+*  UserResponse class
 *
 *  @author Kijam
 */
-class CardResponse extends \Rebill\SDK\RebillModel
+class UserResponse extends \Rebill\SDK\RebillModel
 {
     /**
      * Class of Model

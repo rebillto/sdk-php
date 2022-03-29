@@ -1,7 +1,7 @@
 <?php namespace Rebill\SDK\Models\Shared;
 
 /**
-*  Frequecy
+*  CheckoutPrice
 *
 *  @author Kijam
 */

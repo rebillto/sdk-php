@@ -65,6 +65,32 @@ abstract class RebillModel extends \ArrayObject
     }
 
     /**
+     * Set all Attributes values, example:
+     *      (new Rebill\SDK\Models\Customer)->setAttributes([ 'user' => 'rebill', 'pass' => '123' ]);
+     *
+     * @param array $values All values.
+     *
+     * @return object Return recursive model.
+     */
+    public function setAttributesFromAPI($values)
+    {
+        if (is_array($values)) {
+            foreach ($values as $key => $value) {
+                if (\is_string($key)) {
+                    $this->__set($key, $value);
+                } else {
+                    throw new \Exception(get_called_class().": The attribute '".var_export($key, true)."' not is string.");
+                }
+            }
+        } else {
+            throw new \Exception(get_called_class().": The value '".var_export($values, true)."' not is array.");
+        }
+        $result = $this->format();
+        $this->to_put_attributes = [];
+        return $result;
+    }
+
+    /**
      * Magic method of Model to set/get Property or Attribute.
      *
      * @param string $method Method.

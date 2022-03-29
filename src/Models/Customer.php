@@ -30,7 +30,7 @@ class Customer extends \Rebill\SDK\RebillModel
         'user',
         'profile',
         'cards',
-		'id',
+        'id',
     ];
 
     /**
@@ -51,7 +51,7 @@ class Customer extends \Rebill\SDK\RebillModel
      * @var array<int, string>
      */
     protected $ignore = [
-		'id'
+        'id'
     ];
 
     /**
@@ -62,6 +62,13 @@ class Customer extends \Rebill\SDK\RebillModel
     protected $required = [
         'user'
     ];
+
+    /**
+     * Response Model
+     *
+     * @var string
+     */
+    protected $responseClass = \Rebill\SDK\Models\Response\CustomerResponse::class;
 
     /**
      * Validate Address Field

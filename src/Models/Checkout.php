@@ -67,6 +67,13 @@ class Checkout extends \Rebill\SDK\RebillModel
     ];
 
     /**
+     * Response Model
+     *
+     * @var string
+     */
+    protected $responseClass = \Rebill\SDK\Models\Response\CheckoutResponse::class;
+
+    /**
      * Validate Address Field
      *
      * @var array<int, string>

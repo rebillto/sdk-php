@@ -1,7 +1,7 @@
 <?php namespace Rebill\SDK\Models\Response;
 
 /**
-*  GenericIdResponse class
+*  GatewayResponse class
 *
 *  @author Kijam
 */

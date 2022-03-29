@@ -10,8 +10,4 @@ class Role extends SharedEntity
     public $name;
     public $permissions;
     public $organization;
-    public function validate()
-    {
-        return $this;
-    }
 }
