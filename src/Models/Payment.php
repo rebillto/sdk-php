@@ -1,7 +1,7 @@
 <?php namespace Rebill\SDK\Models;
 
 /**
-*  PaymentBag
+*  Payment
 *
 *  @author Kijam
 */
