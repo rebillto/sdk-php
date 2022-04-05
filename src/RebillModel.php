@@ -214,7 +214,7 @@ abstract class RebillModel extends \ArrayObject
 
     /**
      * Get element of this Model by ID
-     * 
+     *
      * @param string $id Model ID.
      * @param string $endpoint Endpoint.
      *
@@ -386,11 +386,15 @@ abstract class RebillModel extends \ArrayObject
      */
     public function delete($endpoint = false)
     {
+        $id = '';
+        if (isset($this->id) && $this->id) {
+            $id = '/'.$this->id;
+        }
         if (\property_exists($this, 'is_guest') && $this->is_guest) {
             $error_dummy = null;
-            $result = Rebill::getInstance()->callApiDelete($endpoint ? $endpoint : static::$endpoint, false, [], $error_dummy, true);
+            $result = Rebill::getInstance()->callApiDelete($endpoint ? $endpoint : (static::$endpoint.$id), false, [], $error_dummy, true);
         } else {
-            $result = Rebill::getInstance()->callApiDelete($endpoint ? $endpoint : static::$endpoint);
+            $result = Rebill::getInstance()->callApiDelete($endpoint ? $endpoint : (static::$endpoint.$id));
         }
         return $result;
     }

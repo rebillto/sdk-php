@@ -65,6 +65,12 @@ class Payment extends \Rebill\SDK\RebillModel
         }
         return $this;
     }
+
+    /**
+     * Get Payment list by Cart ID
+     *
+     * @return array<\Rebill\SDK\Models\Payment> Payment List.
+     */
     public static function getByCartId($cart_id)
     {
         $data = \Rebill\SDK\Rebill::getInstance()->callApiGet(static::$endpoint.'/cart/'.$cart_id);

@@ -1,11 +1,11 @@
 <?php namespace Rebill\SDK\Models;
 
 /**
-*  Subscriptions
+*  Subscription
 *
 *  @author Kijam
 */
-class Subscriptions extends \Rebill\SDK\RebillModel
+class Subscription extends \Rebill\SDK\RebillModel
 {
     /**
      * Endpoint of Model
@@ -69,7 +69,9 @@ class Subscriptions extends \Rebill\SDK\RebillModel
     /**
      * Get Subscriptions by Cart ID
      *
-     * @return mixed|bool
+     * @param string $cart_id Cart ID.
+     * 
+     * @return array<\Rebill\SDK\Models\Subscription> Payment List.
      */
     public static function getByCartId($cart_id)
     {
@@ -82,10 +84,14 @@ class Subscriptions extends \Rebill\SDK\RebillModel
         }
         return $result;
     }
+
     /**
-     * Get Subscriptions by ID
+     * Get Subscription by ID
+     * 
+     * @param string $id Model ID.
+     * @param string $endpoint Endpoint.
      *
-     * @return mixed|bool
+     * @return \Rebill\SDK\Models\Subscription|bool
      */
     public static function get($id = false, $endpoint = false)
     {
