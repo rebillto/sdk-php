@@ -133,6 +133,6 @@ For more examples, check the directory "examples"
 ## 🏻 License 
 
 ```
-MIT license. Copyright (c) 2018 - Mercado Pago / Mercado Libre 
+MIT license. Copyright (c) 2022 Rebill, Inc.
 For more information, see the LICENSE file.
 ```
