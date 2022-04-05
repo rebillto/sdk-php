@@ -1,9 +1,0 @@
-{
-    "repositories": [{
-        "type": "path",
-        "url": "../"
-    }],
-    "require": {
-        "rebillto/sdk-php": "@dev"
-    }
-}

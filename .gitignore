@@ -5,7 +5,8 @@ composer.lock
 gendoc.sh
 phpDocumentor.phar
 examples/setting.inc.php
+examples/composer.json
 examples/composer.lock
 examples/vendor
-examples/logfile.log
+examples/*.log
 src/cache/*
