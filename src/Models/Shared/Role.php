@@ -7,7 +7,24 @@
 */
 class Role extends SharedEntity
 {
+    /**
+     * Name
+     *
+     * @var string
+     */
     public $name;
+
+    /**
+     * Permissions
+     *
+     * @var string
+     */
     public $permissions;
+
+    /**
+     * Organization
+     *
+     * @var string
+     */
     public $organization;
 }

@@ -53,13 +53,26 @@ class Subscriptions extends \Rebill\SDK\RebillModel
      */
     protected $ignore = [
     ];
-    public function format() {
+
+    /**
+     * Check format of Attributes
+     *
+     * @return object Recursive Model
+     */
+    protected function format()
+    {
         if ($this->price && !is_object($this->price)) {
             $this->price = (new \Rebill\SDK\Models\Price)->setAttributes($this->price);
         }
         return $this;
     }
-    public static function getByCartId($cart_id) {
+    /**
+     * Get Subscriptions by Cart ID
+     *
+     * @return mixed|bool
+     */
+    public static function getByCartId($cart_id)
+    {
         $data = \Rebill\SDK\Rebill::getInstance()->callApiGet(static::$endpoint.'/cart/'.$cart_id);
         $result = [];
         if ($data) {
@@ -70,26 +83,26 @@ class Subscriptions extends \Rebill\SDK\RebillModel
         return $result;
     }
     /**
-     * Get element of this Model by ID
+     * Get Subscriptions by ID
      *
      * @return mixed|bool
      */
     public static function get($id = false, $endpoint = false)
     {
         \Rebill\SDK\Rebill::log('get: '.$endpoint);
-		$class_name = get_called_class();
-		$obj = new $class_name;
-        $data = \Rebill\SDK\Rebill::getInstance()->callApiGet(($endpoint ? $endpoint : static::$endpoint).($id?'/'.$id:''));
+        $class_name = get_called_class();
+        $obj = new $class_name;
+        $data = \Rebill\SDK\Rebill::getInstance()->callApiGet(($endpoint ? $endpoint : static::$endpoint).($id ? '/'.$id : ''));
         \Rebill\SDK\Rebill::log('get data: - '.\var_export($data, true));
         if ($data) {
             $result = $data['subscription'];
             $result['value'] = $data['value'];
             $result['gateway'] = $data['gateway'];
-			$obj->setAttributes($result);
-			$obj->to_put_attributes = [];
-			return $obj;
+            $obj->setAttributes($result);
+            $obj->to_put_attributes = [];
+            return $obj;
         }
-		unset($obj);
+        unset($obj);
         return false;
     }
 }

@@ -42,7 +42,7 @@ abstract class RebillModel extends \ArrayObject
 
     /**
      * Set all Attributes values, example:
-     *      (new Rebill\SDK\Models\Customer)->setAttributes([ 'user' => 'rebill', 'pass' => '123' ]);
+     *      (new Rebill\SDK\Models\CurrentModel)->setAttributes([ 'user' => 'rebill', 'pass' => '123' ]);
      *
      * @param array $values All values.
      *
@@ -62,32 +62,6 @@ abstract class RebillModel extends \ArrayObject
             throw new \Exception(get_called_class().": The value '".var_export($values, true)."' not is array.");
         }
         return $this->format();
-    }
-
-    /**
-     * Set all Attributes values, example:
-     *      (new Rebill\SDK\Models\Customer)->setAttributes([ 'user' => 'rebill', 'pass' => '123' ]);
-     *
-     * @param array $values All values.
-     *
-     * @return object Return recursive model.
-     */
-    public function setAttributesFromAPI($values)
-    {
-        if (is_array($values)) {
-            foreach ($values as $key => $value) {
-                if (\is_string($key)) {
-                    $this->__set($key, $value);
-                } else {
-                    throw new \Exception(get_called_class().": The attribute '".var_export($key, true)."' not is string.");
-                }
-            }
-        } else {
-            throw new \Exception(get_called_class().": The value '".var_export($values, true)."' not is array.");
-        }
-        $result = $this->format();
-        $this->to_put_attributes = [];
-        return $result;
     }
 
     /**
@@ -240,36 +214,38 @@ abstract class RebillModel extends \ArrayObject
 
     /**
      * Get element of this Model by ID
+     * 
+     * @param string $id Model ID.
+     * @param string $endpoint Endpoint.
      *
      * @return mixed|bool
      */
     public static function get($id = false, $endpoint = false)
     {
         Rebill::log('get: '.$endpoint);
-		$class_name = get_called_class();
-		$obj = new $class_name;
+        $class_name = get_called_class();
+        $obj = new $class_name;
         if (\property_exists($obj, 'is_guest') && $obj->is_guest) {
             $error_dummy = null;
             $data = Rebill::getInstance()->callApiGet(
-                ($endpoint ? $endpoint : static::$endpoint).($id?'/'.$id:''),
+                ($endpoint ? $endpoint : static::$endpoint).($id ? '/'.$id : ''),
                 false,
                 [],
                 $error_dummy,
                 true
             );
         } else {
-            $data = Rebill::getInstance()->callApiGet(($endpoint ? $endpoint : static::$endpoint).($id?'/'.$id:''));
+            $data = Rebill::getInstance()->callApiGet(($endpoint ? $endpoint : static::$endpoint).($id ? '/'.$id : ''));
         }
         Rebill::log('get data: - '.\var_export($data, true));
         if ($data) {
-			$obj->setAttributes($data);
-			$obj->to_put_attributes = [];
-			return $obj;
+            $obj->setAttributes($data);
+            $obj->to_put_attributes = [];
+            return $obj;
         }
-		unset($obj);
+        unset($obj);
         return false;
     }
-
 
     /**
      * Get Model in Array format
@@ -287,22 +263,21 @@ abstract class RebillModel extends \ArrayObject
         return $values;
     }
 
-
     /**
-     * Add format to attributes
+     * Check format of Attributes
      *
-     * @return array
+     * @return object Recursive Model
      */
-    public function format()
+    protected function format()
     {
         //...
         return $this;
     }
 
     /**
-     * Get Model in Array format
+     * Get Model in Json format
      *
-     * @return array
+     * @return string
      */
     public function __toString()
     {
@@ -313,7 +288,7 @@ abstract class RebillModel extends \ArrayObject
      * Create Model
      *
      * @param string $endpoint Endpoint.
-     * 
+     *
      * @return bool|object Recursive Model
      */
     public function create($endpoint = false)

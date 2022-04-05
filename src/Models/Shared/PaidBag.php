@@ -7,10 +7,34 @@
 */
 class PaidBag extends SharedEntity
 {
+    /**
+     * Array of Prices
+     *
+     * @var array<\Rebill\SDK\Models\Price>
+     */
     public $content;
+
+    /**
+     * Payment Object
+     *
+     * @var \Rebill\SDK\Models\Payment
+     */
     public $payment;
+
+    /**
+     * Subscriptions List
+     *
+     * @var array
+     */
     public $schedules;
-    public function format() {
+
+    /**
+     * Check format of Attributes
+     *
+     * @return object Recursive Model
+     */
+    protected function format()
+    {
         if ($this->payment && !is_object($this->payment)) {
             $this->payment = (new \Rebill\SDK\Models\Payment)->setAttributes($this->payment);
         }

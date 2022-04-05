@@ -71,7 +71,7 @@ class GatewayMercadoPago extends \Rebill\SDK\RebillModel
      * Create Model
      *
      * @param string $iso_country ISO2 of Country.
-     * 
+     *
      * @return bool|\Rebill\SDK\Models\Response\NewGatewayResponse NewGatewayResponse Model
      */
     public function add($iso_country)

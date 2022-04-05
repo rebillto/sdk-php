@@ -30,7 +30,7 @@ class Checkout extends \Rebill\SDK\RebillModel
         'card',
         'customer',
         'prices',
-		'cartId',
+        'cartId',
         'organizationId',
     ];
 
@@ -121,7 +121,13 @@ class Checkout extends \Rebill\SDK\RebillModel
         }
         return true;
     }
-    public function format()
+
+    /**
+     * Check format of Attributes
+     *
+     * @return object Recursive Model
+     */
+    protected function format()
     {
         if (isset($this->card) && !is_object($this->card)) {
             $this->card = (new \Rebill\SDK\Models\Card)->setAttributes($this->card);
@@ -143,7 +149,7 @@ class Checkout extends \Rebill\SDK\RebillModel
      * Create Model
      *
      * @param string $endpoint Endpoint.
-     * 
+     *
      * @return bool|object Recursive Model
      */
     public function create($endpoint = false)
@@ -160,7 +166,7 @@ class Checkout extends \Rebill\SDK\RebillModel
             return false;
         }
         $result = \Rebill\SDK\Rebill::getInstance()->callApiPost($endpoint ? $endpoint : static::$endpoint, $data, false, [
-            'organization_id: '. $this->organizationId
+            'organization_id: '.$this->organizationId
         ]);
         if ($result) {
             $this->to_put_attributes = [];

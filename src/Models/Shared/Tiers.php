@@ -7,9 +7,32 @@
 */
 class Tiers extends SharedEntity
 {
+    /**
+     * Amount
+     *
+     * @var string
+     */
     public $amount;
+
+    /**
+     * Up to
+     *
+     * @var string
+     */
     public $upTo;
+
+    /**
+     * ID
+     *
+     * @var string
+     */
     public $id;
+    
+    /**
+     * Validate Model attributes.
+     *
+     * @return object Recursive Model
+     */
     public function validate()
     {
         if (!is_numeric($this->amount)) {

@@ -8,6 +8,11 @@
 
 abstract class SharedEntity
 {
+    /**
+     * Get Model in Array format
+     *
+     * @return array
+     */
     public function toArray($data = null)
     {
         if ($data === null) {
@@ -25,6 +30,15 @@ abstract class SharedEntity
         }
         return $data;
     }
+
+    /**
+     * Set all Attributes values, example:
+     *      (new Rebill\SDK\Models\Shared\CurrentModel)->setAttributes([ 'user' => 'rebill', 'pass' => '123' ]);
+     *
+     * @param array $values All values.
+     *
+     * @return object Return recursive model.
+     */
     public function setAttributes($values)
     {
         foreach ($values as $key => $value) {
@@ -36,11 +50,23 @@ abstract class SharedEntity
         }
         return $this->format();
     }
-    public function format()
+
+    /**
+     * Check format of Attributes
+     *
+     * @return object Recursive Model
+     */
+    protected function format()
     {
         //...
         return $this;
     }
+
+    /**
+     * Validate Attributes
+     *
+     * @return object Recursive Model
+     */
     public function validate()
     {
         //...

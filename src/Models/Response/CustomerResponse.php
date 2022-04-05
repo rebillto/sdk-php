@@ -32,8 +32,13 @@ class CustomerResponse extends \Rebill\SDK\RebillModel
         'role',
         'user',
     ];
-    
-    public function format()
+
+    /**
+     * Check format of Attributes
+     *
+     * @return object Recursive Model
+     */
+    protected function format()
     {
         if (isset($this->address) && !is_object($this->address)) {
             $this->address = (new \Rebill\SDK\Models\Shared\Address)->setAttributes($this->address);

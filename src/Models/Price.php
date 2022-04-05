@@ -92,6 +92,12 @@ class Price extends \Rebill\SDK\RebillModel
         'item'
     ];
 
+
+    /**
+     * Validate Model attributes.
+     *
+     * @return object Recursive Model
+     */
     public function validate()
     {
         parent::validate();
@@ -145,7 +151,12 @@ class Price extends \Rebill\SDK\RebillModel
         return $this;
     }
 
-    public function format()
+    /**
+     * Check format of Attributes
+     *
+     * @return object Recursive Model
+     */
+    protected function format()
     {
         if (isset($this->frequency) && !is_object($this->frequency) && $this->frequency) {
             $this->frequency = (new \Rebill\SDK\Models\Shared\Frequency)->setAttributes($this->frequency);

@@ -7,8 +7,25 @@
 */
 class CheckoutPrice extends SharedEntity
 {
+    /**
+     * Price ID
+     *
+     * @var string
+     */
     public $id;
+
+    /**
+     * Quantity
+     *
+     * @var string
+     */
     public $quantity;
+
+    /**
+     * Validate Model attributes.
+     *
+     * @return object Recursive Model
+     */
     public function validate()
     {
         if (empty($this->id) || !is_string($this->id)) {

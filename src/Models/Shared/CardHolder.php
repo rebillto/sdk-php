@@ -7,9 +7,25 @@
 */
 class CardHolder extends SharedEntity
 {
+    /**
+     * Cardholder Name
+     *
+     * @var string
+     */
     public $name;
+
+    /**
+     * Cardholder Identification
+     *
+     * @var \Rebill\SDK\Models\Shared\TaxId
+     */
     public $identification;
 
+    /**
+     * Validate Model attributes.
+     *
+     * @return object Recursive Model
+     */
     public function validate()
     {
         if (empty($this->name) || !\is_string($this->name)) {
@@ -22,7 +38,13 @@ class CardHolder extends SharedEntity
         }
         return $this;
     }
-    public function format()
+
+    /**
+     * Check format of Attributes
+     *
+     * @return object Recursive Model
+     */
+    protected function format()
     {
         if ($this->identification && !is_object($this->identification)) {
             $this->identification = (new \Rebill\SDK\Models\Shared\TaxId)->setAttributes($this->identification);

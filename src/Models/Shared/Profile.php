@@ -7,17 +7,76 @@
 */
 class Profile extends SharedEntity
 {
+    /**
+     * First Name
+     *
+     * @var string
+     */
     public $firstName;
+
+    /**
+     * Last Name
+     *
+     * @var string
+     */
     public $lastName;
+
+    /**
+     * Phone
+     *
+     * @var string
+     */
     public $phone;
+
+    /**
+     * Birthday
+     *
+     * @var string
+     */
     public $birthday;
+
+    /**
+     * Tax ID
+     *
+     * @var \Rebill\SDK\Models\Shared\TaxId
+     */
     public $taxId;
+
+    /**
+     * Personal Tax ID
+     *
+     * @var \Rebill\SDK\Models\Shared\TaxId
+     */
     public $personalId;
+
+    /**
+     * Address
+     *
+     * @var \Rebill\SDK\Models\Shared\Address
+     */
     public $address;
+
+    /**
+     * List of Cards
+     *
+     * @var array<\Rebill\SDK\Models\Card>
+     */
     public $cards;
+
+    /**
+     * E-Mail
+     *
+     * @var string
+     */
     public $email;
 
-    public function format() {
+    /**
+     * Check format of Attributes
+     *
+     * @return object Recursive Model
+     */
+    protected function format()
+    {
         if ($this->address && !is_object($this->address)) {
             $this->address = (new \Rebill\SDK\Models\Shared\Address)->setAttributes($this->address);
         }
@@ -32,7 +91,7 @@ class Profile extends SharedEntity
         }
         if ($this->cards && count($this->cards)) {
             $list = [];
-            foreach($this->cards as $card) {
+            foreach ($this->cards as $card) {
                 if (!is_object($card)) {
                     $list[] = (new \Rebill\SDK\Models\Card)->setAttributes($card);
                 } else {
@@ -43,6 +102,12 @@ class Profile extends SharedEntity
         }
         return $this;
     }
+
+    /**
+     * Validate Model attributes.
+     *
+     * @return object Recursive Model
+     */
     public function validate()
     {
         if (empty($this->firstName)) {

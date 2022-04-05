@@ -52,13 +52,21 @@ class Payment extends \Rebill\SDK\RebillModel
     protected $ignore = [
         'id'
     ];
-    public function format() {
+
+    /**
+     * Check format of Attributes
+     *
+     * @return object Recursive Model
+     */
+    protected function format()
+    {
         if ($this->payer && !is_object($this->payer)) {
             $this->payer = (new \Rebill\SDK\Models\Shared\Profile)->setAttributes($this->payer);
         }
         return $this;
     }
-    public static function getByCartId($cart_id) {
+    public static function getByCartId($cart_id)
+    {
         $data = \Rebill\SDK\Rebill::getInstance()->callApiGet(static::$endpoint.'/cart/'.$cart_id);
         $result = [];
         if ($data) {

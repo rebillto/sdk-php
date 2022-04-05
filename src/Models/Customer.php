@@ -121,7 +121,13 @@ class Customer extends \Rebill\SDK\RebillModel
         }
         return true;
     }
-    public function format()
+
+    /**
+     * Check format of Attributes
+     *
+     * @return object Recursive Model
+     */
+    protected function format()
     {
         if (isset($this->profile) && !is_object($this->profile)) {
             $this->profile = (new \Rebill\SDK\Models\Shared\Profile)->setAttributes($this->profile);

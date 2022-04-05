@@ -7,9 +7,25 @@
 */
 class TaxId extends SharedEntity
 {
+    /**
+     * Type of Identification ID
+     *
+     * @var string
+     */
     public $type;
+
+    /**
+     * Identification ID
+     *
+     * @var string
+     */
     public $value;
 
+    /**
+     * Validate Model attributes.
+     *
+     * @return object Recursive Model
+     */
     public function validate()
     {
         foreach (get_object_vars($this) as $k => $v) {

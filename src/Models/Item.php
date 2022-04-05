@@ -64,9 +64,16 @@ class Item extends \Rebill\SDK\RebillModel
         'name' => ['is_string'],
         'description' => ['is_string'],
     ];
-    public function format() {
+
+    /**
+     * Check format of Attributes
+     *
+     * @return object Recursive Model
+     */
+    protected function format()
+    {
         if (isset($this->prices) && is_array($this->prices)) {
-            foreach($this->prices as $k => $price) {
+            foreach ($this->prices as $k => $price) {
                 if ($price && !is_object($price)) {
                     $this->prices[$k] = (new \Rebill\SDK\Models\Price)->setAttributes($price);
                 }
@@ -74,12 +81,13 @@ class Item extends \Rebill\SDK\RebillModel
         }
         return $this;
     }
-    public static function validateMetadata($field) {
+    public static function validateMetadata($field)
+    {
         if (!is_array($field)) {
             \Rebill\SDK\Rebill::log('Item: the metadata not is associative array: '.var_export($field, true));
             throw new \Exception('Item: the metadata not is associative array');
         }
-        foreach($field as $key => $value) {
+        foreach ($field as $key => $value) {
             if (!is_string($key) || is_numeric($key)) {
                 \Rebill\SDK\Rebill::log('Item: the metadata not is associative array: '.var_export($field, true));
                 throw new \Exception('Item: the metadata not is associative array');
@@ -91,7 +99,8 @@ class Item extends \Rebill\SDK\RebillModel
         }
         return true;
     }
-    public static function validatePriceList($field) {
+    public static function validatePriceList($field)
+    {
         $key_expected = 0;
         foreach ($field as $key => &$value) {
             if ($key !== $key_expected) {
@@ -107,14 +116,16 @@ class Item extends \Rebill\SDK\RebillModel
         }
         return true;
     }
-    public function update($endpoint = false) {
+    public function update($endpoint = false)
+    {
         if (!isset($this->id)) {
             \Rebill\SDK\Rebill::log('Item: the ID is required for update');
             throw new \Exception('Item: the ID is required for update');
         }
         return parent::update(($endpoint ? $endpoint : static::$endpoint).'/'.$this->id);
     }
-    public function delete($endpoint = false) {
+    public function delete($endpoint = false)
+    {
         if (!isset($this->id)) {
             \Rebill\SDK\Rebill::log('Item: the ID is required for delete');
             throw new \Exception('Item: the ID is required for delete');
@@ -135,7 +146,7 @@ class Item extends \Rebill\SDK\RebillModel
         if ($data && isset($data['response'])) {
             if (isset($data['response']) && isset($data['response'][0])) {
                 $list = [];
-                foreach($data['response'] as $item) {
+                foreach ($data['response'] as $item) {
                     $obj = new self;
                     $obj->setAttributes($item);
                     $obj->to_put_attributes = [];

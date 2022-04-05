@@ -7,16 +7,74 @@
 */
 class Address extends SharedEntity
 {
+    /**
+     * Street
+     *
+     * @var string
+     */
     public $street;
+
+    /**
+     * Number
+     *
+     * @var string
+     */
     public $number;
+
+    /**
+     * Floor
+     *
+     * @var string
+     */
     public $floor;
+
+    /**
+     * Apartment
+     *
+     * @var string
+     */
     public $apt;
+
+    /**
+     * City
+     *
+     * @var string
+     */
     public $city;
+
+    /**
+     * State or Province
+     *
+     * @var string
+     */
     public $state;
+
+    /**
+     * Postal Code
+     *
+     * @var string
+     */
     public $zipCode;
+
+    /**
+     * Country
+     *
+     * @var string
+     */
     public $country;
+
+    /**
+     * Description Address
+     *
+     * @var string
+     */
     public $description;
 
+    /**
+     * Validate Model attributes.
+     *
+     * @return object Recursive Model
+     */
     public function validate()
     {
         foreach (get_object_vars($this) as $k => $v) {

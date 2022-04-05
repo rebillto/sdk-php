@@ -5,7 +5,7 @@
 *
 *  @author Kijam
 */
-class Price extends \Rebill\SDK\RebillModel
+class PriceSetting extends \Rebill\SDK\RebillModel
 {
     /**
      * Endpoint of Model
@@ -43,15 +43,14 @@ class Price extends \Rebill\SDK\RebillModel
     ];
 
     /**
-     * Create Model
+     * Modify Price Setting by Price ID
      *
-     * @param string $item_id Item ID.
-     * 
-     * @return bool|\Rebill\SDK\Models\Response\PriceResponse NewGatewayResponse Model
+     * @param string $price_id Price ID.
+     *
+     * @return bool|\Rebill\SDK\Models\PriceSetting PriceSetting Model
      */
     public function edit($price_id)
     {
         return parent::create(str_replace('{price_id}', $price_id, self::$endpoint));
     }
-
 }

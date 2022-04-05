@@ -7,8 +7,25 @@
 */
 class Frequency extends SharedEntity
 {
+    /**
+     * Type: 'days', 'months' or 'years'
+     *
+     * @var string
+     */
     public $type;
+
+    /**
+     * Quantity
+     *
+     * @var string
+     */
     public $quantity;
+    
+    /**
+     * Validate Model attributes.
+     *
+     * @return object Recursive Model
+     */
     public function validate()
     {
         if (!in_array($this->type, ['days', 'months', 'years'], true)) {

@@ -7,9 +7,25 @@
 */
 class Expiration extends SharedEntity
 {
+    /**
+     * Month
+     *
+     * @var string
+     */
     public $month;
+
+    /**
+     * Year
+     *
+     * @var string
+     */
     public $year;
 
+    /**
+     * Validate Model attributes.
+     *
+     * @return object Recursive Model
+     */
     public function validate()
     {
         if (empty($this->month) || !\is_numeric($this->month)) {

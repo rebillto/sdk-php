@@ -64,7 +64,12 @@ class Card extends \Rebill\SDK\RebillModel
      */
     protected $responseClass = \Rebill\SDK\Models\Response\CardResponse::class;
 
-    public function format()
+    /**
+     * Check format of Attributes
+     *
+     * @return object Recursive Model
+     */
+    protected function format()
     {
         if (isset($this->cardHolder) && !is_object($this->cardHolder)) {
             $this->cardHolder = (new \Rebill\SDK\Models\Shared\CardHolder)->setAttributes($this->cardHolder);

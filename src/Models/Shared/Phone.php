@@ -7,10 +7,32 @@
 */
 class Phone extends SharedEntity
 {
+    /**
+     * Country Code
+     *
+     * @var string
+     */
     public $countryCode;
+
+    /**
+     * Area Code
+     *
+     * @var string
+     */
     public $areaCode;
+
+    /**
+     * Phone Number
+     *
+     * @var string
+     */
     public $number;
 
+    /**
+     * Validate Model attributes.
+     *
+     * @return object Recursive Model
+     */
     public function validate()
     {
         foreach (get_object_vars($this) as $k => $v) {

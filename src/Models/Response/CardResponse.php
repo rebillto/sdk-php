@@ -13,6 +13,7 @@ class CardResponse extends \Rebill\SDK\RebillModel
      * @var string
      */
     protected $class = self::class;
+
     /**
      * Attribute List
      *

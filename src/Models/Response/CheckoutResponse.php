@@ -13,6 +13,7 @@ class CheckoutResponse extends \Rebill\SDK\RebillModel
      * @var string
      */
     protected $class = self::class;
+
     /**
      * Attribute List
      *
@@ -24,7 +25,13 @@ class CheckoutResponse extends \Rebill\SDK\RebillModel
         'buyer',
         'id'
     ];
-    public function format()
+
+    /**
+     * Check format of Attributes
+     *
+     * @return object Recursive Model
+     */
+    protected function format()
     {
         if (isset($this->paidBags) && is_array($this->paidBags)) {
             foreach ($this->paidBags as $k => $v) {

@@ -367,7 +367,8 @@ class Rebill extends RebillModel
         }
         return false;
     }
-    public static function setCallBackDebugLog($callback) {
+    public static function setCallBackDebugLog($callback)
+    {
         if (\is_callable($callback)) {
             self::$callback_debug = $callback;
         } else {

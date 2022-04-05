@@ -35,7 +35,7 @@ class Organization extends \Rebill\SDK\RebillModel
         'address',
         'parent',
         'customCheckoutUrl',
-		'id',
+        'id',
     ];
 
     /**
@@ -60,7 +60,7 @@ class Organization extends \Rebill\SDK\RebillModel
         'gateways',
         'parent',
         'logoUrl',
-		'id'
+        'id'
     ];
 
     /**
