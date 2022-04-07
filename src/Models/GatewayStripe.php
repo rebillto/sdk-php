@@ -35,7 +35,8 @@ class GatewayStripe extends \Rebill\SDK\RebillModel
      */
     protected $attributes = [
         'privateKey',
-        'publicKey'
+        'publicKey',
+        'description'
     ];
 
     /**
@@ -53,7 +54,8 @@ class GatewayStripe extends \Rebill\SDK\RebillModel
      */
     protected $required = [
         'privateKey',
-        'publicKey'
+        'publicKey',
+        'description'
     ];
 
     /**

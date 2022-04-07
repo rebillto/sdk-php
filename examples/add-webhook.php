@@ -18,7 +18,7 @@ $result = (new \Rebill\SDK\Models\Webhook)->setAttributes([
     'url' => 'http://webhook-test.rebll.to/capture-webhook.php?event=subscription-charge'
 ])->create();
 $result = (new \Rebill\SDK\Models\Webhook)->setAttributes([
-    'event' => 'ssubscription_charge_in_24_hours',
+    'event' => 'subscription_charge_in_24_hours',
     'url' => 'http://webhook-test.rebll.to/capture-webhook.php?event=subscription_charge_in_24_hours'
 ])->create();
 $result = (new \Rebill\SDK\Models\Webhook)->setAttributes([

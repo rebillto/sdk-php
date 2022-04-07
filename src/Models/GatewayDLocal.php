@@ -36,7 +36,8 @@ class GatewayDLocal extends \Rebill\SDK\RebillModel
     protected $attributes = [
         'xLogin',
         'xTransKey',
-        'secretKey'
+        'secretKey',
+        'description'
     ];
 
     /**
@@ -55,7 +56,8 @@ class GatewayDLocal extends \Rebill\SDK\RebillModel
     protected $required = [
         'xLogin',
         'xTransKey',
-        'secretKey'
+        'secretKey',
+        'description'
     ];
 
     /**

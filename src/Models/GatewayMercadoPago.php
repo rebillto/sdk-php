@@ -35,7 +35,8 @@ class GatewayMercadoPago extends \Rebill\SDK\RebillModel
      */
     protected $attributes = [
         'code',
-        'appId'
+        'appId',
+        'description'
     ];
 
     /**
@@ -53,7 +54,8 @@ class GatewayMercadoPago extends \Rebill\SDK\RebillModel
      */
     protected $required = [
         'code',
-        'appId'
+        'appId',
+        'description'
     ];
 
     /**

@@ -73,7 +73,7 @@ class Payment extends \Rebill\SDK\RebillModel
      */
     public static function getByCartId($cart_id)
     {
-        $data = \Rebill\SDK\Rebill::getInstance()->callApiGet(static::$endpoint.'/cart/'.$cart_id);
+        $data = \Rebill\SDK\Rebill::getInstance()->callApiGet(static::$endpoint.'/order/'.$cart_id);
         $result = [];
         if ($data) {
             foreach ($data as $payment) {
