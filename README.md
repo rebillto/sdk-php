@@ -62,7 +62,7 @@ $result = (new \Rebill\SDK\Models\Item)->setAttributes([
             'repetitions' => 2,
             'currency' => 'USD',
             'description' => 'Example of Subscription with Free Trial',
-            'gatewayId' => 'c41e3612-6427-4e1b-bbfe-b9c138c34ab0'
+            'gatewayId' => 'e8c80b48-606d-48b8-a059-ba7033ec53da'
         ]),
         (new \Rebill\SDK\Models\Price)->setAttributes([
             'amount' => 1.5,
@@ -74,7 +74,7 @@ $result = (new \Rebill\SDK\Models\Item)->setAttributes([
             'repetitions' => 2,
             'currency' => 'USD',
             'description' => 'Example of Subscription',
-            'gatewayId' => 'c41e3612-6427-4e1b-bbfe-b9c138c34ab0'
+            'gatewayId' => 'e8c80b48-606d-48b8-a059-ba7033ec53da'
         ]),
         (new \Rebill\SDK\Models\Price)->setAttributes([
             'amount' => 0.5,
@@ -86,7 +86,7 @@ $result = (new \Rebill\SDK\Models\Item)->setAttributes([
             'repetitions' => 1,
             'currency' => 'USD',
             'description' => 'Example of Unique Payment',
-            'gatewayId' => 'c41e3612-6427-4e1b-bbfe-b9c138c34ab0'
+            'gatewayId' => 'e8c80b48-606d-48b8-a059-ba7033ec53da'
         ]),
     ]
 ])->create();
@@ -100,31 +100,35 @@ foreach ($result->prices as $p) {
 }
 
 $checkout = (new \Rebill\SDK\Models\Checkout)->setAttributes([
-    'organizationId' => '98b695d1-a0b2-40c4-b0ff-23894c55766e',
+    'organizationId' => '028b29da-682f-4e3e-93bc-9236fd871138',
     'prices' => $prices,
-    'customer' => (new \Rebill\SDK\Models\Shared\Profile)->setAttributes([
+    'customer' => (new \Rebill\SDK\Models\Shared\CustomerCheckout)->setAttributes([
         'email' => 'usertest@test.com',
         'firstName' => 'Test',
-        'lastName' => 'Name'
-    ]),
-    'card' => (new \Rebill\SDK\Models\Card)->setAttributes([
-        'cardNumber' => '4111111111111111',
-        'cardHolder' => [
-            'name' => 'Test Card',
-            'identification' => [
-                'type' => 'DNI',
-                'value' => '1111111111'
-            ]
-        ],
-        'securityCode' => '123',
-        'expiration' => [
-            'month' => 12,
-            'year' => 2030
-        ],
+        'lastName' => 'Name',
+        'card' => (new \Rebill\SDK\Models\Card)->setAttributes([
+            'cardNumber' => '4111111111111111',
+            'cardHolder' => [
+                'name' => 'Test Card',
+                'identification' => [
+                    'type' => 'DNI',
+                    'value' => '1111111111'
+                ]
+            ],
+            'securityCode' => '123',
+            'expiration' => [
+                'month' => 12,
+                'year' => 2030
+            ],
+        ])
     ])
 ])->create();
 
-var_dump($checkout);
+if ($checkout) {
+    var_dump($checkout->paidBags[0]->payment->status);
+} else {
+    echo "Payment error, see log file...";
+}
 
 ```
 
