@@ -27,7 +27,6 @@ class Checkout extends \Rebill\SDK\RebillModel
      * @var array<string, mixed>
      */
     protected $attributes = [
-        'card',
         'customer',
         'prices',
         'cartId',
@@ -40,7 +39,6 @@ class Checkout extends \Rebill\SDK\RebillModel
      * @var array<string, array<int, string>>
      */
     protected $format = [
-        'card' => ['validateCard'],
         'customer' => ['validateCustomer'],
         'prices' => ['validatePrices'],
         'cartId' => ['is_string'],
@@ -61,7 +59,6 @@ class Checkout extends \Rebill\SDK\RebillModel
      * @var array<int, string>
      */
     protected $required = [
-        'card',
         'customer',
         'organizationId'
     ];
@@ -90,7 +87,7 @@ class Checkout extends \Rebill\SDK\RebillModel
      */
     public static function validateCustomer($field)
     {
-        return $field instanceof \Rebill\SDK\Models\Shared\Profile && $field->validate();
+        return $field instanceof \Rebill\SDK\Models\Shared\CustomerCheckout && $field->validate();
     }
 
     /**
@@ -133,7 +130,7 @@ class Checkout extends \Rebill\SDK\RebillModel
             $this->card = (new \Rebill\SDK\Models\Card)->setAttributes($this->card);
         }
         if (isset($this->customer) && !is_object($this->customer)) {
-            $this->customer = (new \Rebill\SDK\Models\Shared\Profile)->setAttributes($this->customer);
+            $this->customer = (new \Rebill\SDK\Models\Shared\CustomerCheckout)->setAttributes($this->customer);
         }
         if (isset($this->prices)) {
             foreach ($this->prices as $k => $price) {

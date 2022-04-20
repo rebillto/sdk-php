@@ -10,9 +10,9 @@ class PaidBag extends SharedEntity
     /**
      * Array of Prices
      *
-     * @var array<\Rebill\SDK\Models\Price>
+     * @var array<\Rebill\SDK\Models\CheckoutPrice>
      */
-    public $content;
+    public $prices;
 
     /**
      * Payment Object
@@ -38,10 +38,10 @@ class PaidBag extends SharedEntity
         if ($this->payment && !is_object($this->payment)) {
             $this->payment = (new \Rebill\SDK\Models\Payment)->setAttributes($this->payment);
         }
-        if ($this->content) {
-            foreach ($this->content as $k => $v) {
+        if ($this->prices) {
+            foreach ($this->prices as $k => $v) {
                 if (!is_object($v)) {
-                    $this->content[$k] = (new \Rebill\SDK\Models\Price)->setAttributes($v);
+                    $this->prices[$k] = (new \Rebill\SDK\Models\Shared\CheckoutPrice)->setAttributes($v);
                 }
             }
         }

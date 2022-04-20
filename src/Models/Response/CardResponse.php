@@ -20,6 +20,9 @@ class CardResponse extends \Rebill\SDK\RebillModel
      * @var array<string, mixed>
      */
     protected $attributes = [
+        'bin',
+        'last4',
+        'expiration',
         'cardholder',
         'personalIdType',
         'personalIdNumber',
@@ -29,4 +32,17 @@ class CardResponse extends \Rebill\SDK\RebillModel
         'securityCodeLocation',
         'securityCode'
     ];
+    
+    /**
+     * Check format of Attributes
+     *
+     * @return object Recursive Model
+     */
+    protected function format()
+    {
+        if (isset($this->expiration) && !is_object($this->expiration)) {
+            $this->expiration = (new \Rebill\SDK\Models\Shared\Expiration)->setAttributes($this->expiration);
+        }
+        return $this;
+    }
 }

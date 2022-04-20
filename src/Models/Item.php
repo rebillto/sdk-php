@@ -15,6 +15,13 @@ class Item extends \Rebill\SDK\RebillModel
     protected static $endpoint = '/item';
 
     /**
+     * Response Model
+     *
+     * @var string
+     */
+    protected $responseClass = \Rebill\SDK\Models\Response\ItemResponse::class;
+
+    /**
      * Class of Model
      *
      * @var string

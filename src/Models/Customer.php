@@ -42,6 +42,7 @@ class Customer extends \Rebill\SDK\RebillModel
         'user' => ['validateUser'],
         'profile' => ['validateProfile'],
         'cards' => ['validateCards'],
+        'card' => ['validateCard'], //Only for checkout request
         'id' => ['is_string'],
     ];
 
