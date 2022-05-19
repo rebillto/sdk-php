@@ -10,24 +10,24 @@ if ( $webhooks && is_array( $webhooks ) && count( $webhooks ) ) {
 }
 
 $result = (new \Rebill\SDK\Models\Webhook)->setAttributes([
-    'event' => 'one-time-charge',
-    'url' => 'http://webhook-test.rebll.to/capture-webhook.php?event=one-time-charge'
+    'event' => 'new-subscription',
+    'url' => 'http://webhook-test.rebll.to/capture-webhook.php?event=new-subscription'
 ])->create();
 $result = (new \Rebill\SDK\Models\Webhook)->setAttributes([
-    'event' => 'subscription-charge',
-    'url' => 'http://webhook-test.rebll.to/capture-webhook.php?event=subscription-charge'
+    'event' => 'new-payment',
+    'url' => 'http://webhook-test.rebll.to/capture-webhook.php?event=new-payment'
 ])->create();
 $result = (new \Rebill\SDK\Models\Webhook)->setAttributes([
-    'event' => 'subscription_charge_in_24_hours',
-    'url' => 'http://webhook-test.rebll.to/capture-webhook.php?event=subscription_charge_in_24_hours'
+    'event' => 'payment-change-status',
+    'url' => 'http://webhook-test.rebll.to/capture-webhook.php?event=payment-change-status'
 ])->create();
 $result = (new \Rebill\SDK\Models\Webhook)->setAttributes([
-    'event' => 'one-time-charge-change-status',
-    'url' => 'http://webhook-test.rebll.to/capture-webhook.php?event=one-time-charge-change-status'
+    'event' => 'subscription-change-status',
+    'url' => 'http://webhook-test.rebll.to/capture-webhook.php?event=subscription-change-status'
 ])->create();
 $result = (new \Rebill\SDK\Models\Webhook)->setAttributes([
-    'event' => 'subscription-charge-change-status',
-    'url' => 'http://webhook-test.rebll.to/capture-webhook.php?event=subscription-charge-change-status'
+    'event' => 'subscription-charge-in-24-hours',
+    'url' => 'http://webhook-test.rebll.to/capture-webhook.php?event=subscription-charge-in-24-hours'
 ])->create();
 
 var_dump(\Rebill\SDK\Models\Webhook::all());

@@ -35,9 +35,9 @@ class Tiers extends SharedEntity
      */
     public function validate()
     {
-        if (!is_numeric($this->amount)) {
+        if (!is_string($this->amount)) {
             \Rebill\SDK\Rebill::log('Tiers: amount is invalid '.var_export($this->amount, true));
-            throw new \Exception("Tiers: The attribute amount is invalid.");
+            throw new \Exception("Tiers: The attribute amount not is string.");
         }
         if (isset($this->upTo) && !is_numeric($this->upTo)) {
             \Rebill\SDK\Rebill::log('Tiers: upTo is invalid '.var_export($this->decimalPlaces, true));

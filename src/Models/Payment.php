@@ -67,13 +67,13 @@ class Payment extends \Rebill\SDK\RebillModel
     }
 
     /**
-     * Get Payment list by Cart ID
+     * Get Payment list by Receipts ID
      *
      * @return array<\Rebill\SDK\Models\Payment> Payment List.
      */
-    public static function getByCartId($cart_id)
+    public static function getByReceiptsId($cart_id)
     {
-        $data = \Rebill\SDK\Rebill::getInstance()->callApiGet(static::$endpoint.'/order/'.$cart_id);
+        $data = \Rebill\SDK\Rebill::getInstance()->callApiGet('/receipts/'.$cart_id.'/payments');
         $result = [];
         if ($data) {
             foreach ($data as $payment) {

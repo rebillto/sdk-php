@@ -7,7 +7,7 @@ $result = (new \Rebill\SDK\Models\Item)->setAttributes([
     'description' => 'Example of Fixed Item',
     'prices' => [
         (new \Rebill\SDK\Models\Price)->setAttributes([
-            'amount' => 2.5,
+            'amount' => "2.5",
             'type' => 'fixed',
             'frequency' => (new \Rebill\SDK\Models\Shared\Frequency)->setAttributes([
                 'type' => 'days',
@@ -20,7 +20,7 @@ $result = (new \Rebill\SDK\Models\Item)->setAttributes([
             'repetitions' => 2,
             'currency' => 'USD',
             'description' => 'Example of Price Fixed',
-            'gatewayId' => 'c41e3612-6427-4e1b-bbfe-b9c138c34ab0'
+            'gatewayId' => '9f32cfd8-b302-4c98-ac99-16996e35f466'
         ])
     ]
 ])->create();
@@ -39,12 +39,12 @@ $result = (new \Rebill\SDK\Models\Item)->setAttributes([
             'type' => 'tiered',
             'tiers' => [
                 (new \Rebill\SDK\Models\Shared\Tiers)->setAttributes([
-                    'amount' => 1.5,
+                    'amount' => "1.5",
                     'upTo' => 5,
                     'id' => '1231232311'
                 ]),
                 (new \Rebill\SDK\Models\Shared\Tiers)->setAttributes([
-                    'amount' => 1,
+                    'amount' => "1",
                     'upTo' => 10,
                     'id' => '1231232322'
                 ]),
@@ -60,7 +60,7 @@ $result = (new \Rebill\SDK\Models\Item)->setAttributes([
             'repetitions' => 2,
             'currency' => 'USD',
             'description' => 'Example of Price tiered',
-            'gatewayId' => 'c41e3612-6427-4e1b-bbfe-b9c138c34ab0'
+            'gatewayId' => '9f32cfd8-b302-4c98-ac99-16996e35f466'
         ])
     ]
 ])->create();

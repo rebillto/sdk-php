@@ -13,17 +13,16 @@ class CheckoutResponse extends \Rebill\SDK\RebillModel
      * @var string
      */
     protected $class = self::class;
-
+    
     /**
      * Attribute List
      *
      * @var array<string, mixed>
      */
     protected $attributes = [
-        'paidBags',
-        'cartId',
-        'buyer',
-        'id'
+        'invoice',
+        'pendingTransaction',
+        'failedTransaction'
     ];
 
     /**
@@ -33,12 +32,14 @@ class CheckoutResponse extends \Rebill\SDK\RebillModel
      */
     protected function format()
     {
-        if (isset($this->paidBags) && is_array($this->paidBags)) {
-            foreach ($this->paidBags as $k => $v) {
-                if (!is_object($v)) {
-                    $this->paidBags[$k] = (new \Rebill\SDK\Models\Shared\PaidBag)->setAttributes($v);
-                }
-            }
+        if (isset($this->invoice) && !is_object($this->invoice)) {
+            $this->invoice = (new \Rebill\SDK\Models\Shared\CheckoutTrait)->setAttributes($this->invoice);
+        }
+        if (isset($this->pendingTransaction) && !is_object($this->pendingTransaction)) {
+            $this->pendingTransaction = (new \Rebill\SDK\Models\Shared\CheckoutTrait)->setAttributes($this->pendingTransaction);
+        }
+        if (isset($this->failedTransaction) && !is_object($this->failedTransaction)) {
+            $this->failedTransaction = (new \Rebill\SDK\Models\Shared\CheckoutTrait)->setAttributes($this->failedTransaction);
         }
         return $this;
     }

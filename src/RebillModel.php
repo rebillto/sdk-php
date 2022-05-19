@@ -139,7 +139,8 @@ abstract class RebillModel extends \ArrayObject
         if ($this->offsetExists($name)) {
             return $this[$name];
         }
-        return null;
+        $dummy_null = null;
+        return $dummy_null;
     }
 
     /**

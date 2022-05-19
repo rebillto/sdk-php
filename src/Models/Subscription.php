@@ -33,6 +33,8 @@ class Subscription extends \Rebill\SDK\RebillModel
         'remainingIterations',
         'couponsApplied',
         'user',
+        'title',
+        'status',
         'gateway',
         'value',
         'invoices',
@@ -83,32 +85,5 @@ class Subscription extends \Rebill\SDK\RebillModel
             }
         }
         return $result;
-    }
-
-    /**
-     * Get Subscription by ID
-     * 
-     * @param string $id Model ID.
-     * @param string $endpoint Endpoint.
-     *
-     * @return \Rebill\SDK\Models\Subscription|bool
-     */
-    public static function get($id = false, $endpoint = false)
-    {
-        \Rebill\SDK\Rebill::log('get: '.$endpoint);
-        $class_name = get_called_class();
-        $obj = new $class_name;
-        $data = \Rebill\SDK\Rebill::getInstance()->callApiGet(($endpoint ? $endpoint : static::$endpoint).($id ? '/'.$id : ''));
-        \Rebill\SDK\Rebill::log('get data: - '.\var_export($data, true));
-        if ($data) {
-            $result = $data['subscription'];
-            $result['value'] = $data['value'];
-            $result['gateway'] = $data['gateway'];
-            $obj->setAttributes($result);
-            $obj->to_put_attributes = [];
-            return $obj;
-        }
-        unset($obj);
-        return false;
     }
 }

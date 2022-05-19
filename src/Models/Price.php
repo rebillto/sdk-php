@@ -75,7 +75,7 @@ class Price extends \Rebill\SDK\RebillModel
         'description' => ['is_string'],
         'type' => ['is_string'],
         'currency' => ['is_string'],
-        'amount' => ['is_numeric'],
+        'amount' => ['is_string'],
         'repetitions' => ['is_numeric'],
     ];
 

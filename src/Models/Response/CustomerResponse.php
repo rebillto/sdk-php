@@ -49,5 +49,6 @@ class CustomerResponse extends \Rebill\SDK\RebillModel
         if (isset($this->user) && !is_object($this->user)) {
             $this->user = (new \Rebill\SDK\Models\Shared\User)->setAttributes($this->user);
         }
+        return $this;
     }
 }
