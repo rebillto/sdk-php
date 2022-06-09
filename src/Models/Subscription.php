@@ -37,7 +37,9 @@ class Subscription extends \Rebill\SDK\RebillModel
         'status',
         'gateway',
         'value',
+        'card',
         'invoices',
+        'amount',
         'id'
     ];
     /**
@@ -54,6 +56,16 @@ class Subscription extends \Rebill\SDK\RebillModel
      * @var array<int, string>
      */
     protected $ignore = [
+        'price',
+        'quantity',
+        'remainingIterations',
+        'couponsApplied',
+        'user',
+        'title',
+        'gateway',
+        'value',
+        'invoices',
+        'id'
     ];
 
     /**
@@ -85,5 +97,18 @@ class Subscription extends \Rebill\SDK\RebillModel
             }
         }
         return $result;
+    }
+    
+    /**
+     * Update Model
+     *
+     * @return bool|object Recursive Model
+     */
+    public function update($endpoint = false)
+    {
+        if (!$this->id) {
+            return false;
+        }
+        return parent::update($endpoint ? $endpoint : (static::$endpoint.'/'.$this->id));
     }
 }

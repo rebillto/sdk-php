@@ -12,8 +12,8 @@ class Rebill extends RebillModel
      *
      * @var string
      */
-    //const API_SANDBOX = 'https://api.rebill.dev/v2';
-    const API_SANDBOX = 'http://localhost:8000/v2';
+    const API_SANDBOX = 'https://api.rebill.dev/v2';
+    //const API_SANDBOX = 'http://localhost:8000/v2';
 
     /**
      * API endpoint Production
