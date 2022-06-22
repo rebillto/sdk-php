@@ -78,6 +78,13 @@ class Subscription extends \Rebill\SDK\RebillModel
         if ($this->price && !is_object($this->price)) {
             $this->price = (new \Rebill\SDK\Models\Price)->setAttributes($this->price);
         }
+        if (isset($this->invoices) && is_array($this->invoices)) {
+            foreach($this->invoices as &$invoice) {
+                if (!is_object($invoice)) {
+                    $invoice = (new \Rebill\SDK\Models\Shared\CheckoutTrait)->setAttributes($invoice);
+                }
+            }
+        }
         return $this;
     }
     /**
