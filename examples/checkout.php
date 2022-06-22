@@ -86,9 +86,19 @@ $checkout = (new \Rebill\SDK\Models\Checkout)->setAttributes([
     ])
 ])->create();
 
-
 if ($checkout) {
-    var_dump($checkout->paidBags[0]->payment->status);
+    if(isset($checkout->invoice)) {
+        echo "Payment OK:\n";
+        var_dump($checkout->invoice->paidBags);
+    }
+    if(isset($checkout->pendingTransaction)) {
+        echo "Payment Pending:\n";
+        var_dump($checkout->pendingTransaction->paidBags);
+    }
+    if(isset($checkout->failedTransaction)) {
+        echo "Payment Error:\n";
+        var_dump($checkout->failedTransaction->paidBags);
+    }
 } else {
     echo "Payment error, see log file...";
 }
