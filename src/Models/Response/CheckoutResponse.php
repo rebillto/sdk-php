@@ -32,13 +32,13 @@ class CheckoutResponse extends \Rebill\SDK\RebillModel
      */
     protected function format()
     {
-        if (isset($this->invoice) && !is_object($this->invoice)) {
+        if (isset($this->invoice) && $this->invoice != null && !is_object($this->invoice)) {
             $this->invoice = (new \Rebill\SDK\Models\Shared\CheckoutTrait)->setAttributes($this->invoice);
         }
-        if (isset($this->pendingTransaction) && !is_object($this->pendingTransaction)) {
+        if (isset($this->pendingTransaction) && $this->pendingTransaction != null && !is_object($this->pendingTransaction)) {
             $this->pendingTransaction = (new \Rebill\SDK\Models\Shared\CheckoutTrait)->setAttributes($this->pendingTransaction);
         }
-        if (isset($this->failedTransaction) && !is_object($this->failedTransaction)) {
+        if (isset($this->failedTransaction) && $this->failedTransaction != null && !is_object($this->failedTransaction)) {
             $this->failedTransaction = (new \Rebill\SDK\Models\Shared\CheckoutTrait)->setAttributes($this->failedTransaction);
         }
         return $this;

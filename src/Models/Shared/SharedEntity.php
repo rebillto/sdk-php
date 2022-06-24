@@ -41,10 +41,12 @@ abstract class SharedEntity
      */
     public function setAttributes($values)
     {
-        foreach ($values as $key => $value) {
-            if (\is_string($key)) {
-                if (\property_exists($this, $key)) {
-                    $this->{$key} = $value;
+        if (\is_array($values) || \is_object($values) && $values !== null) {
+            foreach ($values as $key => $value) {
+                if (\is_string($key)) {
+                    if (\property_exists($this, $key)) {
+                        $this->{$key} = $value;
+                    }
                 }
             }
         }

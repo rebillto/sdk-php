@@ -27,7 +27,6 @@ class Payment extends \Rebill\SDK\RebillModel
      * @var array<string, mixed>
      */
     protected $attributes = [
-        'gatewayCard',
         'currency',
         'amount',
         'metadata',

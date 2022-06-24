@@ -29,8 +29,7 @@ class Checkout extends \Rebill\SDK\RebillModel
     protected $attributes = [
         'customer',
         'prices',
-        'cartId',
-        'organizationId',
+        'cartId'
     ];
 
     /**
@@ -50,7 +49,6 @@ class Checkout extends \Rebill\SDK\RebillModel
      * @var array<int, string>
      */
     protected $ignore = [
-        'organizationId'
     ];
 
     /**
@@ -59,8 +57,7 @@ class Checkout extends \Rebill\SDK\RebillModel
      * @var array<int, string>
      */
     protected $required = [
-        'customer',
-        'organizationId'
+        'customer'
     ];
 
     /**
@@ -162,9 +159,6 @@ class Checkout extends \Rebill\SDK\RebillModel
         if (count($data) == 0) {
             return false;
         }
-        $result = \Rebill\SDK\Rebill::getInstance()->callApiPost($endpoint ? $endpoint : static::$endpoint, $data, false, [
-            'organization_id: '.$this->organizationId
-        ]);
         if ($result) {
             $this->to_put_attributes = [];
             if (\property_exists($this, 'responseClass')) {

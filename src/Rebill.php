@@ -13,7 +13,6 @@ class Rebill extends RebillModel
      * @var string
      */
     const API_SANDBOX = 'https://api.rebill.dev/v2';
-    //const API_SANDBOX = 'http://localhost:8000/v2';
 
     /**
      * API endpoint Production
@@ -49,6 +48,13 @@ class Rebill extends RebillModel
      * @var string
      */
     protected $orgAlias;
+
+    /**
+     * Default Organization ID - Optional
+     *
+     * @var string
+     */
+    protected $orgId;
 
     /**
      * Username
@@ -128,13 +134,19 @@ class Rebill extends RebillModel
         \curl_setopt($ch, CURLOPT_TIMEOUT, 10);
         \curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $http_method);
         $url             = $base_url.$method;
-        self::log('call '.$http_method.' ['.$url.'] -> '.\var_export($headers, true).' - '.\var_export($args, true).'
-                    - '.\var_export($post_data, true));
         if (\is_array($args)) {
             $args = \http_build_query($args);
             $url .= '?'.$args;
         } elseif (\is_string($args) && !empty($args)) {
             $url .= '?'.$args;
+        }
+        if (isset($this->orgId) && !empty($this->orgId)) {
+            $headers   = \array_merge(
+                $headers,
+                [
+                    'organization_id: '.$this->orgId,
+                ]
+            );
         }
         if ($post_data) {
             \curl_setopt($ch, CURLOPT_POST, 1);
@@ -156,8 +168,13 @@ class Rebill extends RebillModel
                     ]
                 );
             }
+            self::log('call '.$http_method.' ['.$url.'] -> '.\var_export($headers, true).' - '.\var_export($args, true).'
+                        - '.\var_export($post_data, true));
             self::log('DATA Send: '.$post_data);
             \curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+        } else {
+            self::log('call '.$http_method.' ['.$url.'] -> '.\var_export($headers, true).' - '.\var_export($args, true).'
+                        - '.\var_export($post_data, true));
         }
         \curl_setopt($ch, CURLOPT_URL, $url);
         \curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);

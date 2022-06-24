@@ -20,6 +20,7 @@ class CardResponse extends \Rebill\SDK\RebillModel
      * @var array<string, mixed>
      */
     protected $attributes = [
+        'id',
         'bin',
         'last4',
         'expiration',

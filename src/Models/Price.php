@@ -189,6 +189,18 @@ class Price extends \Rebill\SDK\RebillModel
     }
 
     /**
+     * Get Model
+     *
+     * @param string $id Price ID.
+     *
+     * @return bool|\Rebill\SDK\Models\Price Model
+     */
+    public static function get($id = false, $endpoint = false)
+    {
+        return parent::get($id, $endpoint?$endpoint:'/item/price');
+    }
+
+    /**
      * Create Model
      *
      * @param string $item_id Item ID.

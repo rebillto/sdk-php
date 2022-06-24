@@ -49,6 +49,9 @@ class CheckoutTrait extends SharedEntity
                 }
             }
         }
+        if (isset($this->buyer) && is_array($this->buyer)) {
+            $this->buyer = (new \Rebill\SDK\Models\Response\CheckoutBuyerResponse)->setAttributes($this->buyer);
+        }
         return $this;
     }
 }
