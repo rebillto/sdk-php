@@ -17,10 +17,10 @@ $result = (new \Rebill\SDK\Models\Item)->setAttributes([
                 'type' => 'days',
                 'quantity' => 2
             ]),
-            'repetitions' => 2,
+            'repetitions' => null, // Infinite repetition
             'currency' => 'USD',
             'description' => 'Example of Price Fixed',
-            'gatewayId' => '9f32cfd8-b302-4c98-ac99-16996e35f466'
+            'gatewayId' => 'b7249fce-727b-4516-8258-36046c4c5716'
         ])
     ]
 ])->create();
@@ -60,7 +60,7 @@ $result = (new \Rebill\SDK\Models\Item)->setAttributes([
             'repetitions' => 2,
             'currency' => 'USD',
             'description' => 'Example of Price tiered',
-            'gatewayId' => '9f32cfd8-b302-4c98-ac99-16996e35f466'
+            'gatewayId' => 'b7249fce-727b-4516-8258-36046c4c5716'
         ])
     ]
 ])->create();

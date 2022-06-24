@@ -10,5 +10,6 @@ require('vendor/autoload.php');
 \Rebill\SDK\Rebill::getInstance()->setProp([
     'user' => 'xxxxx',
     'pass' => 'yyyy',
-    'orgAlias' => 'zzzz'
+    'orgAlias' => 'zzzz',
+    'organizationId' => '028b29da-682f-4e3e-93bc-9236fd871138'
 ]);

@@ -62,7 +62,6 @@ foreach ($result->prices as $p) {
 }
 
 $checkout = (new \Rebill\SDK\Models\Checkout)->setAttributes([
-    'organizationId' => '028b29da-682f-4e3e-93bc-9236fd871138',
     'prices' => $prices,
     'customer' => (new \Rebill\SDK\Models\Shared\CustomerCheckout)->setAttributes([
         'email' => 'usertest@test.com',

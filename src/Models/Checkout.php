@@ -159,6 +159,7 @@ class Checkout extends \Rebill\SDK\RebillModel
         if (count($data) == 0) {
             return false;
         }
+        $result = \Rebill\SDK\Rebill::getInstance()->callApiPost($endpoint ? $endpoint : static::$endpoint, $data, false);
         if ($result) {
             $this->to_put_attributes = [];
             if (\property_exists($this, 'responseClass')) {
