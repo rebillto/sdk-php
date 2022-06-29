@@ -8,6 +8,13 @@
 class Profile extends SharedEntity
 {
     /**
+     * ID
+     *
+     * @var string
+     */
+    public $id;
+
+    /**
      * First Name
      *
      * @var string
