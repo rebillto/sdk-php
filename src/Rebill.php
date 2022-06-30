@@ -182,6 +182,11 @@ class Rebill extends RebillModel
         $info = \curl_getinfo($ch);
         if ($info["http_code"] >= 200 && $info["http_code"] < 300) {
             self::log('Result for '.$http_method.' ['.$url.']: '.\var_export($response, true));
+            if (empty($response)) {
+                return [
+                    'data'    => true,
+                ];
+            }
             if ($return_decode) {
                 return [
                     'data'    => \json_decode($response, true),

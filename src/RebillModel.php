@@ -321,6 +321,9 @@ abstract class RebillModel extends \ArrayObject
         }
         if ($result) {
             $this->to_put_attributes = [];
+            if ($result === true) {
+                return $this;
+            }
             if (\property_exists($this, 'responseClass')) {
                 $class_name = $this->responseClass;
                 $response = new $class_name;
@@ -367,6 +370,9 @@ abstract class RebillModel extends \ArrayObject
         }
         if ($result) {
             $this->to_put_attributes = [];
+            if ($result === true) {
+                return $this;
+            }
             if (\property_exists($this, 'responseClass')) {
                 $class_name = $this->responseClass;
                 $response = new $class_name;
