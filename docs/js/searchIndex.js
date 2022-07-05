@@ -91,6 +91,11 @@ Search.appendIndex(
             "summary": "Organization\u0020Alias",
             "url": "classes/Rebill-SDK-Rebill.html#property_orgAlias"
         },                {
+            "fqsen": "\\Rebill\\SDK\\Rebill\u003A\u003A\u0024orgId",
+            "name": "orgId",
+            "summary": "Default\u0020Organization\u0020ID\u0020\u002D\u0020Optional",
+            "url": "classes/Rebill-SDK-Rebill.html#property_orgId"
+        },                {
             "fqsen": "\\Rebill\\SDK\\Rebill\u003A\u003A\u0024user",
             "name": "user",
             "summary": "Username",
@@ -311,10 +316,20 @@ Search.appendIndex(
             "summary": "Check\u0020format\u0020of\u0020Attributes",
             "url": "classes/Rebill-SDK-Models-Payment.html#method_format"
         },                {
-            "fqsen": "\\Rebill\\SDK\\Models\\Payment\u003A\u003AgetByCartId\u0028\u0029",
-            "name": "getByCartId",
-            "summary": "",
-            "url": "classes/Rebill-SDK-Models-Payment.html#method_getByCartId"
+            "fqsen": "\\Rebill\\SDK\\Models\\Payment\u003A\u003AgetByReceiptsId\u0028\u0029",
+            "name": "getByReceiptsId",
+            "summary": "Get\u0020Payment\u0020list\u0020by\u0020Receipts\u0020ID",
+            "url": "classes/Rebill-SDK-Models-Payment.html#method_getByReceiptsId"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Payment\u003A\u003AgetPrices\u0028\u0029",
+            "name": "getPrices",
+            "summary": "Get\u0020Prices\u0020ID\u0020by\u0020Payment",
+            "url": "classes/Rebill-SDK-Models-Payment.html#method_getPrices"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Payment\u003A\u003AgetSubscriptions\u0028\u0029",
+            "name": "getSubscriptions",
+            "summary": "Get\u0020Subscriptions\u0020ID\u0020by\u0020Payment",
+            "url": "classes/Rebill-SDK-Models-Payment.html#method_getSubscriptions"
         },                {
             "fqsen": "\\Rebill\\SDK\\Models\\Payment\u003A\u003A\u0024endpoint",
             "name": "endpoint",
@@ -576,6 +591,11 @@ Search.appendIndex(
             "summary": "Endpoint\u0020of\u0020Model",
             "url": "classes/Rebill-SDK-Models-Item.html#property_endpoint"
         },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Item\u003A\u003A\u0024responseClass",
+            "name": "responseClass",
+            "summary": "Response\u0020Model",
+            "url": "classes/Rebill-SDK-Models-Item.html#property_responseClass"
+        },                {
             "fqsen": "\\Rebill\\SDK\\Models\\Item\u003A\u003A\u0024class",
             "name": "class",
             "summary": "Class\u0020of\u0020Model",
@@ -711,6 +731,11 @@ Search.appendIndex(
             "summary": "Create\u0020Model",
             "url": "classes/Rebill-SDK-Models-Price.html#method_add"
         },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Price\u003A\u003Aget\u0028\u0029",
+            "name": "get",
+            "summary": "Get\u0020Model",
+            "url": "classes/Rebill-SDK-Models-Price.html#method_get"
+        },                {
             "fqsen": "\\Rebill\\SDK\\Models\\Price\u003A\u003Aedit\u0028\u0029",
             "name": "edit",
             "summary": "Create\u0020Model",
@@ -775,6 +800,11 @@ Search.appendIndex(
             "name": "CardResponse",
             "summary": "CardResponse\u0020class",
             "url": "classes/Rebill-SDK-Models-Response-CardResponse.html"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Response\\CardResponse\u003A\u003Aformat\u0028\u0029",
+            "name": "format",
+            "summary": "Check\u0020format\u0020of\u0020Attributes",
+            "url": "classes/Rebill-SDK-Models-Response-CardResponse.html#method_format"
         },                {
             "fqsen": "\\Rebill\\SDK\\Models\\Response\\CardResponse\u003A\u003A\u0024class",
             "name": "class",
@@ -1036,10 +1066,10 @@ Search.appendIndex(
             "summary": "Check\u0020format\u0020of\u0020Attributes",
             "url": "classes/Rebill-SDK-Models-Shared-PaidBag.html#method_format"
         },                {
-            "fqsen": "\\Rebill\\SDK\\Models\\Shared\\PaidBag\u003A\u003A\u0024content",
-            "name": "content",
+            "fqsen": "\\Rebill\\SDK\\Models\\Shared\\PaidBag\u003A\u003A\u0024prices",
+            "name": "prices",
             "summary": "Array\u0020of\u0020Prices",
-            "url": "classes/Rebill-SDK-Models-Shared-PaidBag.html#property_content"
+            "url": "classes/Rebill-SDK-Models-Shared-PaidBag.html#property_prices"
         },                {
             "fqsen": "\\Rebill\\SDK\\Models\\Shared\\PaidBag\u003A\u003A\u0024payment",
             "name": "payment",
@@ -1090,6 +1120,11 @@ Search.appendIndex(
             "name": "validate",
             "summary": "Validate\u0020Model\u0020attributes.",
             "url": "classes/Rebill-SDK-Models-Shared-Profile.html#method_validate"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Shared\\Profile\u003A\u003A\u0024id",
+            "name": "id",
+            "summary": "ID",
+            "url": "classes/Rebill-SDK-Models-Shared-Profile.html#property_id"
         },                {
             "fqsen": "\\Rebill\\SDK\\Models\\Shared\\Profile\u003A\u003A\u0024firstName",
             "name": "firstName",
@@ -1241,50 +1276,260 @@ Search.appendIndex(
             "summary": "Password",
             "url": "classes/Rebill-SDK-Models-Shared-User.html#property_password"
         },                {
-            "fqsen": "\\Rebill\\SDK\\Models\\Subscriptions",
-            "name": "Subscriptions",
-            "summary": "Subscriptions",
-            "url": "classes/Rebill-SDK-Models-Subscriptions.html"
+            "fqsen": "\\Rebill\\SDK\\Models\\Response\\CheckoutBuyerResponse",
+            "name": "CheckoutBuyerResponse",
+            "summary": "CheckoutBuyerResponse\u0020class",
+            "url": "classes/Rebill-SDK-Models-Response-CheckoutBuyerResponse.html"
         },                {
-            "fqsen": "\\Rebill\\SDK\\Models\\Subscriptions\u003A\u003Aformat\u0028\u0029",
+            "fqsen": "\\Rebill\\SDK\\Models\\Response\\CheckoutBuyerResponse\u003A\u003Aformat\u0028\u0029",
             "name": "format",
             "summary": "Check\u0020format\u0020of\u0020Attributes",
-            "url": "classes/Rebill-SDK-Models-Subscriptions.html#method_format"
+            "url": "classes/Rebill-SDK-Models-Response-CheckoutBuyerResponse.html#method_format"
         },                {
-            "fqsen": "\\Rebill\\SDK\\Models\\Subscriptions\u003A\u003AgetByCartId\u0028\u0029",
-            "name": "getByCartId",
-            "summary": "Get\u0020Subscriptions\u0020by\u0020Cart\u0020ID",
-            "url": "classes/Rebill-SDK-Models-Subscriptions.html#method_getByCartId"
-        },                {
-            "fqsen": "\\Rebill\\SDK\\Models\\Subscriptions\u003A\u003Aget\u0028\u0029",
-            "name": "get",
-            "summary": "Get\u0020Subscriptions\u0020by\u0020ID",
-            "url": "classes/Rebill-SDK-Models-Subscriptions.html#method_get"
-        },                {
-            "fqsen": "\\Rebill\\SDK\\Models\\Subscriptions\u003A\u003A\u0024endpoint",
-            "name": "endpoint",
-            "summary": "Endpoint\u0020of\u0020Model",
-            "url": "classes/Rebill-SDK-Models-Subscriptions.html#property_endpoint"
-        },                {
-            "fqsen": "\\Rebill\\SDK\\Models\\Subscriptions\u003A\u003A\u0024class",
+            "fqsen": "\\Rebill\\SDK\\Models\\Response\\CheckoutBuyerResponse\u003A\u003A\u0024class",
             "name": "class",
             "summary": "Class\u0020of\u0020Model",
-            "url": "classes/Rebill-SDK-Models-Subscriptions.html#property_class"
+            "url": "classes/Rebill-SDK-Models-Response-CheckoutBuyerResponse.html#property_class"
         },                {
-            "fqsen": "\\Rebill\\SDK\\Models\\Subscriptions\u003A\u003A\u0024attributes",
+            "fqsen": "\\Rebill\\SDK\\Models\\Response\\CheckoutBuyerResponse\u003A\u003A\u0024attributes",
             "name": "attributes",
             "summary": "Attribute\u0020List",
-            "url": "classes/Rebill-SDK-Models-Subscriptions.html#property_attributes"
+            "url": "classes/Rebill-SDK-Models-Response-CheckoutBuyerResponse.html#property_attributes"
         },                {
-            "fqsen": "\\Rebill\\SDK\\Models\\Subscriptions\u003A\u003A\u0024required",
+            "fqsen": "\\Rebill\\SDK\\Models\\Response\\ItemResponse",
+            "name": "ItemResponse",
+            "summary": "ItemResponse\u0020class",
+            "url": "classes/Rebill-SDK-Models-Response-ItemResponse.html"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Response\\ItemResponse\u003A\u003Aformat\u0028\u0029",
+            "name": "format",
+            "summary": "Check\u0020format\u0020of\u0020Attributes",
+            "url": "classes/Rebill-SDK-Models-Response-ItemResponse.html#method_format"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Response\\ItemResponse\u003A\u003A\u0024class",
+            "name": "class",
+            "summary": "Class\u0020of\u0020Model",
+            "url": "classes/Rebill-SDK-Models-Response-ItemResponse.html#property_class"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Response\\ItemResponse\u003A\u003A\u0024attributes",
+            "name": "attributes",
+            "summary": "Attribute\u0020List",
+            "url": "classes/Rebill-SDK-Models-Response-ItemResponse.html#property_attributes"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Shared\\CheckoutPayment",
+            "name": "CheckoutPayment",
+            "summary": "CheckoutPayment",
+            "url": "classes/Rebill-SDK-Models-Shared-CheckoutPayment.html"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Shared\\CheckoutPayment\u003A\u003Aformat\u0028\u0029",
+            "name": "format",
+            "summary": "Check\u0020format\u0020of\u0020Attributes",
+            "url": "classes/Rebill-SDK-Models-Shared-CheckoutPayment.html#method_format"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Shared\\CheckoutPayment\u003A\u003A\u0024id",
+            "name": "id",
+            "summary": "Price\u0020ID",
+            "url": "classes/Rebill-SDK-Models-Shared-CheckoutPayment.html#property_id"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Shared\\CheckoutPayment\u003A\u003A\u0024currency",
+            "name": "currency",
+            "summary": "currency",
+            "url": "classes/Rebill-SDK-Models-Shared-CheckoutPayment.html#property_currency"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Shared\\CheckoutPayment\u003A\u003A\u0024quantity",
+            "name": "quantity",
+            "summary": "Quantity",
+            "url": "classes/Rebill-SDK-Models-Shared-CheckoutPayment.html#property_quantity"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Shared\\CheckoutPayment\u003A\u003A\u0024amount",
+            "name": "amount",
+            "summary": "Amount",
+            "url": "classes/Rebill-SDK-Models-Shared-CheckoutPayment.html#property_amount"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Shared\\CheckoutPayment\u003A\u003A\u0024metadata",
+            "name": "metadata",
+            "summary": "metadata",
+            "url": "classes/Rebill-SDK-Models-Shared-CheckoutPayment.html#property_metadata"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Shared\\CheckoutPayment\u003A\u003A\u0024status",
+            "name": "status",
+            "summary": "Status",
+            "url": "classes/Rebill-SDK-Models-Shared-CheckoutPayment.html#property_status"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Shared\\CheckoutPayment\u003A\u003A\u0024gateway",
+            "name": "gateway",
+            "summary": "Gateway",
+            "url": "classes/Rebill-SDK-Models-Shared-CheckoutPayment.html#property_gateway"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Shared\\CheckoutTrait",
+            "name": "CheckoutTrait",
+            "summary": "CheckoutPrice",
+            "url": "classes/Rebill-SDK-Models-Shared-CheckoutTrait.html"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Shared\\CheckoutTrait\u003A\u003Aformat\u0028\u0029",
+            "name": "format",
+            "summary": "Check\u0020format\u0020of\u0020Attributes",
+            "url": "classes/Rebill-SDK-Models-Shared-CheckoutTrait.html#method_format"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Shared\\CheckoutTrait\u003A\u003A\u0024id",
+            "name": "id",
+            "summary": "ID",
+            "url": "classes/Rebill-SDK-Models-Shared-CheckoutTrait.html#property_id"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Shared\\CheckoutTrait\u003A\u003A\u0024buyer",
+            "name": "buyer",
+            "summary": "Buyer",
+            "url": "classes/Rebill-SDK-Models-Shared-CheckoutTrait.html#property_buyer"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Shared\\CheckoutTrait\u003A\u003A\u0024paidBags",
+            "name": "paidBags",
+            "summary": "List\u0020of\u0020PaidBag",
+            "url": "classes/Rebill-SDK-Models-Shared-CheckoutTrait.html#property_paidBags"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Shared\\CheckoutTrait\u003A\u003A\u0024cartId",
+            "name": "cartId",
+            "summary": "Cart\u0020ID",
+            "url": "classes/Rebill-SDK-Models-Shared-CheckoutTrait.html#property_cartId"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Shared\\CustomerCheckout",
+            "name": "CustomerCheckout",
+            "summary": "Profile",
+            "url": "classes/Rebill-SDK-Models-Shared-CustomerCheckout.html"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Shared\\CustomerCheckout\u003A\u003Aformat\u0028\u0029",
+            "name": "format",
+            "summary": "Check\u0020format\u0020of\u0020Attributes",
+            "url": "classes/Rebill-SDK-Models-Shared-CustomerCheckout.html#method_format"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Shared\\CustomerCheckout\u003A\u003Avalidate\u0028\u0029",
+            "name": "validate",
+            "summary": "Validate\u0020Model\u0020attributes.",
+            "url": "classes/Rebill-SDK-Models-Shared-CustomerCheckout.html#method_validate"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Shared\\CustomerCheckout\u003A\u003A\u0024firstName",
+            "name": "firstName",
+            "summary": "First\u0020Name",
+            "url": "classes/Rebill-SDK-Models-Shared-CustomerCheckout.html#property_firstName"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Shared\\CustomerCheckout\u003A\u003A\u0024lastName",
+            "name": "lastName",
+            "summary": "Last\u0020Name",
+            "url": "classes/Rebill-SDK-Models-Shared-CustomerCheckout.html#property_lastName"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Shared\\CustomerCheckout\u003A\u003A\u0024phone",
+            "name": "phone",
+            "summary": "Phone",
+            "url": "classes/Rebill-SDK-Models-Shared-CustomerCheckout.html#property_phone"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Shared\\CustomerCheckout\u003A\u003A\u0024birthday",
+            "name": "birthday",
+            "summary": "Birthday",
+            "url": "classes/Rebill-SDK-Models-Shared-CustomerCheckout.html#property_birthday"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Shared\\CustomerCheckout\u003A\u003A\u0024taxId",
+            "name": "taxId",
+            "summary": "Tax\u0020ID",
+            "url": "classes/Rebill-SDK-Models-Shared-CustomerCheckout.html#property_taxId"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Shared\\CustomerCheckout\u003A\u003A\u0024personalId",
+            "name": "personalId",
+            "summary": "Personal\u0020Tax\u0020ID",
+            "url": "classes/Rebill-SDK-Models-Shared-CustomerCheckout.html#property_personalId"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Shared\\CustomerCheckout\u003A\u003A\u0024address",
+            "name": "address",
+            "summary": "Address",
+            "url": "classes/Rebill-SDK-Models-Shared-CustomerCheckout.html#property_address"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Shared\\CustomerCheckout\u003A\u003A\u0024email",
+            "name": "email",
+            "summary": "E\u002DMail",
+            "url": "classes/Rebill-SDK-Models-Shared-CustomerCheckout.html#property_email"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Shared\\CustomerCheckout\u003A\u003A\u0024card",
+            "name": "card",
+            "summary": "Card",
+            "url": "classes/Rebill-SDK-Models-Shared-CustomerCheckout.html#property_card"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Subscription",
+            "name": "Subscription",
+            "summary": "Subscription",
+            "url": "classes/Rebill-SDK-Models-Subscription.html"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Subscription\u003A\u003Aformat\u0028\u0029",
+            "name": "format",
+            "summary": "Check\u0020format\u0020of\u0020Attributes",
+            "url": "classes/Rebill-SDK-Models-Subscription.html#method_format"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Subscription\u003A\u003AgetByCartId\u0028\u0029",
+            "name": "getByCartId",
+            "summary": "Get\u0020Subscriptions\u0020by\u0020Cart\u0020ID",
+            "url": "classes/Rebill-SDK-Models-Subscription.html#method_getByCartId"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Subscription\u003A\u003Aupdate\u0028\u0029",
+            "name": "update",
+            "summary": "Update\u0020Model",
+            "url": "classes/Rebill-SDK-Models-Subscription.html#method_update"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Subscription\u003A\u003A\u0024endpoint",
+            "name": "endpoint",
+            "summary": "Endpoint\u0020of\u0020Model",
+            "url": "classes/Rebill-SDK-Models-Subscription.html#property_endpoint"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Subscription\u003A\u003A\u0024class",
+            "name": "class",
+            "summary": "Class\u0020of\u0020Model",
+            "url": "classes/Rebill-SDK-Models-Subscription.html#property_class"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Subscription\u003A\u003A\u0024attributes",
+            "name": "attributes",
+            "summary": "Attribute\u0020List",
+            "url": "classes/Rebill-SDK-Models-Subscription.html#property_attributes"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Subscription\u003A\u003A\u0024required",
             "name": "required",
             "summary": "List\u0020attributes\u0020required\u0020in\u0020PUT\u0020or\u0020POST\u0020request",
-            "url": "classes/Rebill-SDK-Models-Subscriptions.html#property_required"
+            "url": "classes/Rebill-SDK-Models-Subscription.html#property_required"
         },                {
-            "fqsen": "\\Rebill\\SDK\\Models\\Subscriptions\u003A\u003A\u0024ignore",
+            "fqsen": "\\Rebill\\SDK\\Models\\Subscription\u003A\u003A\u0024ignore",
             "name": "ignore",
             "summary": "List\u0020attributes\u0020ignored\u0020in\u0020PUT\u0020or\u0020POST\u0020request",
-            "url": "classes/Rebill-SDK-Models-Subscriptions.html#property_ignore"
+            "url": "classes/Rebill-SDK-Models-Subscription.html#property_ignore"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Webhook",
+            "name": "Webhook",
+            "summary": "Subscription",
+            "url": "classes/Rebill-SDK-Models-Webhook.html"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Webhook\u003A\u003Aall\u0028\u0029",
+            "name": "all",
+            "summary": "List\u0020of\u0020all\u0020Webhook",
+            "url": "classes/Rebill-SDK-Models-Webhook.html#method_all"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Webhook\u003A\u003A\u0024endpoint",
+            "name": "endpoint",
+            "summary": "Endpoint\u0020of\u0020Model",
+            "url": "classes/Rebill-SDK-Models-Webhook.html#property_endpoint"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Webhook\u003A\u003A\u0024class",
+            "name": "class",
+            "summary": "Class\u0020of\u0020Model",
+            "url": "classes/Rebill-SDK-Models-Webhook.html#property_class"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Webhook\u003A\u003A\u0024attributes",
+            "name": "attributes",
+            "summary": "Attribute\u0020List",
+            "url": "classes/Rebill-SDK-Models-Webhook.html#property_attributes"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Webhook\u003A\u003A\u0024required",
+            "name": "required",
+            "summary": "List\u0020attributes\u0020required\u0020in\u0020PUT\u0020or\u0020POST\u0020request",
+            "url": "classes/Rebill-SDK-Models-Webhook.html#property_required"
+        },                {
+            "fqsen": "\\Rebill\\SDK\\Models\\Webhook\u003A\u003A\u0024ignore",
+            "name": "ignore",
+            "summary": "List\u0020attributes\u0020ignored\u0020in\u0020PUT\u0020or\u0020POST\u0020request",
+            "url": "classes/Rebill-SDK-Models-Webhook.html#property_ignore"
         },                {
             "fqsen": "\\",
             "name": "\\",
