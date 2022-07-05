@@ -33,6 +33,8 @@ class Payment extends \Rebill\SDK\RebillModel
         'status',
         'cartId',
         'payer',
+        'prices',
+        'subscriptions',
         'id'
     ];
     /**
@@ -49,7 +51,9 @@ class Payment extends \Rebill\SDK\RebillModel
      * @var array<int, string>
      */
     protected $ignore = [
-        'id'
+        'id',
+        'prices',
+        'subscriptions'
     ];
 
     /**
@@ -80,5 +84,44 @@ class Payment extends \Rebill\SDK\RebillModel
             }
         }
         return $result;
+    }
+
+    /**
+     * Get Prices ID by Payment
+     *
+     * @return Payment Recursive Model with prices attribute filled
+     */
+    public static function getPrices()
+    {
+        if (empty($this->id)) {
+            return $this;
+        }
+        if (isset($this->prices)) {
+            return $this;
+        }
+        $data = \Rebill\SDK\Rebill::getInstance()->callApiGet('/payments/'.$this->id.'/prices');
+        if ($data && isset($data['priceIds'])) {
+            $this->prices = $data['priceIds'];
+        }
+        return $this;
+    }
+    /**
+     * Get Subscriptions ID by Payment
+     *
+     * @return Payment Recursive Model with subscriptions attribute filled
+     */
+    public static function getSubscriptions()
+    {
+        if (empty($this->id)) {
+            return $this;
+        }
+        if (isset($this->subscriptions)) {
+            return $this;
+        }
+        $data = \Rebill\SDK\Rebill::getInstance()->callApiGet('/payments/'.$this->id.'/billingSchedules');
+        if ($data && isset($data['billingScheduleIds'])) {
+            $this->subscriptions = $data['billingScheduleIds'];
+        }
+        return $this;
     }
 }
