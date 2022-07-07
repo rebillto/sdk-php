@@ -48,7 +48,6 @@ class Item extends \Rebill\SDK\RebillModel
     protected $required = [
         'name',
         'description',
-        'prices',
     ];
 
     /**

@@ -12,7 +12,7 @@ class Price extends \Rebill\SDK\RebillModel
      *
      * @var int
      */
-    protected static $endpoint = '/item/{item_id}/prices';
+    protected static $endpoint = '/item/{item_id}/price';
 
     /**
      * Response Model
@@ -181,7 +181,7 @@ class Price extends \Rebill\SDK\RebillModel
      *
      * @param string $item_id Item ID.
      *
-     * @return bool|\Rebill\SDK\Models\Response\PriceResponse NewGatewayResponse Model
+     * @return bool|\Rebill\SDK\Models\Response\GenericIdResponse ID of Model
      */
     public function add($item_id)
     {
@@ -205,7 +205,7 @@ class Price extends \Rebill\SDK\RebillModel
      *
      * @param string $item_id Item ID.
      *
-     * @return bool|\Rebill\SDK\Models\Response\PriceResponse NewGatewayResponse Model
+     * @return bool|\Rebill\SDK\Models\Response\GenericIdResponse ID of Model
      */
     public function edit()
     {
