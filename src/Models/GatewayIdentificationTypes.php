@@ -25,7 +25,7 @@ class GatewayIdentificationTypes
     {
         $list = \Rebill\SDK\Rebill::getInstance()->callApiGet(str_replace('{gateway_type}', $gateway_type, str_replace('{iso_country}', $iso_country, self::$endpoint)));
         if (!$list || !is_array($list) || count($list) == 0) {
-            return array( array('Name' => 'Other', 'value' => 'other') );
+            return array( array('name' => 'Other', 'value' => 'Other') );
         }
         return $list;
     }
