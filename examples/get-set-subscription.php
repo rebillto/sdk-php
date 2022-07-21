@@ -2,9 +2,9 @@
 
 include('setting.inc.php');
 
-$result = (new \Rebill\SDK\Models\Subscription)->get('07034a67-7c9d-406e-8b4d-8af4a9820b23');
+$result = \Rebill\SDK\Models\Subscription::get('07034a67-7c9d-406e-8b4d-8af4a9820b23');
 
-var_dump($result);
+var_dump($result->toArray());
 
 $result->card = $result->card;
 $result->amount = $result->price->amount;

@@ -2,6 +2,6 @@
 
 include('setting.inc.php');
 
-$result = (new \Rebill\SDK\Models\Subscription)->get('1ce64310-018a-45fd-8044-3b475b04e7cb');
+$result = \Rebill\SDK\Models\Subscription::get('9da3e4ac-44a7-495d-b03d-fc81c9ebcf23');
 
 var_dump($result->toArray());

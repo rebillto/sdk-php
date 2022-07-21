@@ -1,6 +1,8 @@
 <?php
 
 include('setting.inc.php');
+define('REBILL_GATEWAY_ID', 'b7249fce-727b-4516-8258-36046c4c5716');
+define('REBILL_GATEWAY_CURRENCY', 'USD');
 
 $result = (new \Rebill\SDK\Models\Item)->setAttributes([
     'name' => 'Testing checkout',
@@ -13,6 +15,7 @@ $result = (new \Rebill\SDK\Models\Item)->setAttributes([
         (new \Rebill\SDK\Models\Price)->setAttributes([
             'amount' => 2.5,
             'type' => 'fixed',
+            'description' => 'Example of Subscription with Free Trial',
             'frequency' => (new \Rebill\SDK\Models\Shared\Frequency)->setAttributes([
                 'type' => 'days',
                 'quantity' => 2
@@ -22,33 +25,32 @@ $result = (new \Rebill\SDK\Models\Item)->setAttributes([
                 'quantity' => 2
             ]),
             'repetitions' => 2,
-            'currency' => 'USD',
-            'description' => 'Example of Subscription with Free Trial',
-            'gatewayId' => 'e8c80b48-606d-48b8-a059-ba7033ec53da'
+            'currency' => REBILL_GATEWAY_CURRENCY,
+            'gatewayId' => REBILL_GATEWAY_ID
         ]),
         (new \Rebill\SDK\Models\Price)->setAttributes([
             'amount' => 1.5,
             'type' => 'fixed',
+            'description' => 'Example of Subscription',
             'frequency' => (new \Rebill\SDK\Models\Shared\Frequency)->setAttributes([
                 'type' => 'days',
                 'quantity' => 2
             ]),
             'repetitions' => 2,
-            'currency' => 'USD',
-            'description' => 'Example of Subscription',
-            'gatewayId' => 'e8c80b48-606d-48b8-a059-ba7033ec53da'
+            'currency' => REBILL_GATEWAY_CURRENCY,
+            'gatewayId' => REBILL_GATEWAY_ID
         ]),
         (new \Rebill\SDK\Models\Price)->setAttributes([
             'amount' => 0.5,
             'type' => 'fixed',
+            'description' => 'Example of Unique Payment',
             'frequency' => (new \Rebill\SDK\Models\Shared\Frequency)->setAttributes([
                 'type' => 'days',
                 'quantity' => 1
             ]),
             'repetitions' => 1,
-            'currency' => 'USD',
-            'description' => 'Example of Unique Payment',
-            'gatewayId' => 'e8c80b48-606d-48b8-a059-ba7033ec53da'
+            'currency' => REBILL_GATEWAY_CURRENCY,
+            'gatewayId' => REBILL_GATEWAY_ID
         ]),
     ]
 ])->create();

@@ -91,7 +91,7 @@ class Payment extends \Rebill\SDK\RebillModel
      *
      * @return Payment Recursive Model with prices attribute filled
      */
-    public static function getPrices()
+    public function getPrices()
     {
         if (empty($this->id)) {
             return $this;
@@ -110,7 +110,7 @@ class Payment extends \Rebill\SDK\RebillModel
      *
      * @return Payment Recursive Model with subscriptions attribute filled
      */
-    public static function getSubscriptions()
+    public function getSubscriptions()
     {
         if (empty($this->id)) {
             return $this;
