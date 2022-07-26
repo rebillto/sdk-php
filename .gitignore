@@ -10,3 +10,5 @@ examples/composer.lock
 examples/vendor
 examples/*.log
 src/cache/*
+unittest.log
+tests/setting.inc.php

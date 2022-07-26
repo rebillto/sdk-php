@@ -1,0 +1,26 @@
+<?php
+if (!defined('GATEWAYS_ID')) {
+    define('GATEWAYS_ID', array(
+        'dlocal' => '',
+        'mercadopago' => '',
+        'stripe' => '',
+    ));
+    define('GATEWAYS_CURRENCY', array(
+        'dlocal' => 'USD',
+        'mercadopago' => 'ARS',
+        'stripe' => 'USD',
+    ));
+}
+
+\Rebill\SDK\Rebill::getInstance()->isDebug = true;
+\Rebill\SDK\Rebill::getInstance()->setCallBackDebugLog(function ($data) {
+    file_put_contents('logfile.log', '---------- '.date('c')." -------------- \n$data\n\n", FILE_APPEND | LOCK_EX);
+});
+
+\Rebill\SDK\Rebill::getInstance()->setProp([
+    'user' => 'test_user_2222@testuser.com',
+    'pass' => 'Qatest*2222',
+    'orgAlias' => 'unit-test',
+    'orgId' => 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
+    'sandbox' => true
+]);

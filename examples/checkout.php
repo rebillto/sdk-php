@@ -13,7 +13,7 @@ $result = (new \Rebill\SDK\Models\Item)->setAttributes([
     ],
     'prices' => [
         (new \Rebill\SDK\Models\Price)->setAttributes([
-            'amount' => 2.5,
+            'amount' => '2.5',
             'type' => 'fixed',
             'description' => 'Example of Subscription with Free Trial',
             'frequency' => (new \Rebill\SDK\Models\Shared\Frequency)->setAttributes([

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<phpunit
+    stopOnError="false"
+    stopOnFailure="false"
+    stopOnIncomplete="false"
+    stopOnSkipped="false"
+    colors="true"
+    verbose="true"
+    >
+
+    <testsuite name="Submodules">
+        <directory suffix="Test.php">./*</directory>
+    </testsuite>
+
+</phpunit>

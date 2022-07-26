@@ -1,6 +1,6 @@
 <?php
 
-namespace Rebill\SDK\Tests;
+namespace Rebill\SDK\Tests\BasicTest;
 
 use PHPUnit\Framework\TestCase;
 
@@ -13,12 +13,6 @@ class MerchantSignupClassTest extends TestCase
 {
     public function __construct()
     {
-        /*
-        \Rebill\SDK\Rebill::getInstance()->isDebug = true;
-        \Rebill\SDK\Rebill::getInstance()->setCallBackDebugLog(function ($data) {
-            var_dump($data);
-        });
-        */
         parent::__construct();
     }
     /**
@@ -37,9 +31,10 @@ class MerchantSignupClassTest extends TestCase
      */
     public function checkValidationAllOK()
     {
+        $user = 'sdk-unittest-php-'.time().'@rebill.to';
         $this->assertTrue(is_object((new \Rebill\SDK\Models\MerchantSignup)->setAttributes([
             'user' => (new \Rebill\SDK\Models\Shared\User)->setAttributes([
-                'email' => 'dummy@rebill.to',
+                'email' => $user,
                 'password' => 'dummy123',
             ]),
             'organization' => (new \Rebill\SDK\Models\Organization)->setAttributes([

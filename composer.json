@@ -21,7 +21,7 @@
     },
     "scripts": {
         "test": [
-            "phpunit tests"
+            "phpunit -c tests/phpunit.xml"
         ]
     }
 }

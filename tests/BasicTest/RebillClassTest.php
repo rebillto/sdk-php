@@ -1,6 +1,6 @@
 <?php
 
-namespace Rebill\SDK\Tests;
+namespace Rebill\SDK\Tests\BasicTest;
 
 use PHPUnit\Framework\TestCase;
 
