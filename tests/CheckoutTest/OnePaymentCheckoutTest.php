@@ -46,7 +46,7 @@ class OnePaymentCheckout extends TestCase
             ]);
         }
         $result = (new \Rebill\SDK\Models\Item)->setAttributes([
-            'name' => 'Testing checkout',
+            'name' => 'Testing checkout onetime DLocal',
             'description' => 'Test of Checkout',
             'metadata' => [
                 'key_of_meta1' => 'example meta 1',
@@ -68,7 +68,7 @@ class OnePaymentCheckout extends TestCase
                 'firstName' => 'Test',
                 'lastName' => 'Name',
                 'phone' => [
-                    "countryCode" => "-","areaCode" => "-","number" => "87689"
+                    "countryCode" => "","areaCode" => "","phoneNumber" => "87689"
                 ],
                 'address' => [
                     "street" => "Cale","state" => "Buenos Aires","city" => "San Isidro","country" => "AR","zipCode" => "1000"
@@ -131,7 +131,7 @@ class OnePaymentCheckout extends TestCase
             ]);
         }
         $result = (new \Rebill\SDK\Models\Item)->setAttributes([
-            'name' => 'Testing checkout',
+            'name' => 'Testing checkout onetime Stripe',
             'description' => 'Test of Checkout',
             'metadata' => [
                 'key_of_meta1' => 'example meta 1',
@@ -153,7 +153,7 @@ class OnePaymentCheckout extends TestCase
                 'firstName' => 'Test',
                 'lastName' => 'Name',
                 'phone' => [
-                    "countryCode" => "-","areaCode" => "-","number" => "87689"
+                    "countryCode" => "-","areaCode" => "-","phoneNumber" => "87689"
                 ],
                 'address' => [
                     "street" => "Cale","state" => "Buenos Aires","city" => "San Isidro","country" => "AR","zipCode" => "1000"
@@ -203,7 +203,7 @@ class OnePaymentCheckout extends TestCase
             }
             $currency = self::$currency[$g_name];
             $data_prices[] = (new \Rebill\SDK\Models\Price)->setAttributes([
-                'amount' => '100.00',
+                'amount' => '15.00',
                 'type' => 'fixed',
                 'description' => 'Example of Unique Payment for '.$g_name,
                 'frequency' => (new \Rebill\SDK\Models\Shared\Frequency)->setAttributes([
@@ -216,7 +216,7 @@ class OnePaymentCheckout extends TestCase
             ]);
         }
         $result = (new \Rebill\SDK\Models\Item)->setAttributes([
-            'name' => 'Testing checkout',
+            'name' => 'Testing checkout onetime MP',
             'description' => 'Test of Checkout',
             'metadata' => [
                 'key_of_meta1' => 'example meta 1',
@@ -234,14 +234,19 @@ class OnePaymentCheckout extends TestCase
         $checkout = (new \Rebill\SDK\Models\Checkout)->setAttributes([
             'prices' => $prices,
             'customer' => (new \Rebill\SDK\Models\Shared\CustomerCheckout)->setAttributes([
-                'email' => 'test_user_15801245@testuser.com',
-                'firstName' => 'Test',
-                'lastName' => 'Name',
+                'email' => MP_CUSTOMER_EMAIL,
+                'firstName' => 'APRO',
+                'lastName' => 'APRO',
                 'phone' => [
-                    "countryCode" => "-","areaCode" => "-","number" => "87689"
+                    "countryCode" => "-","areaCode" => "-","phoneNumber" => "87689"
                 ],
                 'address' => [
-                    "street" => "Cale","state" => "Buenos Aires","city" => "San Isidro","country" => "AR","zipCode" => "1000"
+                    "street" => "Cale",
+                    "state" => "Buenos Aires",
+                    "city" => "San Isidro",
+                    "country" => "AR",
+                    "zipCode" => "1000",
+                    "number" => "0"
                 ],
                 'taxId' => [
                     "type" => "Other","value" => "87876899"

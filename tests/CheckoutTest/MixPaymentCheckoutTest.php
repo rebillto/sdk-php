@@ -47,7 +47,7 @@ class MixPaymentCheckout extends TestCase
             $data_prices[] = (new \Rebill\SDK\Models\Price)->setAttributes([
                 'amount' => '100.00',
                 'type' => 'fixed',
-                'description' => 'Example of Unique Payment for '.$g_name,
+                'description' => 'Example of cyclic Payment for '.$g_name,
                 'frequency' => (new \Rebill\SDK\Models\Shared\Frequency)->setAttributes([
                     'type' => 'months',
                     'quantity' => 15
@@ -59,7 +59,7 @@ class MixPaymentCheckout extends TestCase
             $data_prices[] = (new \Rebill\SDK\Models\Price)->setAttributes([
                 'amount' => '100.00',
                 'type' => 'fixed',
-                'description' => 'Example of Unique Payment for '.$g_name,
+                'description' => 'Example of recurrent Payment for '.$g_name,
                 'frequency' => (new \Rebill\SDK\Models\Shared\Frequency)->setAttributes([
                     'type' => 'months',
                     'quantity' => 15
@@ -70,7 +70,7 @@ class MixPaymentCheckout extends TestCase
             ]);
         }
         $result = (new \Rebill\SDK\Models\Item)->setAttributes([
-            'name' => 'Testing checkout',
+            'name' => 'Testing checkout mix DLocal',
             'description' => 'Test of Checkout',
             'metadata' => [
                 'key_of_meta1' => 'example meta 1',
@@ -92,7 +92,7 @@ class MixPaymentCheckout extends TestCase
                 'firstName' => 'Test',
                 'lastName' => 'Name',
                 'phone' => [
-                    "countryCode" => "-","areaCode" => "-","number" => "87689"
+                    "countryCode" => "","areaCode" => "","phoneNumber" => "87689"
                 ],
                 'address' => [
                     "street" => "Cale","state" => "Buenos Aires","city" => "San Isidro","country" => "AR","zipCode" => "1000"
@@ -156,7 +156,7 @@ class MixPaymentCheckout extends TestCase
             $data_prices[] = (new \Rebill\SDK\Models\Price)->setAttributes([
                 'amount' => '100.00',
                 'type' => 'fixed',
-                'description' => 'Example of Unique Payment for '.$g_name,
+                'description' => 'Example of cyclic Payment for '.$g_name,
                 'frequency' => (new \Rebill\SDK\Models\Shared\Frequency)->setAttributes([
                     'type' => 'months',
                     'quantity' => 15
@@ -168,7 +168,7 @@ class MixPaymentCheckout extends TestCase
             $data_prices[] = (new \Rebill\SDK\Models\Price)->setAttributes([
                 'amount' => '100.00',
                 'type' => 'fixed',
-                'description' => 'Example of Unique Payment for '.$g_name,
+                'description' => 'Example of recurrent Payment for '.$g_name,
                 'frequency' => (new \Rebill\SDK\Models\Shared\Frequency)->setAttributes([
                     'type' => 'months',
                     'quantity' => 15
@@ -179,7 +179,7 @@ class MixPaymentCheckout extends TestCase
             ]);
         }
         $result = (new \Rebill\SDK\Models\Item)->setAttributes([
-            'name' => 'Testing checkout',
+            'name' => 'Testing checkout mix stripe',
             'description' => 'Test of Checkout',
             'metadata' => [
                 'key_of_meta1' => 'example meta 1',
@@ -201,7 +201,7 @@ class MixPaymentCheckout extends TestCase
                 'firstName' => 'Test',
                 'lastName' => 'Name',
                 'phone' => [
-                    "countryCode" => "-","areaCode" => "-","number" => "87689"
+                    "countryCode" => "-","areaCode" => "-","phoneNumber" => "87689"
                 ],
                 'address' => [
                     "street" => "Cale","state" => "Buenos Aires","city" => "San Isidro","country" => "AR","zipCode" => "1000"
@@ -251,7 +251,7 @@ class MixPaymentCheckout extends TestCase
             }
             $currency = self::$currency[$g_name];
             $data_prices[] = (new \Rebill\SDK\Models\Price)->setAttributes([
-                'amount' => '100.00',
+                'amount' => '4.00',
                 'type' => 'fixed',
                 'description' => 'Example of Unique Payment for '.$g_name,
                 'frequency' => (new \Rebill\SDK\Models\Shared\Frequency)->setAttributes([
@@ -263,9 +263,9 @@ class MixPaymentCheckout extends TestCase
                 'gatewayId' => $g_id
             ]);
             $data_prices[] = (new \Rebill\SDK\Models\Price)->setAttributes([
-                'amount' => '100.00',
+                'amount' => '5.00',
                 'type' => 'fixed',
-                'description' => 'Example of Cliclic Payment for '.$g_name,
+                'description' => 'Example of cyclic Payment for '.$g_name,
                 'frequency' => (new \Rebill\SDK\Models\Shared\Frequency)->setAttributes([
                     'type' => 'months',
                     'quantity' => 15
@@ -275,7 +275,7 @@ class MixPaymentCheckout extends TestCase
                 'gatewayId' => $g_id
             ]);
             $data_prices[] = (new \Rebill\SDK\Models\Price)->setAttributes([
-                'amount' => '100.00',
+                'amount' => '8.00',
                 'type' => 'fixed',
                 'description' => 'Example of Recurrent Payment for '.$g_name,
                 'frequency' => (new \Rebill\SDK\Models\Shared\Frequency)->setAttributes([
@@ -288,7 +288,7 @@ class MixPaymentCheckout extends TestCase
             ]);
         }
         $result = (new \Rebill\SDK\Models\Item)->setAttributes([
-            'name' => 'Testing checkout',
+            'name' => 'Testing checkout mix Mercadopago',
             'description' => 'Test of Checkout',
             'metadata' => [
                 'key_of_meta1' => 'example meta 1',
@@ -306,14 +306,19 @@ class MixPaymentCheckout extends TestCase
         $checkout = (new \Rebill\SDK\Models\Checkout)->setAttributes([
             'prices' => $prices,
             'customer' => (new \Rebill\SDK\Models\Shared\CustomerCheckout)->setAttributes([
-                'email' => 'test_user_15801245@testuser.com',
-                'firstName' => 'Test',
-                'lastName' => 'Name',
+                'email' => MP_CUSTOMER_EMAIL,
+                'firstName' => 'APRO',
+                'lastName' => 'APRO',
                 'phone' => [
-                    "countryCode" => "-","areaCode" => "-","number" => "87689"
+                    "countryCode" => "-","areaCode" => "-","phoneNumber" => "87689"
                 ],
                 'address' => [
-                    "street" => "Cale","state" => "Buenos Aires","city" => "San Isidro","country" => "AR","zipCode" => "1000"
+                    "street" => "Cale",
+                    "state" => "Buenos Aires",
+                    "city" => "San Isidro",
+                    "country" => "AR",
+                    "zipCode" => "1000",
+                    "number" => "0"
                 ],
                 'taxId' => [
                     "type" => "Other","value" => "87876899"

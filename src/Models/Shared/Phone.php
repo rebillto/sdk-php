@@ -26,7 +26,7 @@ class Phone extends SharedEntity
      *
      * @var string
      */
-    public $number;
+    public $phoneNumber;
 
     /**
      * Validate Model attributes.

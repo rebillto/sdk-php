@@ -10,6 +10,8 @@ if (!defined('GATEWAYS_ID')) {
         'mercadopago' => 'ARS',
         'stripe' => 'USD',
     ));
+    define('MP_CUSTOMER_EMAIL', 'user@mail.com');
+    define('MP_CARD_TESTING', '4509953566233704');
 }
 
 \Rebill\SDK\Rebill::getInstance()->isDebug = true;
