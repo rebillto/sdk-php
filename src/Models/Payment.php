@@ -124,4 +124,13 @@ class Payment extends \Rebill\SDK\RebillModel
         }
         return $this;
     }
+    /**
+     * Refund current payment
+     *
+     * @return bool Result of refund
+     */
+    public function refund()
+    {
+        return !!\Rebill\SDK\Rebill::getInstance()->callApiPost('/refund', ['paymentId' => $this->id]);
+    }
 }
