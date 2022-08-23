@@ -106,6 +106,8 @@ class Checkout extends \Rebill\SDK\RebillModel
                     if (!($value instanceof \Rebill\SDK\Models\Shared\CheckoutPrice)) {
                         \Rebill\SDK\Rebill::log('Checkout: the prices['.$key.'] not is CheckoutPrice instance: '.var_export($field, true));
                         throw new \Exception('Checkout: the prices['.$key.'] not is CheckoutPrice instance');
+                    } else {
+                        $value->validate();
                     }
                 }
             } else {
@@ -173,5 +175,38 @@ class Checkout extends \Rebill\SDK\RebillModel
             return $this;
         }
         return false;
+    }
+    
+    /**
+     * List of installment availables
+     *
+     * @param int $cardBin First six card number.
+     * @param array<\Rebill\SDK\Models\Shared\CheckoutPrice> $prices List of prices with quantity.
+     *
+     * @ int
+     * @return array List of installment available for this card number.
+     */
+    public static function installments($cardBin, $prices)
+    {
+        if (!is_numeric($cardBin) || strlen($cardBin) != 6) {
+            throw new \Exception('Checkout Installment: cardBin is invalid');
+        }
+        foreach ($prices as &$price) {
+            if (!($price instanceof \Rebill\SDK\Models\Shared\CheckoutPrice)) {
+                $price = (new \Rebill\SDK\Models\Shared\CheckoutPrice)->setAttributes($price);
+            }
+        }
+        if (self::validatePrices($prices)) {
+            $data = [
+                'priceId' => $prices[0]->id,
+                'quantity' => $prices[0]->quantity,
+                'installmentsRequiredData' => [
+                    'cardBin' => $cardBin,
+                    'cardNumber' => $cardBin.'0000000000'
+                ]
+            ];
+            return \Rebill\SDK\Rebill::getInstance()->callApiPost(self::$endpoint.'/processInstallments', $data);
+        }
+        return [];
     }
 }
