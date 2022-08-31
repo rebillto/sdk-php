@@ -12,3 +12,4 @@ examples/*.log
 src/cache/*
 unittest.log
 tests/setting.inc.php
+tests/.phpunit.result.cache
