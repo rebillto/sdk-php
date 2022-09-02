@@ -128,10 +128,11 @@ class Rebill extends RebillModel
         &$error_data = null
     ) {
         static $is_retry = false;
+        $time_init = time();
         $base_url = $this->getUrl();
         $ch = \curl_init();
         \curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        \curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+        \curl_setopt($ch, CURLOPT_TIMEOUT, 30);
         \curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $http_method);
         $url             = $base_url.$method;
         if (\is_array($args)) {
@@ -179,6 +180,7 @@ class Rebill extends RebillModel
         \curl_setopt($ch, CURLOPT_URL, $url);
         \curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
         $response = \curl_exec($ch);
+        $total_time = time() - $time_init;
         $info = \curl_getinfo($ch);
         if ($info["http_code"] >= 200 && $info["http_code"] < 300) {
             self::log('Result for '.$http_method.' ['.$url.']: '.\var_export($response, true));
@@ -196,7 +198,11 @@ class Rebill extends RebillModel
                 'data'    => $response,
             ];
         } else {
-            self::log('Error '.$info["http_code"].' ['.$url.']: '.\var_export($response, true));
+            self::log('Error '.$info["http_code"].' ['.$url.']: '.\var_export($response, true).'
+                        Curl error: '.\curl_errno($ch). ' -> '.\curl_error($ch));
+        }
+        if ($total_time > 8) {
+            self::log('Time response is very high: '.$total_time.'seg');
         }
         if (!$is_retry &&
             (\stristr($response, 'Invalid or expired') !== false || \stristr($response, 'Unauthorized') !== false)) {

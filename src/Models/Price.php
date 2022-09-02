@@ -201,9 +201,7 @@ class Price extends \Rebill\SDK\RebillModel
     }
 
     /**
-     * Create Model
-     *
-     * @param string $item_id Item ID.
+     * Update Model
      *
      * @return bool|\Rebill\SDK\Models\Response\GenericIdResponse ID of Model
      */
@@ -213,5 +211,15 @@ class Price extends \Rebill\SDK\RebillModel
             throw new \Exception("Price: The attribute 'id' is required for update.");
         }
         return parent::update('/item/price/'.$this->id);
+    }
+
+    /**
+     * Update Model
+     *
+     * @return bool|\Rebill\SDK\Models\Response\GenericIdResponse ID of Model
+     */
+    public function update($endpoint = false)
+    {
+        return $this->edit();
     }
 }

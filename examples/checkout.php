@@ -75,7 +75,7 @@ $checkout = (new \Rebill\SDK\Models\Checkout)->setAttributes([
                 'name' => 'Test Card',
                 'identification' => [
                     'type' => 'DNI',
-                    'value' => '1111111111'
+                    'value' => ''.time()
                 ]
             ],
             'securityCode' => '123',

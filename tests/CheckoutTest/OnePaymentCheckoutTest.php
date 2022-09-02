@@ -20,8 +20,17 @@ class OnePaymentCheckout extends TestCase
         self::$gateway = GATEWAYS_ID;
         self::$currency = GATEWAYS_CURRENCY;
     }
+    private static function getErrorMessages($checkout){
+        $errors = [];
+        if (isset($checkout->failedTransaction) && ! empty( $checkout->failedTransaction->id ) ){
+            foreach($checkout->failedTransaction->paidBags as $paid) {
+                $errors[] = $paid->payment->status.': '.$paid->payment->errorMessage;
+            }
+        }
+        return $errors;
+    }
     /**
-     * Check Create - Item/Price
+     * Checkout with dlocal
      * @test
      */
     public function DLocalCheckout()
@@ -64,41 +73,46 @@ class OnePaymentCheckout extends TestCase
         $checkout = (new \Rebill\SDK\Models\Checkout)->setAttributes([
             'prices' => $prices,
             'customer' => (new \Rebill\SDK\Models\Shared\CustomerCheckout)->setAttributes([
-                'email' => 'usertest@test.com',
-                'firstName' => 'Test',
+                'email' => MP_CUSTOMER_EMAIL,
+                'firstName' => 'APRO Test',
                 'lastName' => 'Name',
                 'phone' => [
-                    "countryCode" => "","areaCode" => "","phoneNumber" => "87689"
+                    "countryCode" => "-","areaCode" => "-","phoneNumber" => "302390203929039"
                 ],
                 'address' => [
-                    "street" => "Cale","state" => "Buenos Aires","city" => "San Isidro","country" => "AR","zipCode" => "1000"
+                    "street" => "Cale","state" => "Buenos Aires","city" => "San Isidro","country" => "AR","zipCode" => "2000"
                 ],
                 'taxId' => [
-                    "type" => "Other","value" => "87876899"
+                    'type' => 'DNI',
+                    'value' => ''.time()
+                ],
+                'personalId' => [
+                    'type' => 'DNI',
+                    'value' => ''.time()
                 ],
                 'card' => (new \Rebill\SDK\Models\Card)->setAttributes([
-                    'cardNumber' => '4111111111111111',
+                    'cardNumber' => '4242424242424242',
                     'cardHolder' => [
-                        'name' => 'Test Card',
+                        'name' => 'APRO Test Name',
                         'identification' => [
                             'type' => 'DNI',
-                            'value' => '1111111111'
+                            'value' => ''.time()
                         ]
                     ],
                     'securityCode' => '123',
                     'expiration' => [
-                        'month' => 12,
-                        'year' => 2030
+                        'month' => 11,
+                        'year' => 2025
                     ],
                 ])
             ])
         ])->create();
         if ($checkout) {
-            if (isset($checkout->failedTransaction)) {
-                $this->assertTrue(false);
+            if (isset( $checkout->failedTransaction ) && ! empty( $checkout->failedTransaction->id ) ) {
+                $this->assertTrue(false, 'DLocal checkout is fail: '.implode(' - ', self::getErrorMessages($checkout)));
                 return;
             }
-            if (isset($checkout->invoice) || isset($checkout->pendingTransaction)) {
+            if (isset($checkout->invoice) && ! empty( $checkout->invoice->id ) || isset($checkout->pendingTransaction) && ! empty( $checkout->pendingTransaction->id ) ) {
                 $this->assertTrue(true);
                 return;
             }
@@ -106,7 +120,7 @@ class OnePaymentCheckout extends TestCase
         $this->assertTrue(false);
     }
     /**
-     * Check Create - Item/Price
+     * Checkout with stripe
      * @test
      */
     public function StripeCheckout()
@@ -149,41 +163,46 @@ class OnePaymentCheckout extends TestCase
         $checkout = (new \Rebill\SDK\Models\Checkout)->setAttributes([
             'prices' => $prices,
             'customer' => (new \Rebill\SDK\Models\Shared\CustomerCheckout)->setAttributes([
-                'email' => 'usertest@test.com',
-                'firstName' => 'Test',
+                'email' => MP_CUSTOMER_EMAIL,
+                'firstName' => 'APRO Test',
                 'lastName' => 'Name',
                 'phone' => [
-                    "countryCode" => "-","areaCode" => "-","phoneNumber" => "87689"
+                    "countryCode" => "-","areaCode" => "-","phoneNumber" => "302390203929039"
                 ],
                 'address' => [
-                    "street" => "Cale","state" => "Buenos Aires","city" => "San Isidro","country" => "AR","zipCode" => "1000"
+                    "street" => "Cale","state" => "Buenos Aires","city" => "San Isidro","country" => "AR","zipCode" => "2000"
                 ],
                 'taxId' => [
-                    "type" => "Other","value" => "87876899"
+                    'type' => 'DNI',
+                    'value' => ''.time()
+                ],
+                'personalId' => [
+                    'type' => 'DNI',
+                    'value' => ''.time()
                 ],
                 'card' => (new \Rebill\SDK\Models\Card)->setAttributes([
                     'cardNumber' => '4242424242424242',
                     'cardHolder' => [
-                        'name' => 'Test Card',
+                        'name' => 'APRO Test Name',
                         'identification' => [
                             'type' => 'DNI',
-                            'value' => '1111111111'
+                            'value' => ''.time()
                         ]
                     ],
                     'securityCode' => '123',
                     'expiration' => [
-                        'month' => 12,
-                        'year' => 2030
+                        'month' => 11,
+                        'year' => 2025
                     ],
                 ])
             ])
         ])->create();
         if ($checkout) {
-            if (isset( $checkout->failedTransaction ) && ! empty( $checkout->failedTransaction->id ) ) {
-                $this->assertTrue(false);
+            if (isset($checkout->failedTransaction) && ! empty($checkout->failedTransaction->id)) {
+                $this->assertTrue(false, 'Stripe checkout is fail: '.implode(' - ', self::getErrorMessages($checkout)));
                 return;
             }
-            if (isset($checkout->invoice) && ! empty( $checkout->invoice->id ) || isset($checkout->pendingTransaction) && ! empty( $checkout->pendingTransaction->id ) ) {
+            if (isset($checkout->invoice) && ! empty($checkout->invoice->id) || isset($checkout->pendingTransaction) && ! empty($checkout->pendingTransaction->id)) {
                 $this->assertTrue(true);
                 return;
             }
@@ -191,7 +210,7 @@ class OnePaymentCheckout extends TestCase
         $this->assertTrue(false);
     }
     /**
-     * Check Create - Item/Price
+     * Checkout with mercadopago
      * @test
      */
     public function MercadoPagoCheckout()
@@ -235,29 +254,29 @@ class OnePaymentCheckout extends TestCase
             'prices' => $prices,
             'customer' => (new \Rebill\SDK\Models\Shared\CustomerCheckout)->setAttributes([
                 'email' => MP_CUSTOMER_EMAIL,
-                'firstName' => 'APRO',
-                'lastName' => 'APRO',
+                'firstName' => 'APRO Test',
+                'lastName' => 'Name',
                 'phone' => [
-                    "countryCode" => "-","areaCode" => "-","phoneNumber" => "87689"
+                    "countryCode" => "-","areaCode" => "-","phoneNumber" => "302390203929039"
                 ],
                 'address' => [
-                    "street" => "Cale",
-                    "state" => "Buenos Aires",
-                    "city" => "San Isidro",
-                    "country" => "AR",
-                    "zipCode" => "1000",
-                    "number" => "0"
+                    "street" => "Cale","state" => "Buenos Aires","city" => "San Isidro","country" => "AR","zipCode" => "2000", "number" => "0"
                 ],
                 'taxId' => [
-                    "type" => "Other","value" => "87876899"
+                    'type' => 'DNI',
+                    'value' => ''.time()
+                ],
+                'personalId' => [
+                    'type' => 'DNI',
+                    'value' => ''.time()
                 ],
                 'card' => (new \Rebill\SDK\Models\Card)->setAttributes([
                     'cardNumber' => '4509953566233704',
                     'cardHolder' => [
-                        'name' => 'Test Card',
+                        'name' => 'APRO Test Name',
                         'identification' => [
                             'type' => 'DNI',
-                            'value' => '1111111111'
+                            'value' => ''.time()
                         ]
                     ],
                     'securityCode' => '123',
@@ -269,11 +288,11 @@ class OnePaymentCheckout extends TestCase
             ])
         ])->create();
         if ($checkout) {
-            if (isset($checkout->failedTransaction)) {
-                $this->assertTrue(false);
+            if (isset( $checkout->failedTransaction ) && ! empty( $checkout->failedTransaction->id ) ) {
+                $this->assertTrue(false, 'Mercadopago checkout is fail: '.implode(' - ', self::getErrorMessages($checkout)));
                 return;
             }
-            if (isset($checkout->invoice) || isset($checkout->pendingTransaction)) {
+            if (isset($checkout->invoice) && ! empty( $checkout->invoice->id ) || isset($checkout->pendingTransaction) && ! empty( $checkout->pendingTransaction->id ) ) {
                 $this->assertTrue(true);
                 return;
             }

@@ -34,7 +34,7 @@ class WebhookTest extends TestCase
             }
             $webhooks     = \Rebill\SDK\Models\Webhook::all();
             if ($webhooks && is_array($webhooks) && count($webhooks) > 0) {
-                $this->assertTrue(false);
+                $this->assertTrue(false, 'Fail first delete all');
                 return;
             }
         }
@@ -55,26 +55,22 @@ class WebhookTest extends TestCase
             'url' => 'http://webhook-test.rebll.to/capture-webhook.php?event=subscription-change-status'
         ])->create();
         $result = (new \Rebill\SDK\Models\Webhook)->setAttributes([
-            'event' => 'subscription-charge-in-24-hours',
-            'url' => 'http://webhook-test.rebll.to/capture-webhook.php?event=subscription-charge-in-24-hours'
-        ])->create();
-        $result = (new \Rebill\SDK\Models\Webhook)->setAttributes([
             'event' => 'process-headsup',
-            'url' => 'http://webhook-test.rebll.to/capture-webhook.php?event=subscription-charge-in-24-hours'
+            'url' => 'http://webhook-test.rebll.to/capture-webhook.php?event=process-headsup'
         ])->create();
         $webhooks     = \Rebill\SDK\Models\Webhook::all();
-        if ($webhooks && is_array($webhooks) && count($webhooks) == 6) {
+        if ($webhooks && is_array($webhooks) && count($webhooks) == 5) {
             foreach ($webhooks as $webhook) {
                 $webhook->delete();
             }
             $webhooks     = \Rebill\SDK\Models\Webhook::all();
             if ($webhooks && is_array($webhooks) && count($webhooks) > 0) {
-                $this->assertTrue(false);
+                $this->assertTrue(false, 'Fail last delete all');
                 return;
             }
             $this->assertTrue(true);
         } else {
-            $this->assertTrue(false);
+            $this->assertTrue(false, 'Fail webhook create');
         }
     }
 }
