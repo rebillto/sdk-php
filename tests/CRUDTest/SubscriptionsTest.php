@@ -423,7 +423,7 @@ class SubscriptionTest extends TestCase
                     'value' => ''.time()
                 ],
                 'card' => (new \Rebill\SDK\Models\Card)->setAttributes([
-                    'cardNumber' => '4509953566233701',
+                    'cardNumber' => '4509953566233704',
                     'cardHolder' => [
                         'name' => 'APRO Test Name',
                         'identification' => [

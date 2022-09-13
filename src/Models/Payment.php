@@ -31,6 +31,7 @@ class Payment extends \Rebill\SDK\RebillModel
         'amount',
         'metadata',
         'status',
+        'errorMessage',
         'cartId',
         'payer',
         'prices',
