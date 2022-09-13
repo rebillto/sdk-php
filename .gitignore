@@ -3,6 +3,7 @@
 vendor
 composer.lock
 gendoc.sh
+deadlocktest.sh
 phpDocumentor.phar
 examples/setting.inc.php
 examples/composer.json
