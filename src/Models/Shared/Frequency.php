@@ -33,7 +33,7 @@ class Frequency extends SharedEntity
             throw new \Exception('The attribute type is invalid.');
         }
         if (!is_numeric($this->quantity)) {
-            \Rebill\SDK\Rebill::log('Frequecy: quantity is invalid '.var_export($this->type, true));
+            \Rebill\SDK\Rebill::log('Frequecy: quantity is invalid '.var_export($this->quantity, true));
             throw new \Exception('The attribute quantity is invalid.');
         }
         return $this;

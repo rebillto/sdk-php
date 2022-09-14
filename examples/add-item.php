@@ -14,11 +14,11 @@ $result = (new \Rebill\SDK\Models\Item)->setAttributes([
             'type' => 'fixed',
             'description' => 'Example of Price Fixed',
             'frequency' => (new \Rebill\SDK\Models\Shared\Frequency)->setAttributes([
-                'type' => 'days',
+                'type' => 'months',
                 'quantity' => 2
             ]),
             'freeTrial' => (new \Rebill\SDK\Models\Shared\Frequency)->setAttributes([
-                'type' => 'days',
+                'type' => 'months',
                 'quantity' => 2
             ]),
             'repetitions' => null, // Infinite repetition
@@ -53,11 +53,11 @@ $result = (new \Rebill\SDK\Models\Item)->setAttributes([
                 ]),
             ],
             'frequency' => (new \Rebill\SDK\Models\Shared\Frequency)->setAttributes([
-                'type' => 'days',
+                'type' => 'months',
                 'quantity' => 2
             ]),
             'freeTrial' => (new \Rebill\SDK\Models\Shared\Frequency)->setAttributes([
-                'type' => 'days',
+                'type' => 'months',
                 'quantity' => 1
             ]),
             'repetitions' => 2,

@@ -17,11 +17,11 @@ $result = (new \Rebill\SDK\Models\Item)->setAttributes([
             'type' => 'fixed',
             'description' => 'Example of Subscription with Free Trial',
             'frequency' => (new \Rebill\SDK\Models\Shared\Frequency)->setAttributes([
-                'type' => 'days',
+                'type' => 'months',
                 'quantity' => 2
             ]),
             'freeTrial' => (new \Rebill\SDK\Models\Shared\Frequency)->setAttributes([
-                'type' => 'days',
+                'type' => 'months',
                 'quantity' => 2
             ]),
             'repetitions' => 2,
@@ -33,7 +33,7 @@ $result = (new \Rebill\SDK\Models\Item)->setAttributes([
             'type' => 'fixed',
             'description' => 'Example of Subscription',
             'frequency' => (new \Rebill\SDK\Models\Shared\Frequency)->setAttributes([
-                'type' => 'days',
+                'type' => 'months',
                 'quantity' => 2
             ]),
             'repetitions' => 2,
@@ -45,7 +45,7 @@ $result = (new \Rebill\SDK\Models\Item)->setAttributes([
             'type' => 'fixed',
             'description' => 'Example of Unique Payment',
             'frequency' => (new \Rebill\SDK\Models\Shared\Frequency)->setAttributes([
-                'type' => 'days',
+                'type' => 'months',
                 'quantity' => 1
             ]),
             'repetitions' => 1,
@@ -65,7 +65,7 @@ foreach ($result->prices as $p) {
 
 $checkout = (new \Rebill\SDK\Models\Checkout)->setAttributes([
     'prices' => $prices,
-    'customer' => (new \Rebill\SDK\Models\Shared\CustomerCheckout)->setAttributes([
+    'customer' => (new \Rebill\SDK\Models\Shared\CheckoutCustomer)->setAttributes([
         'email' => 'usertest@test.com',
         'firstName' => 'Test',
         'lastName' => 'Name',

@@ -11,7 +11,7 @@ $prices = [(new \Rebill\SDK\Models\Shared\CheckoutPrice)->setAttributes([
 
 $checkout = (new \Rebill\SDK\Models\Checkout)->setAttributes([
     'prices' => $prices,
-    'customer' => (new \Rebill\SDK\Models\Shared\CustomerCheckout)->setAttributes([
+    'customer' => (new \Rebill\SDK\Models\Shared\CheckoutCustomer)->setAttributes([
         'email' => 'usertest@test.com',
         'firstName' => 'Test',
         'lastName' => 'Name',

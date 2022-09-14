@@ -5,10 +5,10 @@
 *
 *  @author Kijam
 */
-class CheckoutPrice extends SharedEntity
+class CheckoutInstallment extends SharedEntity
 {
     /**
-     * Price ID
+     * Installment Gateway ID
      *
      * @var string
      */
@@ -29,11 +29,11 @@ class CheckoutPrice extends SharedEntity
     public function validate()
     {
         if (empty($this->id) || !is_string($this->id)) {
-            \Rebill\SDK\Rebill::log('CheckoutPrice: id is invalid '.var_export($this->id, true));
+            \Rebill\SDK\Rebill::log('CheckoutInstallment: id is invalid '.var_export($this->id, true));
             throw new \Exception('The attribute id is invalid.');
         }
         if (!is_numeric($this->quantity) || $this->quantity < 1) {
-            \Rebill\SDK\Rebill::log('CheckoutPrice: quantity is invalid '.var_export($this->type, true));
+            \Rebill\SDK\Rebill::log('CheckoutInstallment: quantity is invalid '.var_export($this->type, true));
             throw new \Exception('The attribute quantity is invalid.');
         }
         return $this;

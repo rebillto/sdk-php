@@ -29,6 +29,7 @@ class Checkout extends \Rebill\SDK\RebillModel
     protected $attributes = [
         'customer',
         'prices',
+        'installments',
         'cartId'
     ];
 
@@ -84,7 +85,17 @@ class Checkout extends \Rebill\SDK\RebillModel
      */
     public static function validateCustomer($field)
     {
-        return $field instanceof \Rebill\SDK\Models\Shared\CustomerCheckout && $field->validate();
+        return $field instanceof \Rebill\SDK\Models\Shared\CheckoutCustomer && $field->validate();
+    }
+
+    /**
+     * Validate Address Field
+     *
+     * @var array<int, string>
+     */
+    public static function validateInstallment($field)
+    {
+        return is_null($field) || $field instanceof \Rebill\SDK\Models\Shared\CustomerInstallment && $field->validate();
     }
 
     /**
@@ -125,11 +136,14 @@ class Checkout extends \Rebill\SDK\RebillModel
      */
     protected function format()
     {
+        if (isset($this->installments) && !is_object($this->installments)) {
+            $this->installments = (new \Rebill\SDK\Models\Shared\CheckoutInstallment)->setAttributes($this->installments);
+        }
         if (isset($this->card) && !is_object($this->card)) {
             $this->card = (new \Rebill\SDK\Models\Card)->setAttributes($this->card);
         }
         if (isset($this->customer) && !is_object($this->customer)) {
-            $this->customer = (new \Rebill\SDK\Models\Shared\CustomerCheckout)->setAttributes($this->customer);
+            $this->customer = (new \Rebill\SDK\Models\Shared\CheckoutCustomer)->setAttributes($this->customer);
         }
         if (isset($this->prices)) {
             foreach ($this->prices as $k => $price) {
@@ -186,26 +200,32 @@ class Checkout extends \Rebill\SDK\RebillModel
      * @ int
      * @return array List of installment available for this card number.
      */
-    public static function installments($cardBin, $prices)
+    public static function installments($cardBin, $price)
     {
         if (!is_numeric($cardBin) || strlen($cardBin) != 6) {
             throw new \Exception('Checkout Installment: cardBin is invalid');
         }
-        foreach ($prices as &$price) {
-            if (!($price instanceof \Rebill\SDK\Models\Shared\CheckoutPrice)) {
-                $price = (new \Rebill\SDK\Models\Shared\CheckoutPrice)->setAttributes($price);
-            }
+        if (!($price instanceof \Rebill\SDK\Models\Shared\CheckoutPrice)) {
+            $price = (new \Rebill\SDK\Models\Shared\CheckoutPrice)->setAttributes($price);
         }
-        if (self::validatePrices($prices)) {
+        if ($price->validate()) {
             $data = [
-                'priceId' => $prices[0]->id,
-                'quantity' => $prices[0]->quantity,
+                'priceId' => $price->id,
+                'quantity' => $price->quantity,
                 'installmentsRequiredData' => [
                     'cardBin' => $cardBin,
                     'cardNumber' => $cardBin.'0000000000'
                 ]
             ];
-            return \Rebill\SDK\Rebill::getInstance()->callApiPost(self::$endpoint.'/processInstallments', $data);
+            $rsp = \Rebill\SDK\Rebill::getInstance()->callApiPost(self::$endpoint.'/processInstallments', $data);
+            if (is_array($rsp)) {
+                $return = [];
+                foreach($rsp as $installment) {
+                    $return[] = (new \Rebill\SDK\Models\Shared\Installment)->setAttributes($installment);
+                }
+                \Rebill\SDK\Rebill::log('Installments for '.$cardBin.' - '.$price->id.' is: '.\var_export($return, true));
+                return $return;
+            }
         }
         return [];
     }

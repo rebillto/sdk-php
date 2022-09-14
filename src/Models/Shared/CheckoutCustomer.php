@@ -5,7 +5,7 @@
 *
 *  @author Kijam
 */
-class CustomerCheckout extends SharedEntity
+class CheckoutCustomer extends SharedEntity
 {
     /**
      * First Name
@@ -103,20 +103,20 @@ class CustomerCheckout extends SharedEntity
     public function validate()
     {
         if (empty($this->firstName)) {
-            \Rebill\SDK\Rebill::log('CustomerCheckout: firstName is required');
-            throw new \Exception('CustomerCheckout: firstName is required');
+            \Rebill\SDK\Rebill::log('CheckoutCustomer: firstName is required');
+            throw new \Exception('CheckoutCustomer: firstName is required');
         }
         if (empty($this->lastName)) {
-            \Rebill\SDK\Rebill::log('CustomerCheckout: lastName is required');
-            throw new \Exception('CustomerCheckout: lastName is required');
+            \Rebill\SDK\Rebill::log('CheckoutCustomer: lastName is required');
+            throw new \Exception('CheckoutCustomer: lastName is required');
         }
         if (empty($this->email)) {
-            \Rebill\SDK\Rebill::log('CustomerCheckout: email is required');
-            throw new \Exception('CustomerCheckout: email is required');
+            \Rebill\SDK\Rebill::log('CheckoutCustomer: email is required');
+            throw new \Exception('CheckoutCustomer: email is required');
         }
         if (empty($this->card)) {
-            \Rebill\SDK\Rebill::log('CustomerCheckout: card is required');
-            throw new \Exception('CustomerCheckout: card is required');
+            \Rebill\SDK\Rebill::log('CheckoutCustomer: card is required');
+            throw new \Exception('CheckoutCustomer: card is required');
         }
         return $this;
     }

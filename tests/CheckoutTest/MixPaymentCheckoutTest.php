@@ -96,7 +96,7 @@ class MixPaymentCheckout extends TestCase
         }
         $checkout = (new \Rebill\SDK\Models\Checkout)->setAttributes([
             'prices' => $prices,
-            'customer' => (new \Rebill\SDK\Models\Shared\CustomerCheckout)->setAttributes([
+            'customer' => (new \Rebill\SDK\Models\Shared\CheckoutCustomer)->setAttributes([
                 'email' => MP_CUSTOMER_EMAIL,
                 'firstName' => 'APRO Test',
                 'lastName' => 'Name',
@@ -210,7 +210,7 @@ class MixPaymentCheckout extends TestCase
         }
         $checkout = (new \Rebill\SDK\Models\Checkout)->setAttributes([
             'prices' => $prices,
-            'customer' => (new \Rebill\SDK\Models\Shared\CustomerCheckout)->setAttributes([
+            'customer' => (new \Rebill\SDK\Models\Shared\CheckoutCustomer)->setAttributes([
                 'email' => MP_CUSTOMER_EMAIL,
                 'firstName' => 'APRO Test',
                 'lastName' => 'Name',
@@ -324,7 +324,7 @@ class MixPaymentCheckout extends TestCase
         }
         $checkout = (new \Rebill\SDK\Models\Checkout)->setAttributes([
             'prices' => $prices,
-            'customer' => (new \Rebill\SDK\Models\Shared\CustomerCheckout)->setAttributes([
+            'customer' => (new \Rebill\SDK\Models\Shared\CheckoutCustomer)->setAttributes([
                 'email' => MP_CUSTOMER_EMAIL,
                 'firstName' => 'APRO Test',
                 'lastName' => 'Name',
