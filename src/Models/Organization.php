@@ -82,4 +82,17 @@ class Organization extends \Rebill\SDK\RebillModel
     {
         return $field instanceof \Rebill\SDK\Models\Shared\Address && $field->validate();
     }
+    /**
+     * Get Customer Access Token
+     *
+     * @return bool Result of refund
+     */
+    public static function getCustomerAccessToken($email)
+    {
+        $result = \Rebill\SDK\Rebill::getInstance()->callApiPost(self::$endpoint.'/customer-token', ['customerEmail' => $email]);
+        if (isset($result['token']) && !empty($result['token'])) {
+            return $result['token'];
+        }
+        return false;
+    }
 }

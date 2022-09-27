@@ -31,7 +31,7 @@ class MerchantSignupClassTest extends TestCase
      */
     public function checkValidationAllOK()
     {
-        $user = 'sdk-unittest-php-'.time().'@rebill.to';
+        $user = 'sdk-unittest-php-'.time().'@gmail.com';
         $this->assertTrue(is_object((new \Rebill\SDK\Models\MerchantSignup)->setAttributes([
             'user' => (new \Rebill\SDK\Models\Shared\User)->setAttributes([
                 'email' => $user,
@@ -129,7 +129,7 @@ class MerchantSignupClassTest extends TestCase
         try {
             (new \Rebill\SDK\Models\MerchantSignup)->setAttributes([
                 'user' => (new \Rebill\SDK\Models\Shared\User)->setAttributes([
-                    'email' => 'dummy@rebill.to',
+                    'email' => 'dummy@gmail.com',
                     'password' => 'dummy123',
                 ])
             ])->validate();
@@ -149,7 +149,7 @@ class MerchantSignupClassTest extends TestCase
         try {
             (new \Rebill\SDK\Models\MerchantSignup)->setAttributes([
                 'user' => (new \Rebill\SDK\Models\Shared\User)->setAttributes([
-                    'email' => 'dummy@rebill.to',
+                    'email' => 'dummy@gmail.com',
                     'password' => 'dummy123',
                 ]),
                 'organization' => (new \Rebill\SDK\Models\Organization)->setAttributes([
@@ -183,7 +183,7 @@ class MerchantSignupClassTest extends TestCase
         try {
             (new \Rebill\SDK\Models\MerchantSignup)->setAttributes([
                 'user' => (new \Rebill\SDK\Models\Shared\User)->setAttributes([
-                    'email' => 'dummy@rebill.to',
+                    'email' => 'dummy@gmail.com',
                     'password' => 'dummy123',
                 ]),
                 'organization' => (new \Rebill\SDK\Models\Organization)->setAttributes([
@@ -216,7 +216,7 @@ class MerchantSignupClassTest extends TestCase
         try {
             (new \Rebill\SDK\Models\MerchantSignup)->setAttributes([
                 'user' => (new \Rebill\SDK\Models\Shared\User)->setAttributes([
-                    'email' => 'dummy@rebill.to',
+                    'email' => 'dummy@gmail.com',
                     'password' => 'dummy123',
                 ]),
                 'organization' => (new \Rebill\SDK\Models\Organization)->setAttributes([
@@ -275,7 +275,7 @@ class MerchantSignupClassTest extends TestCase
         try {
             (new \Rebill\SDK\Models\MerchantSignup)->setAttributes([
                 'user' => (new \Rebill\SDK\Models\Shared\User)->setAttributes([
-                    'email' => 'dummy@rebill.to',
+                    'email' => 'dummy@gmail.com',
                     'password' => 'dummy123',
                 ]),
                 'organization' => (new \Rebill\SDK\Models\Organization)->setAttributes([
@@ -310,7 +310,7 @@ class MerchantSignupClassTest extends TestCase
         try {
             (new \Rebill\SDK\Models\MerchantSignup)->setAttributes([
                     'user' => (new \Rebill\SDK\Models\Shared\User)->setAttributes([
-                        'email' => 'dummy@rebill.to',
+                        'email' => 'dummy@gmail.com',
                         'password' => new \stdClass,
                     ]),
                     'organization' => (new \Rebill\SDK\Models\Organization)->setAttributes([
@@ -345,7 +345,7 @@ class MerchantSignupClassTest extends TestCase
         try {
             (new \Rebill\SDK\Models\MerchantSignup)->setAttributes([
                     'user' => (new \Rebill\SDK\Models\Shared\User)->setAttributes([
-                        'email' => 'dummy@rebill.to',
+                        'email' => 'dummy@gmail.com',
                         'password' => 'dummy123',
                     ]),
                     'organization' => (new \Rebill\SDK\Models\Organization)->setAttributes([
@@ -380,7 +380,7 @@ class MerchantSignupClassTest extends TestCase
         try {
             $data = (new \Rebill\SDK\Models\MerchantSignup)->setAttributes([
                 'user' => (new \Rebill\SDK\Models\Shared\User)->setAttributes([
-                    'email' => 'dummy@rebill.to',
+                    'email' => 'dummy@gmail.com',
                     'password' => 'dummy123',
                 ]),
                 'organization' => (new \Rebill\SDK\Models\Organization)->setAttributes([
@@ -399,7 +399,7 @@ class MerchantSignupClassTest extends TestCase
                     ])
                 ])
             ])->validate();
-            if ((string)$data == '{"user":{"email":"dummy@rebill.to","password":"dummy123"},"organization":{"name":"Unit Test","alias":"unit-test","address":{"street":"Riverside St.","number":"39","floor":"2","apt":"B","city":"Santa Cruz","state":"Santa Cruz","zipCode":"9011","country":"ARG","description":"Home \/ Office"}}}') {
+            if ((string)$data == '{"user":{"email":"dummy@gmail.com","password":"dummy123"},"organization":{"name":"Unit Test","alias":"unit-test","address":{"street":"Riverside St.","number":"39","floor":"2","apt":"B","city":"Santa Cruz","state":"Santa Cruz","zipCode":"9011","country":"ARG","description":"Home \/ Office"}}}') {
                 $valid = true;
             }
         } catch (\Exception $e) {
