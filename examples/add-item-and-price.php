@@ -2,9 +2,16 @@
 
 include('setting.inc.php');
 
+/*
+Creación de un Item y un Price
+*/
+
 define('REBILL_GATEWAY_ID', 'b7249fce-727b-4516-8258-36046c4c5716');
 define('REBILL_GATEWAY_CURRENCY', 'USD');
 
+/*
+Ejemplo de un Price con suscripción recurrente bi-mensual
+*/
 $result = (new \Rebill\SDK\Models\Item)->setAttributes([
     'name' => 'Fixed Item',
     'description' => 'Example of Fixed Item',
@@ -17,10 +24,6 @@ $result = (new \Rebill\SDK\Models\Item)->setAttributes([
                 'type' => 'months',
                 'quantity' => 2
             ]),
-            'freeTrial' => (new \Rebill\SDK\Models\Shared\Frequency)->setAttributes([
-                'type' => 'months',
-                'quantity' => 2
-            ]),
             'repetitions' => null, // Infinite repetition
             'currency' => REBILL_GATEWAY_CURRENCY,
             'gatewayId' => REBILL_GATEWAY_ID
@@ -29,6 +32,9 @@ $result = (new \Rebill\SDK\Models\Item)->setAttributes([
 ])->create();
 var_dump($result->toArray());
 
+/*
+Ejemplo de un Price con suscripción recurrente bi-mensual
+*/
 $result = (new \Rebill\SDK\Models\Item)->setAttributes([
     'name' => 'Tiered Item',
     'description' => 'Example of tiered Item',

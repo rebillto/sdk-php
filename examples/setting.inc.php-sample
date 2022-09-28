@@ -1,16 +1,23 @@
 <?php
-
+/*
+Setting: Este archivo de configuración es para inicializar el SDK.
+*/
 require('vendor/autoload.php');
 
+// Activar el log del SDK (Opcional)
 \Rebill\SDK\Rebill::getInstance()->isDebug = true;
+
+// Callback que es invocado si isDebug fue cambiado a true. El programador debe ser el responsable de
+// almacenar todos los logs generados por el Plugin utilizando esta función y ajustándola a su gusto.
 \Rebill\SDK\Rebill::getInstance()->setCallBackDebugLog(function ($data) {
     file_put_contents('logfile.log', '---------- '.date('c')." -------------- \n$data\n\n", FILE_APPEND | LOCK_EX);
 });
 
+// De esta forma se cargan las credenciales en el SDK para que pueda generar el Access Token de forma automática.
+// No se recomienda utilizar el usuario Owner, debe crear un usuario con los mínimos permisos necesarios desde dashboard.rebill.to
 \Rebill\SDK\Rebill::getInstance()->setProp([
     'user' => 'xxxxx',
     'pass' => 'yyyy',
     'orgAlias' => 'zzzz',
-    'orgId' => 'xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
-    'sandbox' => true
+    'orgId' => 'xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 ]);

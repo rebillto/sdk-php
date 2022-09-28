@@ -1,7 +1,10 @@
 <?php
 
 include('setting.inc.php');
-
+/*
+Webhooks:
+Elimina o crea nuevos webhooks, los atributos están documentados en https://docs.rebill.to/reference/notificationscontroller_create
+*/
 $webhooks     = \Rebill\SDK\Models\Webhook::all();
 if ( $webhooks && is_array( $webhooks ) && count( $webhooks ) ) {
     foreach ( $webhooks as $webhook ) {

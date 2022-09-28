@@ -2,6 +2,18 @@
 
 include('setting.inc.php');
 
+/*
+Gateway:
+
+Para crear un gateway se recomienda utilizar https://dashboard.rebill.to/, también se puede utilizar el SDK
+con los siguientes tipo de objetos:
+
+\Rebill\SDK\Models\GatewayMercadoPago -> https://docs.rebill.to/reference/organizationcontroller_addstandardmercadopagokeys
+\Rebill\SDK\Models\GatewayDLocal -> https://docs.rebill.to/reference/organizationcontroller_connecttodlocal
+\Rebill\SDK\Models\GatewayStripe -> https://docs.rebill.to/reference/organizationcontroller_connecttostripe
+
+*/
+
 // MercadoPago
 $result = (new \Rebill\SDK\Models\GatewayMercadoPago)->setAttributes([
     'code' => 'xxxxx',  // Auth code of Mercadopago
