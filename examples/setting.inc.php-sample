@@ -8,7 +8,7 @@ require('vendor/autoload.php');
 \Rebill\SDK\Rebill::getInstance()->isDebug = true;
 
 // Callback que es invocado si isDebug fue cambiado a true. El programador debe ser el responsable de
-// almacenar todos los logs generados por el Plugin utilizando esta función y ajustándola a su gusto.
+// almacenar todos los logs generados por el SDK utilizando esta función y ajustándola a su gusto.
 \Rebill\SDK\Rebill::getInstance()->setCallBackDebugLog(function ($data) {
     file_put_contents('logfile.log', '---------- '.date('c')." -------------- \n$data\n\n", FILE_APPEND | LOCK_EX);
 });
