@@ -38,8 +38,7 @@ require('vendor/autoload.php');
     'user' => 'xxxxx',
     'pass' => 'yyyy',
     'orgAlias' => 'zzzz',
-    'orgId' => 'xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
-    'sandbox' => true
+    'orgId' => 'xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 ]);
 
 $result = (new \Rebill\SDK\Models\Item)->setAttributes([
