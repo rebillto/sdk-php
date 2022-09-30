@@ -37,7 +37,7 @@ $result = (new \Rebill\SDK\Models\Item)->setAttributes([
 var_dump($result->toArray());
 
 /*
-Ejemplo de un Price con suscripción recurrente bi-mensual
+Ejemplo de un Price con suscripción ciclico bi-mensual
 */
 $result = (new \Rebill\SDK\Models\Item)->setAttributes([
     'name' => 'Tiered Item',
@@ -66,10 +66,6 @@ $result = (new \Rebill\SDK\Models\Item)->setAttributes([
                 'type' => 'months',
                 'quantity' => 2
             ]),
-            'freeTrial' => (new \Rebill\SDK\Models\Shared\Frequency)->setAttributes([
-                'type' => 'months',
-                'quantity' => 1
-            ]),
             'repetitions' => 2,
             'currency' => REBILL_GATEWAY_CURRENCY,
             'gatewayId' => REBILL_GATEWAY_ID
@@ -86,7 +82,7 @@ $result = (new \Rebill\SDK\Models\Item)->setAttributes([
     'description' => 'Example of Empty Item',
     'prices' => [ ]
 ])->create();
-if ($result && !empty($result->item->id) && count($result->prices) == 0) {
+if ($result && !empty($result->item->id)) {
     $price = ( new \Rebill\SDK\Models\Price() )->setAttributes([
             'amount' => "2.5",
             'type' => 'fixed',
@@ -100,8 +96,8 @@ if ($result && !empty($result->item->id) && count($result->prices) == 0) {
                 'quantity' => 1
             ]),
             'repetitions' => null, // Infinite repetition
-            'currency' => self::$currency['dlocal'],
-            'gatewayId' => self::$gateway['dlocal']
+            'currency' => REBILL_GATEWAY_CURRENCY,
+            'gatewayId' => REBILL_GATEWAY_ID
     ])->add($result->item->id);
     var_dump($price->toArray());
 }
