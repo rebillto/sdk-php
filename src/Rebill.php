@@ -198,8 +198,10 @@ class Rebill extends RebillModel
                 'data'    => $response,
             ];
         } else {
-            self::log('Error '.$info["http_code"].' ['.$url.']: '.\var_export($response, true).'
-                        Curl error: '.\curl_errno($ch). ' -> '.\curl_error($ch));
+            $errno = \curl_errno($ch);
+            $curl_error = $errno?('Curl['.$errno. ']-> '.\curl_error($ch)):'';
+            $log_data = $post_data?"\n\nData send: $post_data":'';
+            self::log('Error '.$info["http_code"].' ['.$http_method.' '.$url.']'.($errno?' - '.$curl_error:'').': '.\var_export($response, true).$log_data);
         }
         if ($total_time > 8) {
             self::log('Time response is very high: '.$total_time.'seg');
@@ -403,14 +405,14 @@ class Rebill extends RebillModel
             throw new \Exception("Callback ".var_export($callback, true)." not is callable.");
         }
     }
-    public static function log($msg)
+    public static function log($msg, $level = 'info')
     {
         if (self::getInstance()->isDebug) {
             if (\is_callable(self::$callback_debug)) {
                 $callback = self::$callback_debug;
-                $callback($msg);
-            } else {
-                \error_log($msg);
+                $callback($msg, $level);
+            } elseif ($level != 'info') {
+                \error_log($level.': '.$msg);
             }
         }
     }

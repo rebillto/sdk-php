@@ -28,7 +28,7 @@ class Frequency extends SharedEntity
      */
     public function validate()
     {
-        if (!in_array($this->type, ['days', 'months', 'years'], true)) {
+        if (!in_array($this->type, ['minutes', 'weeks', 'days', 'months', 'years'], true)) {
             \Rebill\SDK\Rebill::log('Frequecy: type is invalid '.var_export($this->type, true));
             throw new \Exception('The attribute type is invalid.');
         }

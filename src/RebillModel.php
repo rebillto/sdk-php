@@ -435,6 +435,7 @@ abstract class RebillModel extends \ArrayObject
     {
         switch ($value) {
             case 'minutes':
+            case 'weeks':
             case 'days':
             case 'months':
             case 'years':
