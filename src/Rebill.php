@@ -71,6 +71,13 @@ class Rebill extends RebillModel
     protected $pass;
 
     /**
+     * API-Key
+     *
+     * @var string
+     */
+    protected $access_token = false;
+
+    /**
      * Singleton pattern
      */
     private function __construct()
@@ -257,6 +264,9 @@ class Rebill extends RebillModel
      */
     public function getToken($forece_reload = false)
     {
+        if ($this->access_token) {
+            return $this->access_token;
+        }
         $key = $this->orgAlias.':'.$this->user.':'.$this->pass;
         $cache_file = \dirname(__FILE__).'/cache/token_'.\md5($key.($this->sandbox ? '1' : '0')).'.php';
         if (!$forece_reload && \file_exists($cache_file)) {
@@ -264,7 +274,7 @@ class Rebill extends RebillModel
             if ($result) {
                 $data = \json_decode(\str_replace('<?php exit; ?>', '', $result), true);
                 if (\time() < $data['expire']) {
-                    return 'error' === $data['result'] ? false : $data['result'];
+                    return $this->access_token = ('error' === $data['result'] ? false : $data['result']);
                 }
             }
         }
@@ -278,12 +288,12 @@ class Rebill extends RebillModel
         if ($result &&
                 isset($result['data']['authToken']) &&
                 !empty($result['data']['authToken'])) {
-            $current = $result['data']['authToken'];
+            $this->access_token = $result['data']['authToken'];
             \file_put_contents($cache_file, '<?php exit; ?>'.\json_encode([
-                'result' => $current,
+                'result' => $this->access_token,
                 'expire' => \time() + (24 * 3600 - 120)
             ]));
-            return $current;
+            return $this->access_token;
         }
         \file_put_contents($cache_file, '<?php exit; ?>'.\json_encode([
             'result' => 'error',
