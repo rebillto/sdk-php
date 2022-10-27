@@ -267,6 +267,9 @@ class Rebill extends RebillModel
         if ($this->access_token) {
             return $this->access_token;
         }
+        if (!$this->orgAlias || !$this->user || !$this->pass) {
+            return false;
+        }
         $key = $this->orgAlias.':'.$this->user.':'.$this->pass;
         $cache_file = \dirname(__FILE__).'/cache/token_'.\md5($key.($this->sandbox ? '1' : '0')).'.php';
         if (!$forece_reload && \file_exists($cache_file)) {

@@ -22,7 +22,7 @@ abstract class RebillModel extends \ArrayObject
 
     /**
      * Set all Property values, example:
-     *      Rebill::getInstance()->setProp([ 'user' => 'rebill', 'pass' => '123' ]);
+     *      Rebill::getInstance()->setProp([ 'access_token' => 'API_KEY_xxxxxxxxx' ]);
      *
      * @param   array $values All values.
      *

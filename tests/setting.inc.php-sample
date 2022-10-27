@@ -20,8 +20,7 @@ if (!defined('GATEWAYS_ID')) {
 });
 
 \Rebill\SDK\Rebill::getInstance()->setProp([
-    'user' => 'test_user_2222@testuser.com',
-    'pass' => 'Qatest*2222',
+    'access_token' => 'API_KEY_xxxxxx',
     'orgAlias' => 'unit-test',
     'orgId' => 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
     'sandbox' => true

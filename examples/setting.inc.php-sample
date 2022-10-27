@@ -13,11 +13,9 @@ require('vendor/autoload.php');
     file_put_contents('logfile.log', '---------- '.date('c')." -------------- \n$data\n\n", FILE_APPEND | LOCK_EX);
 });
 
-// De esta forma se cargan las credenciales en el SDK para que pueda generar el Access Token de forma automática.
-// No se recomienda utilizar el usuario Owner, debe crear un usuario con los mínimos permisos necesarios desde dashboard.rebill.to
+// De esta forma se cargan las credenciales en el SDK. Para obtener el Access Token debe ingresar a dashboard.rebill.to
 \Rebill\SDK\Rebill::getInstance()->setProp([
-    'user' => 'xxxxx',
-    'pass' => 'yyyy',
-    'orgAlias' => 'zzzz',
+    'access_token' => 'API_KEY_xxxxx',
+    'orgAlias' => 'xxxxxxx',
     'orgId' => 'xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 ]);

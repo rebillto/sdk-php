@@ -35,8 +35,7 @@ require('vendor/autoload.php');
 });
 
 \Rebill\SDK\Rebill::getInstance()->setProp([
-    'user' => 'xxxxx',
-    'pass' => 'yyyy',
+    'access_token' => 'API_KEY_xxxxxxxxx',
     'orgAlias' => 'zzzz',
     'orgId' => 'xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 ]);
